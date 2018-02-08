@@ -6,7 +6,7 @@ ADDING PROJECT TO ECLIPSE
 2. In your eclipse you eclipse workspace folder add a folder for this project, I suggest naming it "461L_Project".
 3. Open git bash and navigate to the folder created in step 2. Alternatively, you can go to the file in your file browser, right-click on the file and then press "Git Bash Here".
 4. enter "git init"
-5. enter "git add remote main-remote https://github.com/petitjeanluis/461L_Project.git"
+5. enter "git remote add main-remote https://github.com/petitjeanluis/461L_Project.git"
 6. enter "git pull main-remote master", at this point you will have downloaded the master branch from the project repo
 7. Open project in eclipse: File -> Import -> General -> Existing Projects Into Workspace -> browse the project folder -> Finish
 *if you do it this way, "main-remote" will be the name of the remote created
