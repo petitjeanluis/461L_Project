@@ -18,4 +18,12 @@ public class WorkoutServlet {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
 	}
+	
+	public Workout getWorkout(String name) {
+		return null;
+	}
+	
+	public ArrayList<Exercise> getExercises(Workout workout){
+		return null;
+	}
 }

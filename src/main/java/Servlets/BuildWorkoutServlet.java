@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.util.*;
 import javax.servlet.http.*;
 
 import com.google.appengine.api.users.User;
@@ -17,5 +18,14 @@ public class BuildWorkoutServlet {
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+	}
+	
+	public ArrayList<Exercises> getAllExercises(){
+		return null;
+	}
+	
+	public Workout createWorkout(ArrayList<Exercise> exerciseList) {
+		return null;
+				
 	}
 }
