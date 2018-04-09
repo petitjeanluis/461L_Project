@@ -52,6 +52,19 @@ public class Storage {
 		return result;
 	}
 	
+	public Client findFriend(String name) {
+		Client result = null;
+		
+		List<Client> clients = ofy().load().type(Client.class).list();
+		for(Client c: clients) {
+			if(c.getUser().getEmail().equals(name)) {
+				return c;
+			}
+		}
+		
+		return result;
+	}
+	
 	private void populateExerciseAndWorkout() {
 		//Call Patricks methods
 	}
