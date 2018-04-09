@@ -56,6 +56,16 @@ public class Client {
 		pastWorkouts.add(workout);
 	}*/
 	
+	public int getReps(Exercise e) {
+		for(ExerciseData exercises: exerciseData) {
+			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+				//
+				return exercises.getRepsBasedOnHistory();
+			} 
+		}
+		return e.getStartingReps();
+	}
+	
 	public User getUser() {
 		return user;
 	}
