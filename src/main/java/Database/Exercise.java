@@ -21,24 +21,27 @@ public class Exercise {
 	//this will be the minimum weight set by us independent of user
 	@Index private int startingWeight;
 	@Index private int startingReps;
+	@Index private int startingSets;
 	
 	public Exercise(String name, String description, ArrayList<String> keywords,
-			BufferedImage image, int startingWeight, int startingReps) {
+			BufferedImage image, int startingWeight, int startingReps, int startingSets) {
 		this.name = name;
 		this.description = description;
 		this.keywords = keywords;
 		this.image = image;
 		this.startingWeight = startingWeight;
 		this.startingReps = startingReps;
+		this.startingSets = startingSets;
 	}
 	
 	public Exercise(String name, String description, ArrayList<String> keywords,
-			int startingWeight, int startingReps) {
+			int startingWeight, int startingReps, int startingSets) {
 		this.name = name;
 		this.description = description;
 		this.keywords = keywords;
 		this.startingWeight = startingWeight;
 		this.startingReps = startingReps;
+		this.startingSets = startingSets;
 	}
 	
 	public String getName() {
@@ -63,5 +66,9 @@ public class Exercise {
 
 	public int getStartingReps() {
 		return startingReps;
+	}
+	
+	public int getStartingSets() {
+		return startingSets;
 	}
 }
