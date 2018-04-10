@@ -20,7 +20,7 @@ public class BuildWorkoutServlet {
         User user = userService.getCurrentUser();
 	}
 	
-	public ArrayList<Exercises> getAllExercises(){
+	public ArrayList<Exercise> getAllExercises(){
 		return null;
 	}
 	

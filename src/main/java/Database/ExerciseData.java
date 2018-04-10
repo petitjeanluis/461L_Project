@@ -11,47 +11,64 @@ import com.googlecode.objectify.annotation.Index;
 public class ExerciseData {
 	@Id private Long id;
 	@Index private Exercise exercise;
-	@Index private int numOfTimesDone;
 	
-	@Index private ArrayList<Integer> actualWeight;
-	@Index private ArrayList<Integer> actualReps;
-	@Index private ArrayList<Date> dateExercised;
+	@Index private ArrayList<DataPoint> data;
 	
-	public ExerciseData(Exercise exercise, ArrayList<Integer> actualWeight,
-			ArrayList<Integer> actualReps, ArrayList<Date> dateExercised) {
+	public ExerciseData(Exercise exercise, DataPoint dataPoint) {
 		this.exercise = exercise;
-		this.numOfTimesDone = 1;
-		this.actualWeight = actualWeight;
-		this.actualReps = actualReps;
-		this.dateExercised = dateExercised;
-	}	
-	
-	public ExerciseData(Exercise exercise, int actualWeight,
-			int actualReps, Date dateExercised) {
-		this.exercise = exercise;
-		this.numOfTimesDone = 1;
-		
-		ArrayList<Integer> weight = new ArrayList<Integer>();
-		ArrayList<Integer> reps = new ArrayList<Integer>();
-		ArrayList<Date> date = new ArrayList<Date>();
-		
-		weight.add(actualWeight);
-		this.actualWeight = weight;
-		reps.add(actualReps);
-		this.actualReps = reps;
-		date.add(dateExercised);
-		this.dateExercised = date;
+		data = new ArrayList<DataPoint>();
+		data.add(dataPoint);
 	}	
 	
 	public Exercise getExercise() {
 		return exercise;
 	}
 	
-	public void addDataPoint(int weight, int reps, Date day) {
-		actualWeight.add(weight);
-		actualReps.add(reps);
-		dateExercised.add(day);
-		
-		numOfTimesDone++;
+	public String getExerciseName() {
+		return exercise.getName();
+	}
+	
+	public void addDataPoint(DataPoint dataPoint) {
+		data.add(dataPoint);
+	}
+	
+	public int getRepsBasedOnHistory() {
+		int count = 0;
+		int amountInLast2Weeks = exerciseInLast2Weeks();
+		if(amountInLast2Weeks>0) {
+			//take average of last two weeks
+			int average = 0;
+			for(int i = data.size()-1; i > data.size()-1 - amountInLast2Weeks; i--) {
+				average += data.get(i).getReps();
+			}
+			average = average/amountInLast2Weeks;
+			
+			int additionalWeight = 5;
+			if(data.size()%5 == 3 || data.size() % 5 == 4) {
+				additionalWeight = 10;
+			} 
+			
+			if(average%5 >3) {
+				return 5*(average/5) + 5 + additionalWeight;
+			} else {
+				return 5*(average/5) + additionalWeight;
+			}
+		} else {
+			//take last workout and add 5
+			return data.get(data.size()-1).getReps();
+		}
+	}
+	
+	private int exerciseInLast2Weeks() {
+		int result = 0;
+		Date twoWeeksAgo = new Date();
+		twoWeeksAgo.setTime(twoWeeksAgo.getTime()-20160000);
+		for(int i = data.size() -1; i >= 0; i--) {
+			Date pastDate = data.get(i).getDate();
+			if(pastDate.before(twoWeeksAgo)) {
+				result++;
+			}
+		}
+		return result;
 	}
 }
