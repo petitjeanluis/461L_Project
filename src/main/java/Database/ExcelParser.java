@@ -32,11 +32,12 @@ public class ExcelParser {
 				String keywordsLine = split[4];
 				String startingWeight = split[5];
 				String startingReps = split[6];
+				String startingSets = split[7];
 				BufferedImage image = ImageIO.read(new File("src\\main\\webapp\\WEB_INF\\inputFiles\\" + name + ".png"));
 				
 				ArrayList<String> keywords = new ArrayList<String>(Arrays.asList(keywordsLine.split(";\\s*")));
 				
-				exercise = new Exercise(name, description, keywords, image, Integer.parseInt(startingWeight), Integer.parseInt(startingReps));
+				exercise = new Exercise(name, description, keywords, image, Integer.parseInt(startingWeight), Integer.parseInt(startingReps), Integer.parseInt(startingSets));
 				list.add(exercise);
 			}
 		} catch(FileNotFoundException e) {

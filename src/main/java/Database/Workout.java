@@ -98,5 +98,4 @@ public class Workout {
 	public int getNumOfExercises() {
 		return exercises.size();
 	}
-	
 }
