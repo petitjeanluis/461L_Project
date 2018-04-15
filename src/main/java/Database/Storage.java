@@ -111,4 +111,15 @@ public class Storage {
 		//image could not be found
 		return null;
 	}
+	
+	public Exercise getExercise(String name) {
+		for(int i = 0; i < exercises.size(); i++) {
+			if(exercises.get(i).getName().equals(name)) {
+				return exercises.get(i);
+			}
+		}
+		
+		//exercise not found
+		return null;
+	}
 }
