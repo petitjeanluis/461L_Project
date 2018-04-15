@@ -67,6 +67,8 @@ public class Storage {
 	
 	private void populateExerciseAndWorkout() {
 		//Call Patricks methods
+		ExcelParser excelParser = new ExcelParser();
+		excelParser.parse();
 	}
 	
 	public ArrayList<Exercise> getAllExercises() {

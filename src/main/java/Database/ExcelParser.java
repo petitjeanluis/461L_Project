@@ -12,7 +12,7 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 
 public class ExcelParser {
-	public static void main(String[] args) {
+	public void parse() {
 		String csvFile = "src\\main\\webapp\\WEB_INF\\workout.csv";
 		BufferedReader reader = null;
 		String line = "";
