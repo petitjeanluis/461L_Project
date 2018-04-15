@@ -62,6 +62,16 @@ public class Client extends Observable implements Observer{
 		pastWorkouts.add(workout);
 	}*/
 	
+	public int getWeight(Exercise e) {
+		for(ExerciseData exercises: exerciseData) {
+			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+				//
+				return exercises.getWeightBasedOnHistory();
+			} 
+		}
+		return e.getStartingWeight();
+	}
+	
 	public int getReps(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {

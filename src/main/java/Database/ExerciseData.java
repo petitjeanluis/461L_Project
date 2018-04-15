@@ -33,6 +33,10 @@ public class ExerciseData {
 	}
 	
 	public int getRepsBasedOnHistory() {
+		return data.get(data.size()-1).getReps();
+	}
+	
+	public int getWeightBasedOnHistory() {
 		int count = 0;
 		int amountInLast2Weeks = exerciseInLast2Weeks();
 		if(amountInLast2Weeks>0) {
