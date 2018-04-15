@@ -70,6 +70,7 @@ if(user == null) {
 
 Storage storage = Storage.getInstance();
 Client client =  storage.loadClient(user);
+
 Workout workout = client.getCurrentWorkout();
 
 
@@ -116,5 +117,6 @@ in = "";}%>
             </div>
         </div>
         <script src="js/workout.js"></script>
+
     </body>
 </html>

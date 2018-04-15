@@ -2,19 +2,34 @@ package Database;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+
+import javax.imageio.ImageIO;
 
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.ObjectifyService;
 
 public class Storage {
 	private static Storage storage;
-	private static ArrayList<Exercise> exercises;
-	private static ArrayList<Workout> workouts;
+	private ArrayList<Exercise> exercises;
+	private ArrayList<Workout> workouts;
 	
 	static {
-		ObjectifyService.register(Client.class);
+		//try {
+			//ObjectifyService.register(Observable.class);
+			ObjectifyService.register(Exercise.class);
+			ObjectifyService.register(Workout.class);
+			ObjectifyService.register(DataPoint.class);
+			ObjectifyService.register(ExerciseData.class);
+			ObjectifyService.register(Client.class);
+		//} catch (Exception e) {
+		//	System.out.println(e);
+		//}
 	}
 	
 	private Storage() {
@@ -40,6 +55,10 @@ public class Storage {
 	}
 	
 	public Client loadClient(User user) {
+		if(user == null) {
+			return null;
+		}
+		
 		Client result = null;
 		
 		List<Client> clients = ofy().load().type(Client.class).list();
@@ -68,7 +87,10 @@ public class Storage {
 	private void populateExerciseAndWorkout() {
 		//Call Patricks methods
 		ExcelParser excelParser = new ExcelParser();
-		excelParser.parse();
+		exercises = excelParser.parseExercise();
+		
+		//Patrick will create workout parser
+		
 	}
 	
 	public ArrayList<Exercise> getAllExercises() {
@@ -77,5 +99,16 @@ public class Storage {
 	
 	public ArrayList<Workout> getAllWorkouts() {
 		return workouts;
+	}
+	
+	public static BufferedImage getImageFromName(String name) {
+		try {
+			return ImageIO.read(new File("src\\main\\webapp\\WEB_INF\\inputFiles\\" + name + ".png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//image could not be found
+		return null;
 	}
 }

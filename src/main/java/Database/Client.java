@@ -11,7 +11,7 @@ import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
 @Entity
-public class Client extends Observable implements Observer{
+public class Client {
 	@Id Long id;
 	@Index private User user;
 	
@@ -26,7 +26,7 @@ public class Client extends Observable implements Observer{
 
 
 	//holds log of messages from friends
-	@Index private ArrayList<String> messageLog;
+	//@Index private ArrayList<String> messageLog;
 	
 	public Client(User user, ArrayList<ExerciseData> exerciseData) {
 		this.user = user;
@@ -53,10 +53,10 @@ public class Client extends Observable implements Observer{
 		Storage.getInstance().saveClient(this);
 	}
 	
-	public void addCustomWorkout(Workout workout) {
+	/*public void addCustomWorkout(Workout workout) {
 		customWorkouts.add(workout);
 		Storage.getInstance().saveClient(this);
-	}
+	}*/
 	
 	/*public void addPastWorkout(Workout workout) {
 		pastWorkouts.add(workout);
@@ -107,7 +107,7 @@ public class Client extends Observable implements Observer{
 		return exerciseData;
 	}
 
-	public void sendToFriends(String message) {
+	/*public void sendToFriends(String message) {
 		notifyObservers(message);
 	}
 	
@@ -125,6 +125,6 @@ public class Client extends Observable implements Observer{
 		String message = (String)arg1;
 		messageLog.add(friend + " said:  " + message);
 		Storage.getInstance().saveClient(this);
-	}
+	}*/
 	
 }
