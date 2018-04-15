@@ -19,6 +19,34 @@
             </div>
           </div>
         </nav>
+        
+        <div class="row">
+  			<div class="col-xs-4">
+  			</div>
+  			<div class="col-xs-4">
+  				<h1 align="center">Simply Stronger</h1>
+  				<h5 align="center">the new way to get fit.</h5>
+  			</div>
+  			<div class="col-xs-4">
+  			</div>
+		</div>
+		
+		<div class ="row">
+			<a href="https://google.com">
+				<div class ="col-xs-6">
+					<div class="panel panel-default">
+	  					<div class="panel-body" align="center">Setup Workout</div>
+					</div>
+				</div>
+			</a>
+			<a href="https://yahoo.com">
+				<div class ="col-xs-6">
+					<div class="panel panel-default">
+	  					<div class="panel-body" align="center">Start Workout</div>
+					</div>
+				</div>
+			</a>
+		</div>
 
     </body>
 </html>
