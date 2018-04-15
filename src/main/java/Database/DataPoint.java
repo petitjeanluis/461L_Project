@@ -2,11 +2,18 @@ package Database;
 
 import java.util.Date;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
 public class DataPoint {
-	int weight;
-	int reps;
-	int sets;
-	Date date;
+	@Id long id;
+	
+	@Index int weight;
+	@Index int reps;
+	@Index int sets;
+	@Index Date date;
 	
 	public DataPoint(int weight, int reps, int sets, Date date) {
 		this.weight = weight;

@@ -12,7 +12,7 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 
 public class ExcelParser {
-	public void parse() {
+	public ArrayList<Exercise> parseExercise() {
 		String csvFile = "src\\main\\webapp\\WEB_INF\\workout.csv";
 		BufferedReader reader = null;
 		String line = "";
@@ -33,11 +33,11 @@ public class ExcelParser {
 				String startingWeight = split[5];
 				String startingReps = split[6];
 				String startingSets = split[7];
-				BufferedImage image = ImageIO.read(new File("src\\main\\webapp\\WEB_INF\\inputFiles\\" + name + ".png"));
+				String imageName = name;
 				
 				ArrayList<String> keywords = new ArrayList<String>(Arrays.asList(keywordsLine.split(";\\s*")));
 				
-				exercise = new Exercise(name, description, keywords, image, Integer.parseInt(startingWeight), Integer.parseInt(startingReps), Integer.parseInt(startingSets));
+				exercise = new Exercise(name, description, keywords, imageName, Integer.parseInt(startingWeight), Integer.parseInt(startingReps), Integer.parseInt(startingSets));
 				list.add(exercise);
 			}
 		} catch(FileNotFoundException e) {
@@ -54,8 +54,6 @@ public class ExcelParser {
 			}
 		}
 		
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getName());
-		}
+		return list;
 	}
 }

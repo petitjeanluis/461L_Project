@@ -1,8 +1,11 @@
 package Database;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.imageio.ImageIO;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -15,7 +18,7 @@ public class Workout {
 	@Index String workoutName;
 	@Index String description;
 	
-	@Index BufferedImage image;
+	@Index String imageName;
 	
 	@Index ArrayList<Exercise> exercises;
 	
@@ -25,7 +28,7 @@ public class Workout {
 			int currentExerciseIndex) {
 		this.workoutName = workoutName;
 		this.description = description;
-		this.image = image;
+		//this.image = image;
 		this.exercises = exercises;
 		this.currentExerciseIndex = currentExerciseIndex;
 	}
@@ -72,11 +75,7 @@ public class Workout {
 	}
 
 	public BufferedImage getImage() {
-		return image;
-	}
-
-	public void setImage(BufferedImage image) {
-		this.image = image;
+		return Storage.getImageFromName(imageName);
 	}
 
 	public ArrayList<Exercise> getExercises() {

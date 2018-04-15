@@ -8,6 +8,9 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+import Database.Exercise;
+import Database.Workout;
+
 public class BuildWorkoutServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {

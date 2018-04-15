@@ -16,7 +16,7 @@ public class Exercise {
 	//this will store keywords/workout types that this is applicable to
 	@Index private ArrayList<String> keywords;
 	
-	@Index private BufferedImage image;
+	@Index private String imageName;
 	
 	//this will be the minimum weight set by us independent of user
 	@Index private int startingWeight;
@@ -24,11 +24,11 @@ public class Exercise {
 	@Index private int startingSets;
 	
 	public Exercise(String name, String description, ArrayList<String> keywords,
-			BufferedImage image, int startingWeight, int startingReps, int startingSets) {
+			String imageName, int startingWeight, int startingReps, int startingSets) {
 		this.name = name;
 		this.description = description;
 		this.keywords = keywords;
-		this.image = image;
+		this.imageName = imageName;
 		this.startingWeight = startingWeight;
 		this.startingReps = startingReps;
 		this.startingSets = startingSets;
@@ -57,7 +57,7 @@ public class Exercise {
 	}
 
 	public BufferedImage getImage() {
-		return image;
+		return Storage.getImageFromName(imageName);
 	}
 
 	public int getStartingWeight() {
