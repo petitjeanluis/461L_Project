@@ -95,5 +95,4 @@ public class Workout {
 		this.currentExerciseIndex = currentExerciseIndex;
 	}
 	
-	
 }
