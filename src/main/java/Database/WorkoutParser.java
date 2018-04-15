@@ -34,12 +34,12 @@ public class WorkoutParser {
 				String workoutDescription = split[7];
 				
 				
-				exerciseList.add(storage.sendExercise(exerciseOne));
-				exerciseList.add(storage.sendExercise(exerciseTwo));
-				exerciseList.add(storage.sendExercise(exerciseThree));
-				exerciseList.add(storage.sendExercise(exerciseFour));
-				exerciseList.add(storage.sendExercise(exerciseFive));
-				exerciseList.add(storage.sendExercise(exerciseSix));
+				exerciseList.add(storage.getExercise(exerciseOne));
+				exerciseList.add(storage.getExercise(exerciseTwo));
+				exerciseList.add(storage.getExercise(exerciseThree));
+				exerciseList.add(storage.getExercise(exerciseFour));
+				exerciseList.add(storage.getExercise(exerciseFive));
+				exerciseList.add(storage.getExercise(exerciseSix));
 				
 				workout = new Workout(workoutName, workoutDescription, exerciseList, 0);
 				workoutList.add(workout);
