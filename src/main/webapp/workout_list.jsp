@@ -1,3 +1,5 @@
+<%@ page import="Database.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
     <jsp:include page="header.jsp"/>
@@ -19,6 +21,60 @@
             </div>
           </div>
         </nav>
+        
+        <div class="row">
+  			<div class="col-xs-6">
+  			  	<h1 align="center">Your workouts.</h1>
+  			</div>
+  			<div class="col-xs-6">
+			  	<h1 align="center">Tailored for you.</h1>
+  			</div>
+		</div>
+		
+		<div class ="row">
+			<div class ="col-xs-6">
+				<div class="panel panel-default">
+  					<div class="panel-body" align="left">Personal workout 1</div>
+  					<div class="panel-body" align="left">Personal workout 2</div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+				</div>
+			</div>
+			<div class ="col-xs-6">
+				<div class="panel panel-default">
+  					<div class="panel-body" align="left">Recommended workout 1</div>
+  					<div class="panel-body" align="left">Recommended workout 2</div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+  					<div class="panel-body"></div>
+				</div>
+			</div>
+		</div>
 
     </body>
 </html>
