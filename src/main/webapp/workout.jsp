@@ -1,3 +1,8 @@
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Database.*"%>
 <!DOCTYPE html>
 <html lang="en">
     <jsp:include page="header.jsp"/>
@@ -55,15 +60,31 @@
                 <div class="col-xs-6">
                     <div class="panel-group" id="accordion">
 <%
-int numExercises = 3;// from db, dummy limited to 3 max
-int currentExercise = 0;
-String in = "in";
+//pull workout data from db
+UserService userService = UserServiceFactory.getUserService();
+User user = userService.getCurrentUser();                   		 
+
+if(user == null) {
+	
+}
+
+Storage storage = Storage.getInstance();
+Client client =  storage.loadClient(user);
+Workout workout = client.getCurrentWorkout();
+
+
+int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
+int currentExercise = workout.getCurrentExerciseIndex();
+String workoutName = workout.getWorkoutName();// add name of workout to GUI
+String in = "in";// this opens accordion
                     		  
 for(int i = 0; i < numExercises; i++){
-	String name ="name";
-	String description = "description";
-	int repCount = 8;//from db
-	int repWeight = 20;//from db
+	Exercise exercise = workout.getExerciseNum(i);
+	String name = exercise.getName();
+	String description = exercise.getDescription();
+	int setCount = 3;
+	int repCount = client.getReps(exercise);
+	int repWeight = 0;
 %>
 						<div class="panel panel-default">
 						    <div class="panel-heading">

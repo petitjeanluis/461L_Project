@@ -95,5 +95,8 @@ public class Workout {
 		this.currentExerciseIndex = currentExerciseIndex;
 	}
 	
+	public int getNumOfExercises() {
+		return exercises.size();
+	}
 	
 }
