@@ -7,3 +7,13 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.panel {
+	height: 550px;
+}
+
+.panel-text {
+	display: inline-block;
+	width: 100px;
+	margin: 10px 10px;
+}
