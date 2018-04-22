@@ -1,0 +1,50 @@
+.search input {
+    width: 240px;
+    text-indent: 24px;
+    border-radius: 10px;
+}
+
+.search .fa-search {
+    position: absolute;
+    font-size: 20px;
+    top: 7px;
+    left: 24px;
+}
+
+.box {
+    border: 1px solid #d3d3d3;
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.center-arrow {
+    display: inline-block;
+    position: absolute;
+    left: 47%;
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.workout-list {
+    width: inherit;
+    height: inherit;
+    list-style: none;
+    overflow: scroll;
+}
+
+.workout-list li {
+    width: auto;
+    height: 40px;
+}
+
+.create-btn {
+    float: right;
+    margin-top: 20px;
+}
