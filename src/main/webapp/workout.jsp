@@ -5,7 +5,9 @@
 <%@ page import="Database.*"%>
 <!DOCTYPE html>
 <html lang="en">
-    <jsp:include page="header.jsp"/>
+    <header>
+		<jsp:include page="header.jsp"/>
+	</header>
     <body>
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
