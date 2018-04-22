@@ -32,16 +32,31 @@
 	  			</div>
 			</div>
 			<div class ="row">
-				<div class ="col-xs-6">
-					<div class="panel panel-default">
-	  					<div class="panel-body" align="left">Personal workout 1</div>
-	  					<div class="panel-body" align="left">Personal workout 2</div>
+<%
+	ArrayList<Workout> myWorkouts = null;
+	ArrayList<Workout> recWorkouts = null;
+	
+				%><div class ="col-xs-6">
+					<div class="panel panel-default"><%
+				  			
+	for(Workout workout : myWorkouts) {
+		%>
+					<div class="panel-body" align="left"><%=workout.getWorkoutName()
+					%></div>
+		<%
+	}
+					%>	</div>
 					</div>
-				</div>
-				<div class ="col-xs-6">
-					<div class="panel panel-default">
-	  					<div class="panel-body" align="left">Recommended workout 1</div>
-	  					<div class="panel-body" align="left">Recommended workout 2</div>
+					<div class ="col-xs-6">
+						<div class="panel panel-default"><%
+	
+	for(Workout workout : recWorkouts) {
+		%>
+		<div class="panel-body" align="left"><%=workout.getWorkoutName()
+		%></div>
+<%
+	}
+%>
 					</div>
 				</div>
 			</div>
