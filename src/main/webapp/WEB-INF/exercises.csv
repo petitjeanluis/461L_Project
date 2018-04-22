@@ -1,61 +1,61 @@
 ,Name,Muscles Worked,Description,Keywords,Starting Weight,Starting Reps
-Chest,Bench press,Chest,,swimming; sexiness;,10,8
-,Flat dumbbell press,Chest,,basketball;,10,8
-,Incline bench press,Chest,,swimming; sexiness;,10,8
-,Incline dumbbell press,Chest,,basketball;,10,8
-,Pec-deck machine,Chest,,throwing;,10,8
-,Cable flys,Chest,variations,swimming; throwing; sexiness;,10,8
-,Flat dumbbell flys,Chest,,basketball; throwing,10,8
-,Incline dumbbell flys,Chest,,throwing;,10,8
-,Chest press machine,Chest,,swimming;,10,8
-Arms (Triceps; Biceps; Forearms),Barbell curl,Biceps,,sexiness;,10,8
-,Dumbbell curl,Biceps,,swimming; sexiness;,10,8
-,Incline dumbbell hammer curl,Biceps,,throwing;,10,8
-,Incline dumbbell curl,Biceps,,throwing;,10,8
-,Hammer curl,Biceps,,basketball;,10,8
-,Preacher curl,Biceps,,basketball;,10,8
-,Dips,Triceps,,basketball; sexiness;,10,8
-,Pushups,Triceps,variations,swimming; sexiness;,10,8
-,Skullcrushers,Triceps,,throwing;,10,8
-,Tricep pulldowns,Triceps,,swimming; throwing;,10,8
-,Close-grip bench press,Triceps,,throwing;,10,8
-,Overhead dumbbell extension,Triceps,,throwing;,10,8
-,Wrist curls,Forearms,,throwing; sexiness;,10,8
-,Farmer's walk,Forearms,,throwing;,10,8
-,Zottman curls,Forearms,,throwing;,10,8
-,Reverse wrist curls,Forearms,,throwing; sexiness;,10,8
-,Grip crushers,Forearms,,throwing;,10,8
-,Plate tosses,Forearms,,throwing;,10,8
-,Pinch carries,Forearms,,throwing;,10,8
-Legs (Quadriceps; Hamstrings; Calves),Calf press machine,Calves,,jumping; sexiness;,10,8
-,Toe raises,Calves,,jumping;,10,8
-,Jump rope,Calves,,basketball;,10,8
-,Jumping jacks,Calves,,basketball;,10,8
-,Box jumps,Calves,,jumping; basketball;,10,8
-,Bulgarian split squat,Hamstrings,,throwing;,10,8
-,Leg curls,Hamstrings,,basketball; swimming;,10,8
-,Glute ham raise,Hamstrings,,basketball; throwing;,10,8
-,Leg press,Quadriceps,,swimming;,10,8
-,Lunges,Quadriceps,,swimming; jumping;,10,8
-,Step ups,Quadriceps,,jumping; sexiness;,10,8
-,Squats,Quadriceps,,swimming; jumping; throwing; sexiness,10,8
-Shoulders,Overhead press,Shoulders,,basketball; throwing; sexiness;,10,8
-,Shrugs,Shoulders,,swimming; basketball; sexiness;,10,8
-,Side lateral raise,Shoulders,,swimming; basketball;,10,8
-,Upright barbell row,Shoulders,,basketball;,10,8
-,Front lateral raise,Shoulders,,basketball;,10,8
-,Dumbbell shoulder press,Shoulders,,throwing;,10,8
-Abs,Dumbbell side bend,Abs,,swimming; ,10,8
-,Plank,Abs,,swimming; sexiness;,10,8
-,Air bike,Abs,,swimming; basketball;,10,8
-,Hanging leg raises,Abs,,sexiness;,10,8
-,Mountain climbers,Abs,,basketball; sexiness;,10,8
-,Landmine 180s,Abs,,basketball;,10,8
-,Flutter kicks,Abs,,basketball;,10,8
-Back,Deadlifts,Back,,basketball;,10,8
-,Row machine,Back,,swimming; basketball;,10,8
-,One-arm dumbbell row,Back,,swimming; ,10,8
-,Pulldowns,Back,,swimming; sexiness;,10,8
-,Pullups,Back,,basketball; sexiness;,10,8
-,Bent-over barbell row,Back,,throwing; sexiness;,10,8
-,Back extension,Back,,throwing;,10,8
+Chest,Bench press,Chest,Lie down on a bench and push the barbell up from your chest,swimming; sexiness;,10,8
+,Flat dumbbell press,Chest,Lie down on a bench and push dumbbells up from chest,basketball;,10,8
+,Incline bench press,Chest,Sit on a bench that has been inclined to 30 degrees and push barbell up from chest,swimming; sexiness;,10,8
+,Incline dumbbell press,Chest,Sit on a bench that has been inclined to 30 degrees and push dumbbell up from chest,basketball;,10,8
+,Pec-deck machine,Chest,Place forearms behind handles of machine and bring your arms together while maintaining seated position,throwing;,10,8
+,Cable flys,Chest,Adjust cables to bottom and start with handles at your side. Pull handles up from sides so that hands are in front of chest.,swimming; throwing; sexiness;,10,8
+,Flat dumbbell flys,Chest,Lie down on a bench and start with dumbbells at side of chest; level with the rest of body. Bring dumbbells up so that arms end up fully extended with dumbbells meeting in front of chest.,basketball; throwing,10,8
+,Incline dumbbell flys,Chest,Sit on a bench that has been inclined 30 degrees and start with dumbbells at side of chest; level with the rest of body. Bring dumbbells up so that arms end up fully extended with dumbbells meeting in front of chest.,throwing;,10,8
+,Chest press machine,Chest,Grab onto handles and push forward while keeping arms parallel to the ground,swimming;,10,8
+Arms (Triceps; Biceps; Forearms),Barbell curl,Biceps,Start with barbell in front of the pelvic area with palms facing forward and lift the barbell up to chest without moving body,sexiness;,10,8
+,Dumbbell curl,Biceps,Start with dumbbell in front of the pelvic area with palms facing forward and lift the dumbbell up to chest without moving body,swimming; sexiness;,10,8
+,Incline dumbbell hammer curl,Biceps,Sit on a bench inclined 30 degrees and bring up dumbbells while keeping them perpendicular to the ground,throwing;,10,8
+,Incline dumbbell curl,Biceps,Sit on a bench inclined 30 degrees and bring up dumbells,throwing;,10,8
+,Hammer curl,Biceps,Bring up dumbell while keeping it perpendicular to the ground without moving your body,basketball;,10,8
+,Preacher curl,Biceps,Rest upper arms and chest comfortably to the preacher bench; then curl the EZ bar to shoulder height while squeezing your biceps,basketball;,10,8
+,Dips,Triceps,Hang from a dip bar and lower your body until your arms are bent at a 90 degree angle,basketball; sexiness;,10,8
+,Pushups,Triceps,Start lying on the ground with hands on the ground next to chest. Push up while keeping your back parallel to the ground; lifting everything off the ground except your hands and feet,swimming; sexiness;,10,8
+,Skullcrushers,Triceps,Lie down on a bench and start with dumbbell behind your head. Lift dumbbell until arms are fully extended in front of chest,throwing;,10,8
+,Tricep pulldowns,Triceps,attach rope handle to cable and grab the rope in starting position. Pull down the rope while simultaneously pulling the rope outwards until the arms are fully extended and around the pelvic area,swimming; throwing;,10,8
+,Close-grip bench press,Triceps,Lie down on a bench placin hands in middle of bar keeping a few inches between them and push the barbell up from your chest,throwing;,10,8
+,Overhead dumbbell extension,Triceps,Start with dumbbell behind the head with elbows pointed upward. While maintaining elbow position; lift the dumbbell until it is straight above the head,throwing;,10,8
+,Wrist curls,Forearms,Sit on bench with arms rested fully ontop of legs with dumbells in each hand. With palms faced up; turn your wrists up to lift the dumbbell while keeping arms in place,throwing; sexiness;,10,8
+,Farmer's walk,Forearms,Lift up dumbells with one in each hand and walk across the room,throwing;,10,8
+,Zottman curls,Forearms,With palms facing forward; lift up dumbells to shoulder level. At reaching shoulders; turn the dumbells so that palms face forward; then lower the dumbbells,throwing;,10,8
+,Reverse wrist curls,Forearms,Sit on bench with arms rested fully ontop of legs with dumbells in each hand. With palms faced down; turn your wrists up to lift the dumbbell while keeping arms in place,throwing; sexiness;,10,8
+,Pullup bar hang,Forearms,Hang on the pullup bar for 30 seconds,throwing;,10,8
+,Plate tosses,Forearms,Starting with plate in front of you and hands on the sides of plate; toss the plate forward with caution,throwing;,10,8
+,Pinch carries,Forearms,Hold one plate in each hand by gripping the side of each plate and walk across the room,throwing;,10,8
+Legs (Quadriceps; Hamstrings; Calves),Calf press machine,Calves,Place feet at bottom part of the leg press machine so that the heels are not on the press. Push toes into machine and lean toes back from machine,jumping; sexiness;,10,8
+,Toe raises,Calves,stand on edge of a stair step of box with heels slightly off of the step. Lift body up by lifting heels ,jumping;,10,8
+,Jump rope,Calves,With a handle in each hand; thrust the rope over your head and do a small jump over the rope when it reaches your fee,basketball;,10,8
+,Jumping jacks,Calves,Start with arms by your side and your legs together. Jump and land with legs spread apart and arms above your head,basketball;,10,8
+,Box jumps,Calves,Rapidly jump on and off of a box,jumping; basketball;,10,8
+,Bulgarian split squat,Hamstrings,With one foot resting on a bench behind you and the other foot supporting your weight on the ground; lower your body slowly by bending the leg that is touching the ground,throwing;,10,8
+,Leg curls,Hamstrings,Place feet behind foot handle and push up with your feet,basketball; swimming;,10,8
+,Glute ham raise,Hamstrings,Lock heels under stationary object and lie down face toward the ground. Lift everything above the knees of the ground until kneeling upright,basketball; throwing;,10,8
+,Leg press machine,Quadriceps,Place feet on weight and push forward with your legs,swimming;,10,8
+,Lunges,Quadriceps,Place one foot three feet in front of the other and lower your back knee until knee is almost touching the ground,swimming; jumping;,10,8
+,Step ups,Quadriceps,step up on the box using one leg and with the other leg bring the knee up to waist height standing on top of the box. Place lifted foot back on the ground and lower yourself down to the ground,jumping; sexiness;,10,8
+,Squats,Quadriceps,With the weight of the barbell rested and centered on the shoulder; lower your butt to the ground by lowering your knees,swimming; jumping; throwing; sexiness,10,8
+Shoulders,Overhead press,Shoulders,Start with barbell held at the chest with palms facing forward. Lift barbell until arms are fully extended perpendicular to the ground,basketball; throwing; sexiness;,10,8
+,Shrugs,Shoulders,With weight in each hand resting at your side; shrug your shoulder so that the weights are lifted a few inches from the original position,swimming; basketball; sexiness;,10,8
+,Side lateral raise,Shoulders,With dumbbells in each hand resting at your sides; left them up so that the dumbbells are level with your shoulders,swimming; basketball;,10,8
+,Upright barbell row,Shoulders,Start with barbell rested against the pelvic area with your hands facing your body holding the barbell near the center. Lift up the barbell to chest height,basketball;,10,8
+,Front lateral raise,Shoulders,Start with dumbbell in each hand and palms facing your body in front of your pelvic area. Lift hand straight forward until arms are fully entended forawrd and at chest height,basketball;,10,8
+,Dumbbell shoulder press,Shoulders,Start with dumbbell in each hand and hand above shoulders with elbows pointing out to the left and right. Lift dumbbells up until arms are full extended perpendicular to the ground,throwing;,10,8
+Abs,Dumbbell side bend,Abs,Start standing with dumbell in one hand with the other hand on your head. Bend sideways to the side opposite of the dumbell ,swimming; ,10,8
+,Plank,Abs,Lie down and hoist body up with toes and forearms supporting your weight. Keep your back straight for one minute while keeping your back straight and body stable,swimming; sexiness;,10,8
+,Air bike,Abs,Lie down on your back and lift your head with your hand behind it. Lift your legs with and peddle in the air; bringing your knees close to your torso,swimming; basketball;,10,8
+,Hanging leg raises,Abs,Hang on a par with your feet off the ground and lift your legs forward while keeping them straight until your legs are parallel to the ground,sexiness;,10,8
+,Mountain climbers,Abs,Lie on the ground and prop up your body with hands and feet. Bring one knee up to your chest and inwards toward the other side of your body,basketball; sexiness;,10,8
+,Landmine 180s,Abs,Take the end of a barbell with the other end on the ground and twist your torso; bringing the bar on the side of the twisting,basketball;,10,8
+,Flutter kicks,Abs,Lie on your back and raise you legs a couple of inches off of the ground. Alternate lifting each leg so that you kick the air,basketball;,10,8
+Back,Deadlifts,Back,Lift a barbell off of the ground by bending down and hoisting up using your lower back. KEEP YOUR BACK STRAIGHT,basketball;,10,8
+,Row machine,Back,Sit and grab handles. Push back with your legs and pull back the cable by pulling back your torso,swimming; basketball;,10,8
+,One-arm dumbbell row,Back,Put your right knee and right hand on the bench while leaving the dumbbell on the floor on the right side of the bench. With the left hand; pull up the dumbbell until chest height. Switch then to the right side.,swimming; ,10,8
+,Pulldowns,Back,Pull down the bar to chest height while maintaining a seated position,swimming; sexiness;,10,8
+,Pullups,Back,Grab onto pull up bar with palms facing outwards. Pull yourself up.,basketball; sexiness;,10,8
+,Bent-over barbell row,Back,Grip barbell while standing. Bend knees slightly and bring torso forward by bending at the waist. Lift the barbell toward your body while keeping your elbows close to your body,throwing; sexiness;,10,8
+,Back extension,Back,Lie face down on a hyperextension bench; cross your arms; and then bend your torso down while keeping your back straight and lower body in place,throwing;,10,8
