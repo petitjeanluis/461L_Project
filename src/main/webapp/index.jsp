@@ -1,5 +1,9 @@
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <!DOCTYPE html>
 <html lang="en">
+	<%UserService userService = UserServiceFactory.getUserService(); %>
     <jsp:include page="header.jsp"/>
     <body>
         <nav class="navbar navbar-inverse">
@@ -15,7 +19,9 @@
             </ul>
             <div class="nav navbar-nav navbar-right">
                 <button class="btn navbar-btn">Register</button>
-                <button class="btn navbar-btn login-btn">Login</button>
+                <a href= "<%=userService.createLoginURL(request.getRequestURI()) %>">
+                	<button class="btn navbar-btn login-btn">Login</button>
+                </a>
             </div>
           </div>
         </nav>

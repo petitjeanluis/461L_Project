@@ -65,11 +65,14 @@ UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();                   		 
 
 if(user == null) {
+	System.out.println("test");
 	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 }
 
 Storage storage = Storage.getInstance();
+System.out.println(user);
 Client client =  storage.loadClient(user);
+
 
 //will be future code
 //Workout workout = client.getCurrentWorkout();
@@ -83,9 +86,11 @@ String in = "in";// this opens accordion
                     		  
 for(int i = 0; i < numExercises; i++){
 	Exercise exercise = workout.getExerciseNum(i);
+	System.out.println(exercise.getName());
 	String name = exercise.getName();
 	String description = exercise.getDescription();
 	int setCount = 3;
+	System.out.println(client);
 	int repCount = client.getReps(exercise);
 	int repWeight = 0;
 %>

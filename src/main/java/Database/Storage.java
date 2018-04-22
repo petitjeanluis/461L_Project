@@ -62,13 +62,20 @@ public class Storage {
 		Client result = null;
 		
 		List<Client> clients = ofy().load().type(Client.class).list();
+		System.out.println(clients.toString());
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(user.getEmail())) {
 				return c;
 			}
 		}
 		
-		return result;
+		//client not found and we are going to create one
+		Client newClient = new Client();
+		newClient.setUser(user);
+		saveClient(newClient);
+		
+		return newClient;
+
 	}
 	
 	public Client findFriend(String name) {

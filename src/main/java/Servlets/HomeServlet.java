@@ -17,5 +17,12 @@ public class HomeServlet {
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        
+        if(user == null) {
+        	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        } else {
+        	System.out.println("found a user");
+        	resp.sendRedirect("index.jsp");
+        }
 	}
 }

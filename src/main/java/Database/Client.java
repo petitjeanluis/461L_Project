@@ -28,10 +28,13 @@ public class Client {
 	//holds log of messages from friends
 	//@Index private ArrayList<String> messageLog;
 	
-	public Client(User user, ArrayList<ExerciseData> exerciseData) {
+	public Client() {
+		//can't set user because client has to have a no-arg constructor
+		this.exerciseData = new ArrayList<ExerciseData>();
+	}
+	
+	public void setUser(User user) {
 		this.user = user;
-		//this.pastWorkouts = pastWorkouts;
-		this.exerciseData = exerciseData;
 	}
 
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
@@ -73,7 +76,9 @@ public class Client {
 	}
 	
 	public int getReps(Exercise e) {
+		System.out.println(e);
 		for(ExerciseData exercises: exerciseData) {
+			System.out.println(e.getName() + "exerciseData " + exercises.getExerciseName());
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//
 				return exercises.getRepsBasedOnHistory();
