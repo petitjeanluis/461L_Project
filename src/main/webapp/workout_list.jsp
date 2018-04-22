@@ -1,3 +1,6 @@
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="Database.*" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -7,7 +10,7 @@
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.html">WorkoutMaker</a>
+              <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
             </div>
             <ul class="nav navbar-nav">
               <li><a href="index.jsp">Home</a></li>
@@ -28,18 +31,29 @@
 	  			  	<h1 align="center">Your workouts.</h1>
 	  			</div>
 	  			<div class="col-xs-6">
-				  	<h1 align="center">Tailored for you.</h1>
+				  	<h1 align="center">Standard Workouts.</h1>
 	  			</div>
 			</div>
 			<div class ="row">
 <%
-	ArrayList<Workout> myWorkouts = null;
-	ArrayList<Workout> recWorkouts = null;
+	UserService userService = UserServiceFactory.getUserService();
+	User user = userService.getCurrentUser();                   		 
+
+	if(user == null) {
+		System.out.println("no user found");
+		response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	}
+
+	Storage storage = Storage.getInstance();
+	//System.out.println(user);
+	Client client =  storage.loadClient(user);
+	ArrayList<Workout> customWorkouts = client.getCustomWorkouts();
+	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();
 	
 				%><div class ="col-xs-6">
 					<div class="panel panel-default"><%
 				  			
-	for(Workout workout : myWorkouts) {
+	for(Workout workout : customWorkouts) {
 		%>
 					<div class="panel-body" align="left"><%=workout.getWorkoutName()
 					%></div>
@@ -50,7 +64,7 @@
 					<div class ="col-xs-6">
 						<div class="panel panel-default"><%
 	
-	for(Workout workout : recWorkouts) {
+	for(Workout workout : standardWorkouts) {
 		%>
 		<div class="panel-body" align="left"><%=workout.getWorkoutName()
 		%></div>

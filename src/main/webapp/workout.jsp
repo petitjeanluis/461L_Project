@@ -70,7 +70,7 @@ if(user == null) {
 }
 
 Storage storage = Storage.getInstance();
-System.out.println(user);
+//System.out.println(user);
 Client client =  storage.loadClient(user);
 
 

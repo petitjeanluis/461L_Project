@@ -1,15 +1,38 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="Database.*" %>
 <!DOCTYPE html>
+<%UserService userService = UserServiceFactory.getUserService(); 
+User user = userService.getCurrentUser();
+Storage storage = Storage.getInstance();
+Client c = storage.loadClient(user);
+%>
+<script src="Scripts/jquery-1.6.min.js" type="text/javascript"></script>
+<script src="Scripts/canvasChart.js" type="text/javascript"></script>
+<script type="text/javascript">
+	<%if(c != null) {%>
+	$(document).ready(function() {
+		var chart = {
+			title: "<%=c.getFirstExerciseDataSet()%>",
+			xLabel: "Times Exercised",
+			yLabel: "Amount of Weight",
+			labelFont: "19pt Arial",
+			dataPointFont: "10pt Arial",
+			renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.point]
+		}
+	})	
+	<%}%>
+</script>    
+
 <html lang="en">
-	<%UserService userService = UserServiceFactory.getUserService(); %>
+
     <jsp:include page="header.jsp"/>
     <body>
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.html">WorkoutMaker</a>
+              <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
             </div>
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
@@ -38,17 +61,35 @@
 			</div>
 			
 			<div class ="row">
-				<div class="col-xs-6">
-					<div class="panel panel-default" id="setup">
-	  					<div class="panel-text">Setup Workout</div>
+				<%      
+					if(user == null) {
+						%><br><br><h1 align="center">You need to login to continue!</h1><br>
+						<a href= "<%=userService.createLoginURL(request.getRequestURI()) %>">
+                			<button top=50%; class="btn navbar-btn login-btn">Login</button>
+                		</a>
+                	<%
+                	} else {
+		        	%>
 					</div>
-				</div>	
-				<div class="col-xs-6">				
-					<div class="panel panel-default" id="start">
-	  					<div class="panel-text">Start Workout</div>
+					<!--  This is going to be the graph of progress -->
+					<div class = "row">
+						<canvas id="canvas" width="800" height="600"></canvas>
 					</div>
-				</div>
-			</div>
+					
+					<div class ="row">
+						<div class="col-xs-6">
+							<div class="panel panel-default" id="setup">
+			  					<div class="panel-text">Setup Workout</div>
+							</div>
+						</div>	
+						<div class="col-xs-6">				
+							<div class="panel panel-default" id="start">
+			  					<div class="panel-text">Start Workout</div>
+							</div>
+						</div>
+					</div> <%
+					
+					}%>
         </div>
     </body>
 </html>

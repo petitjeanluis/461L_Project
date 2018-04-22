@@ -31,6 +31,8 @@ public class Client {
 	public Client() {
 		//can't set user because client has to have a no-arg constructor
 		this.exerciseData = new ArrayList<ExerciseData>();
+		this.customWorkouts = new ArrayList<Workout>();
+		
 	}
 	
 	public void setUser(User user) {
@@ -110,6 +112,14 @@ public class Client {
 
 	public ArrayList<ExerciseData> getExerciseData() {
 		return exerciseData;
+	}
+	
+	public ExerciseData getFirstExerciseDataSet() {
+		if(exerciseData.get(0) != null) {
+			return exerciseData.get(0);
+		} else {
+			return null;
+		}
 	}
 
 	/*public void sendToFriends(String message) {
