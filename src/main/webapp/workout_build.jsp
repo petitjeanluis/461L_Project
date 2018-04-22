@@ -1,3 +1,14 @@
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Database.*" %>
+<%
+UserService userService = UserServiceFactory.getUserService(); 
+User user = userService.getCurrentUser();
+Storage storage = Storage.getInstance();
+Client c = storage.loadClient(user);
+%>
 <!DOCTYPE html>
 <html lang="en">
 	<header>
@@ -50,7 +61,12 @@
                 <div class="col-xs-6">
                     <div class="box">
                         <ul class="workout-list">
-                            <li>Workout Item</li>
+                        <%
+                        	ArrayList<Exercise> exercises = storage.getAllExercises();
+                            for(Exercise e: exercises) {
+                        		%><li><%=e.getName()%></li><%
+                            }
+                        %>
                         </ul>
                     </div>
                 </div>
