@@ -65,14 +65,16 @@ UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();                   		 
 
 if(user == null) {
-	
+	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 }
 
 Storage storage = Storage.getInstance();
 Client client =  storage.loadClient(user);
 
-Workout workout = client.getCurrentWorkout();
-
+//will be future code
+//Workout workout = client.getCurrentWorkout();
+//code for testing
+Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 
 int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
 int currentExercise = workout.getCurrentExerciseIndex();

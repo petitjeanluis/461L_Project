@@ -90,7 +90,15 @@ public class Storage {
 		exercises = excelParser.parseExercise();
 		
 		//Patrick will create workout parser
+		workouts = excelParser.parseWorkout(exercises);
 		
+		
+		/*for(Exercise e: exercises) {
+			System.out.println(e.getName());
+		}
+		for(Workout w: workouts) {
+			System.out.println(w.getWorkoutName());
+		}*/
 	}
 	
 	public ArrayList<Exercise> getAllExercises() {
@@ -111,4 +119,5 @@ public class Storage {
 		//image could not be found
 		return null;
 	}
+	
 }
