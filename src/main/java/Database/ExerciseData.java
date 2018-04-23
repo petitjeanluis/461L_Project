@@ -13,15 +13,29 @@ public class ExerciseData {
 	@Index private Exercise exercise;
 	
 	@Index private ArrayList<DataPoint> data;
+	/*
+	private Long id;
+	private Exercise exercise;
+	
+	private ArrayList<DataPoint> data;*/
+	
+	public ExerciseData() {
+		
+	}
 	
 	public ExerciseData(Exercise exercise, DataPoint dataPoint) {
-		this.exercise = exercise;
+		this.exercise = exercise.newExercise();
 		data = new ArrayList<DataPoint>();
 		data.add(dataPoint);
+		Storage.getInstance().saveExerciseData(this);
 	}	
 	
 	public Exercise getExercise() {
 		return exercise;
+	}
+	
+	public ArrayList<DataPoint> getDataPoints() {
+		return data;
 	}
 	
 	public String getExerciseName() {

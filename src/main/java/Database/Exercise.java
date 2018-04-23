@@ -23,6 +23,10 @@ public class Exercise {
 	@Index private int startingReps;
 	@Index private int startingSets;
 	
+	public Exercise() {
+		
+	}
+	
 	public Exercise(String name, String description, ArrayList<String> keywords,
 			String imageName, int startingWeight, int startingReps, int startingSets) {
 		this.name = name;
@@ -32,6 +36,7 @@ public class Exercise {
 		this.startingWeight = startingWeight;
 		this.startingReps = startingReps;
 		this.startingSets = startingSets;
+		Storage.getInstance().saveExercise(this);
 	}
 	
 	public Exercise(String name, String description, ArrayList<String> keywords,
@@ -42,6 +47,7 @@ public class Exercise {
 		this.startingWeight = startingWeight;
 		this.startingReps = startingReps;
 		this.startingSets = startingSets;
+		Storage.getInstance().saveExercise(this);
 	}
 	
 	public String getName() {
@@ -70,5 +76,10 @@ public class Exercise {
 	
 	public int getStartingSets() {
 		return startingSets;
+	}
+	
+	public Exercise newExercise() {
+		return new Exercise(name,description,keywords,
+			imageName, startingWeight, startingReps, startingSets);
 	}
 }

@@ -20,10 +20,6 @@
               <li><a href="workout_build.jsp">Build Workout</a></li>
               <li><a href="workout.jsp">Workout</a></li>
             </ul>
-            <div class="nav navbar-nav navbar-right">
-                <button class="btn navbar-btn">Register</button>
-                <button class="btn navbar-btn login-btn">Login</button>
-            </div>
           </div>
         </nav>
  

@@ -41,7 +41,10 @@ public class Client {
 
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
 		boolean updated = false;
+		//System.out.println(exercise + "data: " + data);
+		//System.out.println(user);
 		for(ExerciseData exercises: exerciseData) {
+			System.out.println(exercises.getExerciseName());
 			if(exercise.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//this is the exercise we want to update
 				exercises.addDataPoint(data);
@@ -106,6 +109,10 @@ public class Client {
 		return pastWorkouts;
 	}*/
 
+	public void addCustomWorkout(Workout workout) {
+		customWorkouts.add(workout);
+	}
+	
 	public ArrayList<Workout> getCustomWorkouts() {
 		return customWorkouts;
 	}
@@ -115,13 +122,36 @@ public class Client {
 	}
 	
 	public ExerciseData getFirstExerciseDataSet() {
-		if(exerciseData.get(0) != null) {
+		if(exerciseData.size() > 0 && exerciseData.get(0) != null) {
 			return exerciseData.get(0);
 		} else {
 			return null;
 		}
 	}
-
+	
+	public ExerciseData getData(String exerciseName) {
+		ExerciseData atLeast3 = null;
+		for(ExerciseData e: exerciseData) {
+			//get the first dataSet that has atLeast3 datapoints
+			if(e.getDataPoints().size() > 3 && atLeast3 == null) {
+				atLeast3 = e;
+			}
+			if(e.getDataPoints().size() > 3 && e.getExerciseName().equals(exerciseName)) {
+				return e;
+			}
+		}
+		return atLeast3;
+	}
+	
+	public void populateFakeData() {
+		DataPoint d;
+		for(int i = 0; i < 10; i++) {
+			d = new DataPoint(10+i, 8, 3, new Date(18, 3, i+1));
+			System.out.println(Storage.getInstance().getExercise("Bench press"));
+			updateExerciseData(Storage.getInstance().getExercise("Bench press"), d);
+		}
+	}
+	
 	/*public void sendToFriends(String message) {
 		notifyObservers(message);
 	}
