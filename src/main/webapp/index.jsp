@@ -19,8 +19,9 @@ c.populateFakeData();
 		<script src="js/canvasChart.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			<%
+			String exerciseName = request.getParameter("");
 			ExerciseData data = c.getFirstExerciseDataSet();
-			if(c != null && data != null) {%>
+			if(c != null && data != null && data.getDataPoints().size() > 3) {%>
 			$(document).ready(function() {
 				var chart = {
 					title: "<%=c.getFirstExerciseDataSet().getExerciseName()%>",
@@ -45,7 +46,7 @@ c.populateFakeData();
 			});	
 			
 			<%} else {
-				System.out.println("client: " + c + "data: " + data);
+				System.out.println("You need to do more exercises in order for us to create your progress graph");
 			}%>
 		</script> 
 	</header>
@@ -93,8 +94,37 @@ c.populateFakeData();
 		        	%>
 					</div>
 					<!--  This is going to be the graph of progress -->
-					<canvas id="canvas" width="800" height="600"></canvas>
-					
+					<div class = "row">
+						<canvas id="canvas" style="margin: auto; display: inline-block" width="600" height="400"></canvas>
+					</div>
+					<div class = "row">
+						<%
+						int count = 0;
+						ArrayList<ExerciseData> exerciseData = c.getExerciseData();
+						for(ExerciseData e: exerciseData) {
+							if(e.getDataPoints().size() > 5) {
+								count++;
+							}
+						}
+						if(count > 0) {%>
+						<h5 align = "center">Select other exercises from the dropdown menu to see your other graphs</h5>
+						<form action = "/index.jsp" align = "center">
+							<input list="exercises" name="exercise">
+							<datalist id="exercises">
+								<%
+								for(ExerciseData e: exerciseData) {
+									if(e.getDataPoints().size() > 3) {
+										%><option value="<%=e.getExerciseName() %>">
+										<%
+									}
+								}
+								%>
+							</datalist>
+							<input type="submit">
+						</form>
+						<br><br>
+						<%}%>
+					</div>
 					<div class ="row">
 						<div class="col-xs-6">
 							<div class="panel panel-default" id="setup">
