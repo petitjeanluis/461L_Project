@@ -9,7 +9,7 @@
 User user = userService.getCurrentUser();
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
-c.populateFakeData();
+//c.populateFakeData();
 %>
 
 <html lang="en">

@@ -16,8 +16,8 @@ import com.googlecode.objectify.ObjectifyService;
 
 public class Storage {
 	private static Storage storage;
-	private ArrayList<Exercise> exercises;
-	private ArrayList<Workout> workouts;
+	private static ArrayList<Exercise> exercises;
+	private static ArrayList<Workout> workouts;
 	
 	static {
 		//try {
@@ -36,7 +36,7 @@ public class Storage {
 		exercises = new ArrayList<Exercise>();
 		workouts = new ArrayList<Workout>();
 		
-		populateExerciseAndWorkout();
+		//populateExerciseAndWorkout();
 	}
 	
 	public static Storage getInstance() {
@@ -54,21 +54,42 @@ public class Storage {
 		ofy().save().entity(c).now();
 	}
 	
+	public void saveDataPoint(DataPoint d) {
+		ofy().save().entity(d).now();
+	}
+	
+	public void saveWorkout(Workout w) {
+		ofy().save().entity(w).now();
+	}
+	
+	public void saveExerciseData(ExerciseData e) {
+		ofy().save().entity(e).now();
+	}
+	
+	public void saveExercise(Exercise e) {
+		ofy().save().entity(e).now();
+	}
+	
 	public Client loadClient(User user) {
+		if(workouts.size() == 0 || exercises.size()== 0) {
+			populateExerciseAndWorkout();
+		}
 		if(user == null) {
 			return null;
 		}
-		
 		Client result = null;
+		
 		
 		List<Client> clients = ofy().load().type(Client.class).list();
 		System.out.println(clients.toString());
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(user.getEmail())) {
+				//ofy().delete().entity(c).now();
 				return c;
 			}
 		}
 		
+		System.out.println("Making new client");
 		//client not found and we are going to create one
 		Client newClient = new Client();
 		newClient.setUser(user);
@@ -109,10 +130,16 @@ public class Storage {
 	}
 	
 	public ArrayList<Exercise> getAllExercises() {
+		if(workouts.size() == 0 || exercises.size()== 0) {
+			populateExerciseAndWorkout();
+		}
 		return exercises;
 	}
 	
 	public ArrayList<Workout> getAllWorkouts() {
+		if(workouts.size() == 0 || exercises.size()== 0) {
+			populateExerciseAndWorkout();
+		}
 		return workouts;
 	}
 	
@@ -128,13 +155,20 @@ public class Storage {
 	}
 	
 	public Exercise getExercise(String name) {
+		System.out.println(exercises.size());
+		if(workouts.size() == 0 || exercises.size()== 0) {
+			populateExerciseAndWorkout();
+		}
 		for(int i = 0; i < exercises.size(); i++) {
+			System.out.println(exercises.get(i).getName());
 			if(exercises.get(i).getName().equals(name)) {
 				return exercises.get(i);
 			}
 		}
 		
 		//exercise not found
+		System.out.println("Exercise not found");
+		System.out.println(name);
 		return null;
 	}
 	

@@ -41,7 +41,10 @@ public class Client {
 
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
 		boolean updated = false;
+		//System.out.println(exercise + "data: " + data);
+		//System.out.println(user);
 		for(ExerciseData exercises: exerciseData) {
+			System.out.println(exercises.getExerciseName());
 			if(exercise.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//this is the exercise we want to update
 				exercises.addDataPoint(data);
@@ -55,7 +58,7 @@ public class Client {
 			exerciseData.add(newDataEntry);
 		}
 		
-		//Storage.getInstance().saveClient(this);
+		Storage.getInstance().saveClient(this);
 	}
 	
 	/*public void addCustomWorkout(Workout workout) {
@@ -144,6 +147,7 @@ public class Client {
 		DataPoint d;
 		for(int i = 0; i < 10; i++) {
 			d = new DataPoint(10+i, 8, 3, new Date(18, 3, i+1));
+			System.out.println(Storage.getInstance().getExercise("Bench press"));
 			updateExerciseData(Storage.getInstance().getExercise("Bench press"), d);
 		}
 	}

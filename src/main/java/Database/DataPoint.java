@@ -8,7 +8,7 @@ import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class DataPoint {
-	@Id long id;
+	@Id Long id;
 	
 	@Index int weight;
 	@Index int reps;
@@ -21,10 +21,15 @@ public class DataPoint {
 	int sets;
 	Date date;*/
 	
+	public DataPoint() {
+		
+	}
+	
 	public DataPoint(int weight, int reps, int sets, Date date) {
 		this.weight = weight;
 		this.reps = reps;
 		this.date = date;
+		Storage.getInstance().saveDataPoint(this);
 	}
 	
 	public int getWeight() {

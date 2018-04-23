@@ -24,6 +24,10 @@ public class Workout {
 	
 	@Index int currentExerciseIndex;
 
+	public Workout() {
+		
+	}
+	
 	public Workout(String workoutName, String description, BufferedImage image, ArrayList<Exercise> exercises,
 			int currentExerciseIndex) {
 		this.workoutName = workoutName;
@@ -31,6 +35,7 @@ public class Workout {
 		//this.image = image;
 		this.exercises = exercises;
 		this.currentExerciseIndex = currentExerciseIndex;
+		//Storage.getInstance().saveWorkout(this);
 	}
 	
 	public Workout(String workoutName, String description, ArrayList<Exercise> exercises,
@@ -39,6 +44,7 @@ public class Workout {
 		this.description = description;
 		this.exercises = exercises;
 		this.currentExerciseIndex = currentExerciseIndex;
+		//Storage.getInstance().saveWorkout(this);
 	}
 	
 	public Workout(String workoutName, ArrayList<Exercise> exercises) {
@@ -46,6 +52,7 @@ public class Workout {
 		this.description = "";
 		this.exercises = exercises;
 		this.currentExerciseIndex = 0;
+		//Storage.getInstance().saveWorkout(this);
 	}
 
 	public Exercise getNextExercise() {

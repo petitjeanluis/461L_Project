@@ -19,10 +19,15 @@ public class ExerciseData {
 	
 	private ArrayList<DataPoint> data;*/
 	
+	public ExerciseData() {
+		
+	}
+	
 	public ExerciseData(Exercise exercise, DataPoint dataPoint) {
-		this.exercise = exercise;
+		this.exercise = exercise.newExercise();
 		data = new ArrayList<DataPoint>();
 		data.add(dataPoint);
+		Storage.getInstance().saveExerciseData(this);
 	}	
 	
 	public Exercise getExercise() {
