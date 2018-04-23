@@ -106,6 +106,10 @@ public class Client {
 		return pastWorkouts;
 	}*/
 
+	public void addCustomWorkout(Workout workout) {
+		customWorkouts.add(workout);
+	}
+	
 	public ArrayList<Workout> getCustomWorkouts() {
 		return customWorkouts;
 	}

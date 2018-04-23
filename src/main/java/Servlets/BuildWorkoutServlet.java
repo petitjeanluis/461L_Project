@@ -8,8 +8,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import Database.Exercise;
-import Database.Workout;
+import Database.*;
 
 public class BuildWorkoutServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -21,14 +20,25 @@ public class BuildWorkoutServlet {
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-	}
-	
-	public ArrayList<Exercise> getAllExercises(){
-		return null;
-	}
-	
-	public Workout createWorkout(ArrayList<Exercise> exerciseList) {
-		return null;
-				
+        Storage storage = Storage.getInstance();
+        Client client = storage.loadClient(user);
+        
+        int numOfExercises = Integer.parseInt(req.getParameter("numOfExercises"));
+        String workoutName = req.getParameter("workoutName");
+        
+        ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+        String base = "Exercise";
+        for(int i = 0; i < numOfExercises; i++) {
+        	Exercise e = storage.getExercise(base + Integer.toString(i));
+        	exercises.add(e);
+        }
+        
+        Workout customWorkout = new Workout(workoutName, exercises);
+        client.addCustomWorkout(customWorkout);
+        client.setCurrentWorkout(customWorkout);
+        
+        storage.saveClient(client);
+        
+        resp.sendRedirect("/workout.jsp");
 	}
 }

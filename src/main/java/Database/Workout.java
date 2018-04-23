@@ -40,6 +40,13 @@ public class Workout {
 		this.exercises = exercises;
 		this.currentExerciseIndex = currentExerciseIndex;
 	}
+	
+	public Workout(String workoutName, ArrayList<Exercise> exercises) {
+		this.workoutName = workoutName;
+		this.description = "";
+		this.exercises = exercises;
+		this.currentExerciseIndex = 0;
+	}
 
 	public Exercise getNextExercise() {
 		if(currentExerciseIndex < exercises.size()) {
