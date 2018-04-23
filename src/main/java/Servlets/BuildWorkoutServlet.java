@@ -10,7 +10,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import Database.*;
 
-public class BuildWorkoutServlet {
+public class BuildWorkoutServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		

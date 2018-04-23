@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   
+	<servlet>
+		<servlet-name>HomeServlet</servlet-name>
+		<servlet-class>Servlets.HomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HomeServlet</servlet-name>
+		<url-pattern>/homeservlet</url-pattern>
+	</servlet-mapping>  
+  
   	<servlet>
 		<servlet-name>BuildWorkoutServlet</servlet-name>
 		<servlet-class>Servlets.BuildWorkoutServlet</servlet-class>
@@ -14,6 +23,6 @@
 	</servlet-mapping>
   
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>homeservlet</welcome-file>
   </welcome-file-list>
 </web-app>
