@@ -126,6 +126,20 @@ public class Client {
 		}
 	}
 	
+	public ExerciseData getData(String exerciseName) {
+		ExerciseData atLeast3 = null;
+		for(ExerciseData e: exerciseData) {
+			//get the first dataSet that has atLeast3 datapoints
+			if(e.getDataPoints().size() > 3 && atLeast3 == null) {
+				atLeast3 = e;
+			}
+			if(e.getDataPoints().size() > 3 && e.getExerciseName().equals(exerciseName)) {
+				return e;
+			}
+		}
+		return atLeast3;
+	}
+	
 	public void populateFakeData() {
 		DataPoint d;
 		for(int i = 0; i < 10; i++) {
