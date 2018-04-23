@@ -19,12 +19,19 @@
     margin-top: 10px;
 }
 
-.center-arrow {
+.left-arrow, .right-arrow {
     display: inline-block;
     position: absolute;
-    left: 47%;
     font-size: 32px;
     margin-top: 20px;
+}
+
+.left-arrow {
+    left: 45%;
+}
+
+.right-arrow {
+    left: 48%;
 }
 
 a {
@@ -47,4 +54,13 @@ a {
 .create-btn {
     float: right;
     margin-top: 20px;
+}
+
+.active {
+    background-color: #23527c;
+    color: white;
+}
+
+li {
+    list-style: none;
 }

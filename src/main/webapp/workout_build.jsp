@@ -60,11 +60,13 @@ Client c = storage.loadClient(user);
             <div class="row">
                 <div class="col-xs-6">
                     <div class="box">
-                        <ul class="workout-list">
+                        <ul class="workout-list" id="exercise-list">
                         <%
                         	ArrayList<Exercise> exercises = storage.getAllExercises();
+                        int id = 0;
                             for(Exercise e: exercises) {
-                        		%><li><%=e.getName()%></li><%
+                        		%><li id="excercise<%=id%>"><%=e.getName()%></li><%
+                        		id++;
                             }
                         %>
                         </ul>
@@ -72,16 +74,18 @@ Client c = storage.loadClient(user);
                 </div>
                 <div class="col-xs-6">
                     <div class="box">
-                        <ul class="workout-list">
-                            <li>Workout Item</li>
+                        <ul class="workout-list" id="create-list">
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <a href="https://www.gogle.com"><i class="fa fa-arrow-right center-arrow"></i></a>
-                <button class="create-btn" type="submit" name="button">Create</button>
+                <a onclick="removeItem()"><i class="fa fa-arrow-left left-arrow"></i></a>
+                <a onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>
+                <button class="create-btn" onclick="create()">Create</button>
             </div>
 		</div>
+		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>
+        </form>
     </body>
 </html>
