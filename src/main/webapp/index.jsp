@@ -2,32 +2,52 @@
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="Database.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <%UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
+System.out.println(c);
+c.populateFakeData();
 %>
-<script src="Scripts/jquery-1.6.min.js" type="text/javascript"></script>
-<script src="Scripts/canvasChart.js" type="text/javascript"></script>
-<script type="text/javascript">
-	<%if(c != null) {%>
-	$(document).ready(function() {
-		var chart = {
-			title: "<%=c.getFirstExerciseDataSet()%>",
-			xLabel: "Times Exercised",
-			yLabel: "Amount of Weight",
-			labelFont: "19pt Arial",
-			dataPointFont: "10pt Arial",
-			renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.point]
-		}
-	})	
-	<%}%>
-</script>    
 
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
+		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
+		<script src="js/canvasChart.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			<%
+			ExerciseData data = c.getFirstExerciseDataSet();
+			if(c != null && data != null) {%>
+			$(document).ready(function() {
+				var chart = {
+					title: "<%=c.getFirstExerciseDataSet().getExerciseName()%>",
+					xLabel: 'Times Exercised',
+					yLabel: 'Amount of Weight',
+					labelFont: '19pt Arial',
+					dataPointFont: '10pt Arial',
+					renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
+					dataPoints: [
+						<% 
+					ArrayList<DataPoint> d = data.getDataPoints();
+					DataPoint value;
+					for(int i = 0; i < 10 -1 ; i++) {
+						value = d.get(i);
+						%>{ x: '<%=i+1%>', y: <%=value.getWeight()%> },
+						<%
+					}
+					value = d.get(d.size()-1);
+					%>{ x: '10', y: <%=value.getWeight()%> }]
+				};
+				CanvasChart.render('canvas', chart);
+			});	
+			
+			<%} else {
+				System.out.println("client: " + c + "data: " + data);
+			}%>
+		</script> 
 	</header>
     <body>
         <nav class="navbar navbar-inverse">
@@ -66,16 +86,14 @@ Client c = storage.loadClient(user);
 					if(user == null) {
 						%><br><br><h1 align="center">You need to login to continue!</h1><br>
 						<a href= "<%=userService.createLoginURL(request.getRequestURI()) %>">
-                			<button top=50%; class="btn navbar-btn login-btn">Login</button>
+                			<button class="btn navbar-btn login-btn">Login</button>
                 		</a>
                 	<%
                 	} else {
 		        	%>
 					</div>
 					<!--  This is going to be the graph of progress -->
-					<div class = "row">
-						<canvas id="canvas" width="800" height="600"></canvas>
-					</div>
+					<canvas id="canvas" width="800" height="600"></canvas>
 					
 					<div class ="row">
 						<div class="col-xs-6">

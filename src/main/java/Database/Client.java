@@ -55,7 +55,7 @@ public class Client {
 			exerciseData.add(newDataEntry);
 		}
 		
-		Storage.getInstance().saveClient(this);
+		//Storage.getInstance().saveClient(this);
 	}
 	
 	/*public void addCustomWorkout(Workout workout) {
@@ -119,13 +119,21 @@ public class Client {
 	}
 	
 	public ExerciseData getFirstExerciseDataSet() {
-		if(exerciseData.get(0) != null) {
+		if(exerciseData.size() > 0 && exerciseData.get(0) != null) {
 			return exerciseData.get(0);
 		} else {
 			return null;
 		}
 	}
-
+	
+	public void populateFakeData() {
+		DataPoint d;
+		for(int i = 0; i < 10; i++) {
+			d = new DataPoint(10+i, 8, 3, new Date(18, 3, i+1));
+			updateExerciseData(Storage.getInstance().getExercise("Bench press"), d);
+		}
+	}
+	
 	/*public void sendToFriends(String message) {
 		notifyObservers(message);
 	}

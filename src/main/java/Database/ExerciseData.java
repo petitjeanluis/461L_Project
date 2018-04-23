@@ -13,6 +13,11 @@ public class ExerciseData {
 	@Index private Exercise exercise;
 	
 	@Index private ArrayList<DataPoint> data;
+	/*
+	private Long id;
+	private Exercise exercise;
+	
+	private ArrayList<DataPoint> data;*/
 	
 	public ExerciseData(Exercise exercise, DataPoint dataPoint) {
 		this.exercise = exercise;
@@ -22,6 +27,10 @@ public class ExerciseData {
 	
 	public Exercise getExercise() {
 		return exercise;
+	}
+	
+	public ArrayList<DataPoint> getDataPoints() {
+		return data;
 	}
 	
 	public String getExerciseName() {

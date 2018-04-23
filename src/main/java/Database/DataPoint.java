@@ -14,6 +14,12 @@ public class DataPoint {
 	@Index int reps;
 	@Index int sets;
 	@Index Date date;
+	/*long id;
+	
+	int weight;
+	int reps;
+	int sets;
+	Date date;*/
 	
 	public DataPoint(int weight, int reps, int sets, Date date) {
 		this.weight = weight;
