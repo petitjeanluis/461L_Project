@@ -112,7 +112,7 @@ public class Storage {
 		return result;
 	}
 	
-	private void populateExerciseAndWorkout() {
+	public void populateExerciseAndWorkout() {
 		//Call Patricks methods
 		ExcelParser excelParser = new ExcelParser();
 		exercises = excelParser.parseExercise();

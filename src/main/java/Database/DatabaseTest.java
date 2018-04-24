@@ -35,6 +35,7 @@ public class DatabaseTest {
 	// Informs JUnit that this method should be run before each test
 	public void setUp() {
 		storage = Storage.getInstance();
+		storage.populateExerciseAndWorkout();
 		ex = new Exercise("Poop", "Squat on toilet", new ArrayList<String>(), "fakeImage", 10, 10, 10);
 		dp = new DataPoint(10, 10, 10, new Date());
 		w = new Workout();
@@ -84,7 +85,12 @@ public class DatabaseTest {
 	}
 
 	@Test
-	public void testExercise() { 	
+	public void testExercise() { 
+		System.out.println(ex.getDescription());
+		System.out.println(ex.getName());
+		System.out.println(ex.getStartingReps());
+		System.out.println(ex.getStartingWeight());
+		System.out.println(ex.getStartingSets());
 		assertTrue(ex.getName().equals("Poop") && ex.getDescription().equals("Squat on toilet") && ex.getKeywords().isEmpty() 
 				&& ex.getStartingReps() == 10 && ex.getStartingSets() == 10 && ex.getStartingWeight() == 10);
 	}
