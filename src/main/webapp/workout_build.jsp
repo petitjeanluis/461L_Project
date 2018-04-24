@@ -82,7 +82,7 @@ Client c = storage.loadClient(user);
                 <button class="create-btn" onclick="create()">Create</button>
             </div>
 		</div>
-		<form id="exercise-form" action="/buildworkoutservlet" method="get" hidden>
+		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>
         </form>
     </body>
 </html>

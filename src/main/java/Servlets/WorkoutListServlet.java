@@ -12,7 +12,7 @@ import Database.Client;
 import Database.Storage;
 import Database.Workout;
 
-public class WorkoutListServlet {
+public class WorkoutListServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		
