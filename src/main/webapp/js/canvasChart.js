@@ -38,11 +38,12 @@
     };
 
     var renderBackground = function() {
+    	//'#D4D4D4'
         var lingrad = ctx.createLinearGradient(margin.left, margin.top, xMax - margin.right, yMax);
-        lingrad.addColorStop(0.0, '#D4D4D4');
+        lingrad.addColorStop(0.0, '#f2f2f2');
         //lingrad.addColorStop(0.2, '#fff');
         //lingrad.addColorStop(0.8, '#fff');
-        lingrad.addColorStop(1, '#D4D4D4');
+        lingrad.addColorStop(1, '#f2f2f2');
         ctx.fillStyle = lingrad;
         ctx.fillRect(margin.left, margin.top, xMax - margin.left, yMax - margin.top);
         ctx.fillStyle = 'black';
@@ -119,14 +120,14 @@
 
             if (type == renderType.points) {
                 var radgrad = ctx.createRadialGradient(ptX, ptY, 8, ptX - 5, ptY - 5, 0);
-                radgrad.addColorStop(0, 'Black');
+                radgrad.addColorStop(0, 'green');
                 radgrad.addColorStop(0.9, 'Black');
                 ctx.beginPath();
                 ctx.fillStyle = radgrad;
                 //Render circle
-                ctx.arc(ptX, ptY, 8, 0, 2 * Math.PI, false)
+                ctx.arc(ptX, ptY, 4, 0, 2 * Math.PI, false)
                 ctx.fill();
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 0;
                 ctx.strokeStyle = '#000';
                 ctx.stroke();
                 ctx.closePath();

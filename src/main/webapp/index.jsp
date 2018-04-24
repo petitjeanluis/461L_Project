@@ -129,11 +129,16 @@ Client c = storage.loadClient(user);
 						<br><br>
 						<%}%>
 					</div>
-					<%} else { %>
+					<%} else { 
+						if(exerciseName == null) {%>
 					<div>
-						<h4>You don't have enough data points to graph for <%=exerciseName %></h4>
+						<h4 align="center">You don't have enough data points to graph %></h4>
 					</div>
-					<%}%>
+						<% } else { %>
+					<div>
+						<h4 align="center">You don't have enough data points to graph for <%=exerciseName %></h4>
+					</div>
+					<%}}%>
 					<div class ="row">
 						<div class="col-xs-6">
 							<div class="panel panel-default" id="setup">
