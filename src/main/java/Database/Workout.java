@@ -21,6 +21,7 @@ public class Workout {
 	@Index String imageName;
 	
 	@Index ArrayList<Exercise> exercises;
+	@Index ArrayList<String> keywords;
 	
 	@Index int currentExerciseIndex;
 
@@ -35,16 +36,26 @@ public class Workout {
 		//this.image = image;
 		this.exercises = exercises;
 		this.currentExerciseIndex = currentExerciseIndex;
-		//Storage.getInstance().saveWorkout(this);
+		Storage.getInstance().saveWorkout(this);
 	}
 	
-	public Workout(String workoutName, String description, ArrayList<Exercise> exercises,
+	public Workout(String workoutName, String description, ArrayList<Exercise> exercises, 
 			int currentExerciseIndex) {
 		this.workoutName = workoutName;
 		this.description = description;
 		this.exercises = exercises;
 		this.currentExerciseIndex = currentExerciseIndex;
-		//Storage.getInstance().saveWorkout(this);
+		Storage.getInstance().saveWorkout(this);
+	}
+	
+	public Workout(String workoutName, String description, ArrayList<Exercise> exercises, ArrayList<String> keywords,
+			int currentExerciseIndex) {
+		this.keywords = keywords;
+		this.workoutName = workoutName;
+		this.description = description;
+		this.exercises = exercises;
+		this.currentExerciseIndex = currentExerciseIndex;
+		Storage.getInstance().saveWorkout(this);
 	}
 	
 	public Workout(String workoutName, ArrayList<Exercise> exercises) {
@@ -52,7 +63,7 @@ public class Workout {
 		this.description = "";
 		this.exercises = exercises;
 		this.currentExerciseIndex = 0;
-		//Storage.getInstance().saveWorkout(this);
+		Storage.getInstance().saveWorkout(this);
 	}
 
 	public Exercise getNextExercise() {
@@ -110,5 +121,9 @@ public class Workout {
 	
 	public int getNumOfExercises() {
 		return exercises.size();
+	}
+	
+	public ArrayList<String> getKeywords() {
+		return keywords;
 	}
 }

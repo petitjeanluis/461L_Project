@@ -167,6 +167,7 @@ public class Storage {
 		}
 		
 		//exercise not found
+		System.out.println("Storage Class");
 		System.out.println("Exercise not found");
 		System.out.println(name);
 		return null;

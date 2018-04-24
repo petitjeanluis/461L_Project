@@ -24,7 +24,7 @@
         </nav>
  
 		<div class="container">
-			<div class="row">
+			<div class="row"f>
 	  			<div class="col-xs-6">
 	  			  	<h1 align="center">Your workouts.</h1>
 	  			</div>
@@ -38,12 +38,10 @@
 	User user = userService.getCurrentUser();                   		 
 
 	if(user == null) {
-		System.out.println("no user found");
 		response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 	}
 
 	Storage storage = Storage.getInstance();
-	//System.out.println(user);
 	Client client =  storage.loadClient(user);
 	ArrayList<Workout> customWorkouts = client.getCustomWorkouts();
 	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();
@@ -61,7 +59,7 @@
 					</div>
 					<div class ="col-xs-6">
 						<div class="panel panel-default"><%
-	
+	System.out.println("WorkoutList.jsp: " + standardWorkouts.size());
 	for(Workout workout : standardWorkouts) {
 		%>
 		<div class="panel-body" align="left"><%=workout.getWorkoutName()
