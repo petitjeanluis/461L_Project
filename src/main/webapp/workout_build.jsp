@@ -14,6 +14,7 @@ Client c = storage.loadClient(user);
 	<header>
 		<jsp:include page="header.jsp"/>
 		<link rel="stylesheet" href="style/build_style.css">
+		<script src="js/build.js"></script>
 	</header>
     <body>
         <nav class="navbar navbar-inverse">
@@ -81,7 +82,7 @@ Client c = storage.loadClient(user);
                 <button class="create-btn" onclick="create()">Create</button>
             </div>
 		</div>
-		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>
+		<form id="exercise-form" action="/buildworkoutservlet" method="get" hidden>
         </form>
     </body>
 </html>

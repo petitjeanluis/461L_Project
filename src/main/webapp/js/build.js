@@ -76,7 +76,7 @@ function removeItem() {
 function create() {
     var form = document.getElementById('exercise-form');
     var size = displayRight.childElementCount;
-    var childList = displayRight.childNodes;
+    var childList = displayRight.children;
     for(var i = 0; i < size; i++) {
         var input = document.createElement("input");
         input.setAttribute("name","Exercise"+i);
@@ -87,6 +87,8 @@ function create() {
     input.setAttribute("name","numOfExercises");
     input.setAttribute("value",size);
     form.appendChild(input);
+    
+    input = document.createElement("input");
     input.setAttribute("name","workoutName");
     var randy = Math.floor(Math.random() * 100);
     input.setAttribute("value","Custom Workout "+randy);
