@@ -7,6 +7,8 @@
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
+		<link rel="stylesheet" href="style/workout_list_style.css">
+		<script src="js/workout_list.js"></script>
 	</header>
     <body>
         <nav class="navbar navbar-inverse">
@@ -64,7 +66,6 @@
                     <div class="box">
                         <ul class="workout-list" id="standard-list">
                         <%
-							id = 0;
                             for(Workout e: standardWorkouts) {
                         		%><li id="excercise<%=id%>" class ="abs"><%=e.getWorkoutName()%></li><%
                         		id++;
@@ -74,6 +75,11 @@
                     </div>
                 </div>
 			</div>
+			<div class="row">
+				<button class="start-btn" onclick="start()">Start</button>
+			</div>
 		</div>
+		<form id="workout-form" action="/workoutlistservlet" method="post" hidden>
+        </form>
     </body>
 </html>

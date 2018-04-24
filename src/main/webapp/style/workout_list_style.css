@@ -1,0 +1,37 @@
+.box {
+    border: 1px solid #d3d3d3;
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+    height: 40px;
+}
+
+.workout-list {
+    width: inherit;
+    height: inherit;
+    list-style: none;
+    overflow: scroll;
+}
+
+.active {
+    background-color: #23527c;
+    color: white;
+}
+
+.start-btn {
+    display: inline-block;
+    position: absolute;
+    font-size: 18px;
+    margin-top: 20px;
+    left: 46%;
+}
