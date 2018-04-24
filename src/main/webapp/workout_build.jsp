@@ -26,7 +26,6 @@ Client c = storage.loadClient(user);
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li class="active"><a href="#">Build Workout</a></li>
-              <li><a href="workout.jsp">Workout</a></li>
             </ul>
           </div>
         </nav>

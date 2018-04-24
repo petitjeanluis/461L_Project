@@ -15,6 +15,7 @@ Client c = storage.loadClient(user);
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
+		<link rel="stylesheet" href="style/index_style.css">
 		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
 		<script src="js/canvasChart.js" type="text/javascript"></script>
 		<script type="text/javascript">
@@ -62,7 +63,6 @@ Client c = storage.loadClient(user);
               <li class="active"><a href="#">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
-              <li><a href="workout.jsp">Workout</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">
                 <button class="btn navbar-btn">Register</button>

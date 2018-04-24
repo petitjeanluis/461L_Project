@@ -7,6 +7,7 @@
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
+		<link rel="stylesheet" href="style/workout_style.css">
 	</header>
     <body>
         <nav class="navbar navbar-inverse">
@@ -18,7 +19,6 @@
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
-              <li class="active"><a href="#">Workout</a></li>
             </ul>
           </div>
         </nav>
@@ -95,7 +95,7 @@ for(int i = 0; i < numExercises; i++){
 						<div class="panel panel-default">
 						    <div class="panel-heading">
 								<h4 class="panel-title">
-						        	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" onclick="updateColapse(<%=i%>)"><%=name%></a>
+						        	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" ><%=name%></a>
 						      	</h4>
 						    </div>
 						    <div id="collapse<%=i%>" class="panel-collapse collapse <%=in%>">
