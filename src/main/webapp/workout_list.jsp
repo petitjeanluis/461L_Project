@@ -20,7 +20,6 @@
               <li><a href="index.jsp">Home</a></li>
               <li class="active"><a href="#">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
-              <li><a href="workout.jsp">Workout</a></li>
             </ul>
           </div>
         </nav>

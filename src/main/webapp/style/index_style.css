@@ -1,0 +1,9 @@
+.panel {
+	height: 550px;
+}
+
+.panel-text {
+	display: inline-block;
+	width: 100px;
+	margin: 10px 10px;
+}
