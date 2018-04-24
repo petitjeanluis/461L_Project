@@ -36,11 +36,11 @@
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
-                          <img src="/img/pic_0.jpg" alt="Wokrout 1" id="image1">
+                          <img src="/img/Air bike-1.jpg" alt="Workout 1" id="image1">
                         </div>
 
                         <div class="item">
-                          <img src="/img/pic_0.jpg" alt="Wokrout 2" id="image2">
+                          <img src="/img/Air bike-2.jpg" alt="Workout 2" id="image2">
                         </div>
                       </div>
 

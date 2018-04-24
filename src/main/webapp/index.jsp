@@ -96,6 +96,8 @@ Client c = storage.loadClient(user);
 		        	%>
 					</div>
 					<!--  This is going to be the graph of progress -->
+					<%
+					if(c != null && data != null && data.getDataPoints().size() > 3) {%>
 					<div class = "row">
 						<canvas id="canvas" style="margin: auto; display: inline-block" width="1000" height="400"></canvas>
 					</div>
@@ -127,6 +129,11 @@ Client c = storage.loadClient(user);
 						<br><br>
 						<%}%>
 					</div>
+					<%} else { %>
+					<div>
+						<h4>You don't have enough data points to graph for <%=exerciseName %></h4>
+					</div>
+					<%}%>
 					<div class ="row">
 						<div class="col-xs-6">
 							<div class="panel panel-default" id="setup">

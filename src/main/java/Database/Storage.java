@@ -112,7 +112,7 @@ public class Storage {
 		return result;
 	}
 	
-	private void populateExerciseAndWorkout() {
+	public void populateExerciseAndWorkout() {
 		//Call Patricks methods
 		ExcelParser excelParser = new ExcelParser();
 		exercises = excelParser.parseExercise();
@@ -170,6 +170,15 @@ public class Storage {
 		System.out.println("Storage Class");
 		System.out.println("Exercise not found");
 		System.out.println(name);
+		return null;
+	}
+	
+	public Workout getWorkoutFromName(String name) {
+		for(Workout w: workouts) {
+			if(w.getWorkoutName().equals(name)) {
+				return w;
+			}
+		}
 		return null;
 	}
 	

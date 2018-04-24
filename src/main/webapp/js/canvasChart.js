@@ -40,8 +40,8 @@
     var renderBackground = function() {
         var lingrad = ctx.createLinearGradient(margin.left, margin.top, xMax - margin.right, yMax);
         lingrad.addColorStop(0.0, '#D4D4D4');
-        lingrad.addColorStop(0.2, '#fff');
-        lingrad.addColorStop(0.8, '#fff');
+        //lingrad.addColorStop(0.2, '#fff');
+        //lingrad.addColorStop(0.8, '#fff');
         lingrad.addColorStop(1, '#D4D4D4');
         ctx.fillStyle = lingrad;
         ctx.fillRect(margin.left, margin.top, xMax - margin.left, yMax - margin.top);
@@ -119,8 +119,8 @@
 
             if (type == renderType.points) {
                 var radgrad = ctx.createRadialGradient(ptX, ptY, 8, ptX - 5, ptY - 5, 0);
-                radgrad.addColorStop(0, 'Green');
-                radgrad.addColorStop(0.9, 'White');
+                radgrad.addColorStop(0, 'Black');
+                radgrad.addColorStop(0.9, 'Black');
                 ctx.beginPath();
                 ctx.fillStyle = radgrad;
                 //Render circle
