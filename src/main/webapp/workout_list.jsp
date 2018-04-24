@@ -24,7 +24,7 @@
         </nav>
  
 		<div class="container">
-			<div class="row">
+			<div class="row"f>
 	  			<div class="col-xs-6">
 	  			  	<h1 align="center">Your workouts.</h1>
 	  			</div>
@@ -38,12 +38,10 @@
 	User user = userService.getCurrentUser();                   		 
 
 	if(user == null) {
-		System.out.println("no user found");
 		response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 	}
 
 	Storage storage = Storage.getInstance();
-	//System.out.println(user);
 	Client client =  storage.loadClient(user);
 	ArrayList<Workout> customWorkouts = client.getCustomWorkouts();
 	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();

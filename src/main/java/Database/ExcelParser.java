@@ -73,7 +73,7 @@ public class ExcelParser {
 			reader = new BufferedReader(new FileReader(csvFile));
 			reader.readLine(); // skip the first line
 			line = reader.readLine();
-			while(line != null && workoutList.size()<3) {
+			while(line != null) {
 				//System.out.println(line);
 				String[] split = line.split(separator);
 				ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();

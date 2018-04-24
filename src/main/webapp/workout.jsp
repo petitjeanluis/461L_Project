@@ -73,9 +73,9 @@ Client client =  storage.loadClient(user);
 
 
 //will be future code
-//Workout workout = client.getCurrentWorkout();
+Workout workout = client.getCurrentWorkout();
 //code for testing
-Workout workout = Storage.getInstance().getAllWorkouts().get(0);
+//Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 
 int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
 int currentExercise = workout.getCurrentExerciseIndex();
@@ -84,11 +84,11 @@ String in = "in";// this opens accordion
                     		  
 for(int i = 0; i < numExercises; i++){
 	Exercise exercise = workout.getExerciseNum(i);
-	System.out.println(exercise.getName());
+	//System.out.println(exercise.getName());
 	String name = exercise.getName();
 	String description = exercise.getDescription();
 	int setCount = 3;
-	System.out.println(client);
+	//System.out.println(client);
 	int repCount = client.getReps(exercise);
 	int repWeight = 0;
 %>
