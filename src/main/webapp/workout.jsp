@@ -63,17 +63,19 @@ UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();                   		 
 
 if(user == null) {
-	System.out.println("test");
+	System.out.println("workout.jsp: test");
 	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 }
 
 Storage storage = Storage.getInstance();
 //System.out.println(user);
 Client client =  storage.loadClient(user);
-
+System.out.println("workout.jsp: client " + client);
+System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
 
 //will be future code
 Workout workout = client.getCurrentWorkout();
+System.out.println("workout.jsp: workout " + workout);
 //code for testing
 //Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 

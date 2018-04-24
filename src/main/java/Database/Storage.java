@@ -79,7 +79,8 @@ public class Storage {
 		}
 		Client result = null;
 		
-		
+		//this first load makes the second one synchronous
+		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
 		System.out.println(clients.toString());
 		for(Client c: clients) {
@@ -102,6 +103,8 @@ public class Storage {
 	public Client findFriend(String name) {
 		Client result = null;
 		
+		//this first load makes the second one synchronous
+		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(name)) {
@@ -155,12 +158,12 @@ public class Storage {
 	}
 	
 	public Exercise getExercise(String name) {
-		System.out.println(exercises.size());
+		//System.out.println("Storage: " + exercises.size());
 		if(workouts.size() == 0 || exercises.size()== 0) {
 			populateExerciseAndWorkout();
 		}
 		for(int i = 0; i < exercises.size(); i++) {
-			System.out.println(exercises.get(i).getName());
+			//System.out.println("Storage: " + exercises.get(i).getName());
 			if(exercises.get(i).getName().equals(name)) {
 				return exercises.get(i);
 			}
