@@ -47,30 +47,34 @@
 	Client client =  storage.loadClient(user);
 	ArrayList<Workout> customWorkouts = client.getCustomWorkouts();
 	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();
-	
-				%><div class ="col-xs-6">
-					<div class="panel panel-default"><%
-				  			
-	for(Workout workout : customWorkouts) {
-		%>
-					<div class="panel-body" align="left"><%=workout.getWorkoutName()
-					%></div>
-		<%
-	}
-					%>	</div>
-					</div>
-					<div class ="col-xs-6">
-						<div class="panel panel-default"><%
-	
-	for(Workout workout : standardWorkouts) {
-		%>
-		<div class="panel-body" align="left"><%=workout.getWorkoutName()
-		%></div>
-<%
-	}
-%>
-					</div>
-				</div>
+	int id;
+				%>
+				<div class="col-xs-6">
+                    <div class="box">
+                        <ul class="workout-list" id="my-list">
+                        <%
+                        	id = 0;
+                            for(Workout e: customWorkouts) {
+                        		%><li id="excercise<%=id%>" class="abs"><%=e.getWorkoutName()%></li><%
+                        		id++;
+                            }
+                        %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="box">
+                        <ul class="workout-list" id="standard-list">
+                        <%
+							id = 0;
+                            for(Workout e: standardWorkouts) {
+                        		%><li id="excercise<%=id%>" class ="abs"><%=e.getWorkoutName()%></li><%
+                        		id++;
+                            }
+                        %>
+                        </ul>
+                    </div>
+                </div>
 			</div>
 		</div>
     </body>
