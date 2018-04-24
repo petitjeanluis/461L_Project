@@ -173,4 +173,13 @@ public class Storage {
 		return null;
 	}
 	
+	public Workout getWorkoutFromName(String name) {
+		for(Workout w: workouts) {
+			if(w.getWorkoutName().equals(name)) {
+				return w;
+			}
+		}
+		return null;
+	}
+	
 }

@@ -59,7 +59,7 @@
 					</div>
 					<div class ="col-xs-6">
 						<div class="panel panel-default"><%
-	System.out.println("WorkoutList.jsp: " + standardWorkouts.size());
+	//System.out.println("WorkoutList.jsp: " + standardWorkouts.size());
 	for(Workout workout : standardWorkouts) {
 		%>
 		<div class="panel-body" align="left"><%=workout.getWorkoutName()

@@ -152,6 +152,16 @@ public class Client {
 		}
 	}
 	
+	public Workout getWorkoutFromName(String name) {
+		for(Workout w: customWorkouts) {
+			if(w.getWorkoutName().equals(name)) {
+				return w;
+			}
+		}
+		
+		return Storage.getInstance().getWorkoutFromName(name);
+	}
+	
 	/*public void sendToFriends(String message) {
 		notifyObservers(message);
 	}

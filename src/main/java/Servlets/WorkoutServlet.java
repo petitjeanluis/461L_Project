@@ -17,6 +17,8 @@ public class WorkoutServlet {
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        
+        
 	}
 	
 }
