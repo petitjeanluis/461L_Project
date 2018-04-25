@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
  
+    <servlet>
+		<servlet-name>WorkoutServlet</servlet-name>
+		<servlet-class>Servlets.WorkoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WorkoutServlet</servlet-name>
+		<url-pattern>/workoutservlet</url-pattern>
+	</servlet-mapping>
+ 
    	<servlet>
 		<servlet-name>WorkoutListServlet</servlet-name>
 		<servlet-class>Servlets.WorkoutListServlet</servlet-class>
