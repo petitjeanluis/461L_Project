@@ -17,7 +17,7 @@
         <div class="heading">
             <span class="title1">Simply Stronger</span>
             <span class="title2">the new you.</span>
-            <a href= "<%= userService.createLoginURL(request.getRequestURI()) %>">
+            <a style= "text-decoration:none;" href= "<%= userService.createLoginURL(request.getRequestURI()) %>">
 	            <button class="register">
 	                Log in to the future.
 	            </button>
