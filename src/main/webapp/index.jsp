@@ -49,7 +49,8 @@ Client c = storage.loadClient(user);
 			});	
 			
 			<%} else {
-				%> <h4>You need to do more exercises in order for us to create your progress graph</h4> <%
+				%> 
+				<h4>You need to do more exercises in order for us to create your progress graph</h4> <%
 			}%>
 		</script> 
 	</header>
@@ -132,7 +133,7 @@ Client c = storage.loadClient(user);
 					<%} else { 
 						if(exerciseName == null) {%>
 					<div>
-						<h4 align="center">You don't have enough data points to graph %></h4>
+						<h4 align="center">You don't have enough data points to graph</h4>
 					</div>
 						<% } else { %>
 					<div>
