@@ -11,4 +11,5 @@ var ajax_update = function(exerciseName, exerciseReps, exerciseWeight) {
 var ajax_return = function(data, status) {
 	//var divTag = document.getElementById("data");
 	//divTag.innerHTML = status;
+	alert("Data loaded was a " + status);
 }
