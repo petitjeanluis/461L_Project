@@ -37,6 +37,10 @@ public class WorkoutServlet extends HttpServlet {
         DataPoint d = new DataPoint(weight, reps, new Date());
         
         c.updateExerciseData(currentExercise, d);
+        
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write("Data Successfully Stored");
 	}
 	
 }

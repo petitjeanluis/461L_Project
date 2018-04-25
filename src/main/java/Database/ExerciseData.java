@@ -65,7 +65,7 @@ public class ExerciseData {
 			//take average of last two weeks
 			int average = 0;
 			for(int i = data.size()-1; i > data.size()-1 - amountInLast2Weeks; i--) {
-				average += data.get(i).getReps();
+				average += data.get(i).getWeight();
 			}
 			average = average/amountInLast2Weeks;
 			
@@ -81,7 +81,7 @@ public class ExerciseData {
 			}
 		} else {
 			//take last workout and add 5
-			return data.get(data.size()-1).getReps();
+			return data.get(data.size()-1).getWeight();
 		}
 	}
 	

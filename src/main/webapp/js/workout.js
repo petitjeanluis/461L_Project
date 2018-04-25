@@ -13,11 +13,13 @@ function ajax_update(exerciseName, exerciseReps, exerciseWeight) {
 		name : exerciseName,
 		reps : exerciseReps,
 		weight : exerciseWeight
+	}, function(data) {
+		alert(data);
 	});
 };
 
-function ajax_return(data, status) {
+function ajax_return(data) {
 	//var divTag = document.getElementById("data");
 	//divTag.innerHTML = status;
-	alert("Data loaded was a " + status);
+	alert(data);
 }
