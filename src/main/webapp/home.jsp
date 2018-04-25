@@ -9,7 +9,7 @@
 <%UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
 if(user != null) {
-	response.sendRedirect("/index.jsp");
+	response.sendRedirect("/homeservlet");
 }
 
 %>

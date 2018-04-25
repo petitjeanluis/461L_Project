@@ -43,7 +43,15 @@ public class ExerciseData {
 	}
 	
 	public void addDataPoint(DataPoint dataPoint) {
-		data.add(dataPoint);
+		if(data.size()>0) {
+			if(data.get(data.size()-1).getDate().equals(dataPoint.getDate())) {
+				data.set(data.size()-1, dataPoint);
+			} else {
+				data.add(dataPoint);
+			}
+		} else {
+			data.add(dataPoint);
+		}
 	}
 	
 	public int getRepsBasedOnHistory() {
