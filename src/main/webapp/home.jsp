@@ -6,7 +6,14 @@
 
 <!DOCTYPE html>
 
-<%UserService userService = UserServiceFactory.getUserService();%>
+<%UserService userService = UserServiceFactory.getUserService(); 
+User user = userService.getCurrentUser();
+if(user != null) {
+	response.sendRedirect("/index.jsp");
+}
+
+%>
+
 
 <html>
     <head>
