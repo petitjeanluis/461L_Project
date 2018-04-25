@@ -6,3 +6,38 @@
   width:100%;
   max-height: 500px !important;
 }
+
+.fa {
+    font-size: 24px;
+}
+
+.subtitle{
+    text-align: center;
+}
+
+.arrow {
+    display: block;
+}
+
+.shifters {
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.left-shifter,
+.right-shifter {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+
+.left-shifter input,
+.right-shifter input {
+    text-align: center;
+}
+
+.rest-btn, .next-btn {
+    vertical-align: middle;
+    float: right;
+    margin-left: 10px;
+}

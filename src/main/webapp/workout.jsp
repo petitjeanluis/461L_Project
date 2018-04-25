@@ -33,6 +33,7 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
     <header>
 		<jsp:include page="header.jsp"/>
 		<link rel="stylesheet" href="style/workout_style.css">
+		<script src="js/workout.js"></script>
 	</header>
     <body>
         <nav class="navbar navbar-inverse">
@@ -85,6 +86,7 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
 
 <%
 String in = "in";// this opens accordion
+int id  = 0;
                     		  
 for(int i = 0; i < numExercises; i++){
 	Exercise exercise = workout.getExerciseNum(i);
@@ -94,38 +96,58 @@ for(int i = 0; i < numExercises; i++){
 	int setCount = 3;
 	//System.out.println(client);
 	int repCount = client.getReps(exercise);
-	int repWeight = 0;
+	int repWeight = client.getWeight(exercise);
 %>
-						<div class="panel panel-default">
-						    <div class="panel-heading">
-								<h4 class="panel-title">
-						        	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" onclick="updateColapse('<%=name%>')"><%=name%></a>
-						      	</h4>
-						    </div>
-						    <div id="collapse<%=i%>" class="panel-collapse collapse <%=in%>">
-						      	<div class="panel-body">
-						      		<div class="row">
-						           		<%=description%>
-						           	</div>
-						           	<div class="row">
-						           		Set 1
-						           	</div>
-						           	<div class="row">
-						           		Reps: <%=repCount%>   Weight: <%=repWeight%>lbs
-						           	</div>
-						           	<div class="row">
-						           		<button>Start</button>
-						           	</div>
-						      	</div>
-							</div>
-						</div>
+						<div class="panel-group" id="accordion">
+	                      <div class="panel panel-default">
+	                        <div class="panel-heading">
+	                          <h4 class="panel-title">
+	                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" onclick="updateCollapse('<%=name%>')"><%=name%></a>
+	                          </h4>
+	                        </div>
+	                        <div id="collapse<%=i%>" class="panel-collapse collapse <%=in%>">
+	                            <div class="panel-body">
+	                                <div class="subtitle">
+	                                    Set 1
+	                                </div>
+	                                <div class="shifters">
+	                                    <div class="left-shifter">
+	                                        <div class="arrow">
+	                                            <a href="#"><i class="fa fa-arrow-up"></i></a>
+	                                        </div>
+	                                        <input id="repField<%=id%>" type="text" name="reps" value="<%=repCount%>" readonly="true" ondblclick="this.readOnly='';" size="3" maxlength="3" pattern="\d*">
+	                                        <div class="arrow">
+	                                            <a href="#"><i class="fa fa-arrow-down"></i></a>
+	                                        </div>
+	                                    </div>
+	                                    <div class="right-shifter">
+	                                        <div class="arrow">
+	                                            <a href="#"><i class="fa fa-arrow-up"></i></a>
+	                                        </div>
+	                                        <input id="weightField<%=id%>" type="text" name="weight" value="<%=repWeight%>" readonly="true" ondblclick="this.readOnly='';" size="3" maxlength="3" pattern="\d*">
+	                                        <div class="arrow">
+	                                            <a href="#"><i class="fa fa-arrow-down"></i></a>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="exercise-footer">
+	                                    <div class="timer">
+	
+	                                    </div>
+	                                    <button class="rest-btn" type="button" name="rest">Rest</button>
+	                                    <button class="next-btn" type="button" name="next" onclick="ajax_update('<%=name%>', document.getElementById('repField<%=id%>').value, document.getElementById('weightField<%=id%>').value)">Next</button>
+	                                </div>
+	                            </div>
+	                        	</div>
+                      		</div>
+	                    </div>
 <%
-in = "";}%>                  
+in = "";
+id++;}%>                  
                     </div>
                 </div>
             </div>
         </div>
-        <script src="js/workout.js"></script>
 
     </body>
 </html>

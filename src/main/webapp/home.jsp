@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 
-<%UserService userService = UserServiceFactory.getUserService(); %>
+<%UserService userService = UserServiceFactory.getUserService();%>
 
 <html>
     <head>
