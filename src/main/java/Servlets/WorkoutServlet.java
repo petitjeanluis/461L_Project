@@ -11,7 +11,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import Database.*;
 
-public class WorkoutServlet {
+public class WorkoutServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		
