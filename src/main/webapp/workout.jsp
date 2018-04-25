@@ -4,6 +4,31 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Database.*"%>
 <!DOCTYPE html>
+<%
+//pull workout data from db
+UserService userService = UserServiceFactory.getUserService();
+User user = userService.getCurrentUser();                   		 
+
+if(user == null) {
+	System.out.println("workout.jsp: test");
+	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+}
+
+Storage storage = Storage.getInstance();
+//System.out.println(user);
+Client client =  storage.loadClient(user);
+System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
+
+//will be future code
+Workout workout = client.getCurrentWorkout();
+System.out.println("workout.jsp: currentWorkout " + workout.getWorkoutName());
+//code for testing
+//Workout workout = Storage.getInstance().getAllWorkouts().get(0);
+
+int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
+int currentExercise = workout.getCurrentExerciseIndex();
+String workoutName = workout.getWorkoutName();// add name of workout to GUI
+%>
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
@@ -36,11 +61,11 @@
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
-                          <img src="/img/Air bike-1.jpg" alt="Workout 1" id="image1">
+                          <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
                         </div>
 
                         <div class="item">
-                          <img src="/img/Air bike-2.jpg" alt="Workout 2" id="image2">
+                          <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-2.jpg" alt="Workout 2" width= "600" height="500" id="image2" class="images">
                         </div>
                       </div>
 
@@ -57,29 +82,8 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="panel-group" id="accordion">
+
 <%
-//pull workout data from db
-UserService userService = UserServiceFactory.getUserService();
-User user = userService.getCurrentUser();                   		 
-
-if(user == null) {
-	System.out.println("test");
-	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
-}
-
-Storage storage = Storage.getInstance();
-//System.out.println(user);
-Client client =  storage.loadClient(user);
-
-
-//will be future code
-Workout workout = client.getCurrentWorkout();
-//code for testing
-//Workout workout = Storage.getInstance().getAllWorkouts().get(0);
-
-int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
-int currentExercise = workout.getCurrentExerciseIndex();
-String workoutName = workout.getWorkoutName();// add name of workout to GUI
 String in = "in";// this opens accordion
                     		  
 for(int i = 0; i < numExercises; i++){
@@ -95,7 +99,7 @@ for(int i = 0; i < numExercises; i++){
 						<div class="panel panel-default">
 						    <div class="panel-heading">
 								<h4 class="panel-title">
-						        	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" ><%=name%></a>
+						        	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" onclick="updateColapse('<%=name%>')"><%=name%></a>
 						      	</h4>
 						    </div>
 						    <div id="collapse<%=i%>" class="panel-collapse collapse <%=in%>">

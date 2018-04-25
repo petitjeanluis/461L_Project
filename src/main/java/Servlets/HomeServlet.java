@@ -15,7 +15,8 @@ public class HomeServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         
         if(user == null) {
-        	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        	resp.sendRedirect("home.jsp");
+        	//resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
         } else {
         	//System.out.println("found a user");
         	resp.sendRedirect("index.jsp");

@@ -61,7 +61,7 @@ Client c = storage.loadClient(user);
                         	ArrayList<Exercise> exercises = storage.getAllExercises();
                         int id = 0;
                             for(Exercise e: exercises) {
-                        		%><li id="excercise<%=id%>"><%=e.getName()%></li><%
+                        		%><li id="exercise<%=id%>"><%=e.getName()%></li><%
                         		id++;
                             }
                         %>

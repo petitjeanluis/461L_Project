@@ -52,22 +52,27 @@ public class Storage {
 	
 	public void saveClient(Client c) {
 		ofy().save().entity(c).now();
+		ofy().clear();
 	}
 	
 	public void saveDataPoint(DataPoint d) {
 		ofy().save().entity(d).now();
+		ofy().clear();
 	}
 	
 	public void saveWorkout(Workout w) {
 		ofy().save().entity(w).now();
+		ofy().clear();
 	}
 	
 	public void saveExerciseData(ExerciseData e) {
 		ofy().save().entity(e).now();
+		ofy().clear();
 	}
 	
 	public void saveExercise(Exercise e) {
 		ofy().save().entity(e).now();
+		ofy().clear();
 	}
 	
 	public Client loadClient(User user) {
@@ -79,9 +84,11 @@ public class Storage {
 		}
 		Client result = null;
 		
-		
+		//this first load makes the second one synchronous
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
-		System.out.println(clients.toString());
+		System.out.println("Storage: LoadClient" + clients.toString());
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(user.getEmail())) {
 				//ofy().delete().entity(c).now();
@@ -89,7 +96,7 @@ public class Storage {
 			}
 		}
 		
-		System.out.println("Making new client");
+		System.out.println("Storage: LoadClient: Making new client");
 		//client not found and we are going to create one
 		Client newClient = new Client();
 		newClient.setUser(user);
@@ -102,6 +109,8 @@ public class Storage {
 	public Client findFriend(String name) {
 		Client result = null;
 		
+		//this first load makes the second one synchronous
+		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(name)) {
@@ -155,21 +164,19 @@ public class Storage {
 	}
 	
 	public Exercise getExercise(String name) {
-		System.out.println(exercises.size());
+		//System.out.println("Storage: " + exercises.size());
 		if(workouts.size() == 0 || exercises.size()== 0) {
 			populateExerciseAndWorkout();
 		}
 		for(int i = 0; i < exercises.size(); i++) {
-			System.out.println(exercises.get(i).getName());
+			//System.out.println("Storage: " + exercises.get(i).getName());
 			if(exercises.get(i).getName().equals(name)) {
 				return exercises.get(i);
 			}
 		}
 		
 		//exercise not found
-		System.out.println("Storage Class");
-		System.out.println("Exercise not found");
-		System.out.println(name);
+		System.out.println("StorageClass: Exercise not found" + name);
 		return null;
 	}
 	

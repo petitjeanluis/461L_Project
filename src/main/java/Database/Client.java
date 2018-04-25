@@ -43,7 +43,7 @@ public class Client {
 		//System.out.println(exercise + "data: " + data);
 		//System.out.println(user);
 		for(ExerciseData exercises: exerciseData) {
-			System.out.println(exercises.getExerciseName());
+			System.out.println("Client: updateExerciseData" + exercises.getExerciseName());
 			if(exercise.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//this is the exercise we want to update
 				exercises.addDataPoint(data);
@@ -80,9 +80,9 @@ public class Client {
 	}
 	
 	public int getReps(Exercise e) {
-		System.out.println(e);
+		System.out.println("Client:GetReps: " + e.getName());
 		for(ExerciseData exercises: exerciseData) {
-			System.out.println(e.getName() + "exerciseData " + exercises.getExerciseName());
+			System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//
 				return exercises.getRepsBasedOnHistory();
@@ -146,7 +146,7 @@ public class Client {
 		DataPoint d;
 		for(int i = 0; i < 10; i++) {
 			d = new DataPoint(10+i, 8, 3, new Date(18, 3, i+1));
-			System.out.println(Storage.getInstance().getExercise("Bench press"));
+			System.out.println("Client:PopulateFakeData:" + Storage.getInstance().getExercise("Bench press").getName());
 			updateExerciseData(Storage.getInstance().getExercise("Bench press"), d);
 		}
 	}
