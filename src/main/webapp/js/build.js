@@ -1,7 +1,7 @@
 var displayRight;
 var displayLeft;
 var selectedLeft = [];
-var selectedRight = []
+var selectedRight = [];
 $(document).ready(function(){
     displayLeft = document.getElementById('exercise-list');
     displayRight = document.getElementById('create-list');
@@ -90,8 +90,30 @@ function create() {
     
     input = document.createElement("input");
     input.setAttribute("name","workoutName");
-    var randy = Math.floor(Math.random() * 100);
-    input.setAttribute("value","Custom Workout "+randy);
+    //var randy = Math.floor(Math.random() * 100);
+    //input.setAttribute("value","Custom Workout "+randy);
+    var name = document.getElementById("workoutNombre").value;
+    input.setAttribute("value",String(name+""));
+    
     form.appendChild(input);
     form.submit();
+}
+
+function searchFilter() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("exercise-list");
+    li = ul.getElementsByTagName("li");
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
 }

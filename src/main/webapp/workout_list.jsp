@@ -25,6 +25,7 @@
         </nav>
  
 		<div class="container">
+			
 			<div class="row"f>
 	  			<div class="col-xs-6">
 	  			  	<h1 align="center">Your workouts.</h1>
@@ -33,6 +34,20 @@
 				  	<h1 align="center">Standard Workouts.</h1>
 	  			</div>
 			</div>
+			<div class="row">
+                <div class="col-xs-6">
+                    <div class="search">
+                        <span class="fa fa-search"></span>
+                        <input class="form-control" type="text" placeholder="Search your workouts...">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="search">
+                        <span class="fa fa-search"></span>
+                        <input class="form-control" type="text" placeholder="Search our workouts...">
+                    </div>
+                </div>
+            </div>
 			<div class ="row">
 <%
 	UserService userService = UserServiceFactory.getUserService();

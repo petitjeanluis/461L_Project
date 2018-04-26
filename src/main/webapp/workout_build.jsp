@@ -43,13 +43,12 @@ Client c = storage.loadClient(user);
                 <div class="col-xs-6">
                     <div class="search">
                         <span class="fa fa-search"></span>
-                        <input class="form-control" type="text" placeholder="Search exercises...">
+                        <input class="form-control" type="text" id="myInput" onkeyup="searchFilter()" placeholder="Search exercises...">
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="search">
-                        <span class="fa fa-search"></span>
-                        <input class="form-control" type="text" placeholder="Search workouts...">
+                        <input class="form-control" type="text" id="workoutNombre" placeholder="Workout name...">
                     </div>
                 </div>
             </div>
