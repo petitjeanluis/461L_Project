@@ -28,6 +28,12 @@ public class ExerciseData {
 		data = new ArrayList<DataPoint>();
 		data.add(dataPoint);
 		Storage.getInstance().saveExerciseData(this);
+	}
+	
+	public ExerciseData(Exercise exercise, DataPoint dataPoint, boolean fake) {		//constructor just for tests
+		this.exercise = exercise;
+		data = new ArrayList<DataPoint>();
+		data.add(dataPoint);
 	}	
 	
 	public Exercise getExercise() {
