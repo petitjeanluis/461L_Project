@@ -1,9 +1,15 @@
 .panel {
-	height: 550px;
+	background-color: grey;
 }
 
 .panel-text {
 	display: inline-block;
-	width: 100px;
 	margin: 10px 10px;
+	
+}
+
+canvas {
+	margin-left: 10%;
+	margin-right: auto;
+	display: block;
 }

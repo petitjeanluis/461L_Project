@@ -7,12 +7,13 @@ function updateCollapse(id) {
 	img2.setAttribute("src","/img/"+id+"-2.jpg");
 }
 
-function ajax_update(exerciseName, exerciseReps, exerciseWeight) {
+function ajax_update(exerciseName, exerciseReps, exerciseWeight, setNum) {
 	$.post("/workoutservlet",
 	{
 		name : exerciseName,
 		reps : exerciseReps,
-		weight : exerciseWeight
+		weight : exerciseWeight,
+		set : setNum
 	}, function(data) {
 		alert(data);
 	});

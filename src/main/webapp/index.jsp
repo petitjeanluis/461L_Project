@@ -99,8 +99,9 @@ Client c = storage.loadClient(user);
 					<!--  This is going to be the graph of progress -->
 					<%
 					if(c != null && data != null && data.getDataPoints().size() > 3) {%>
-					<div class = "row">
-						<canvas id="canvas" style="margin: auto; display: inline-block" width="1000" height="400"></canvas>
+					<div class = "row" >
+						<br>
+						<canvas id="canvas" width="1000" height="400"></canvas>
 					</div>
 					<div class = "row">
 						<%
@@ -127,7 +128,7 @@ Client c = storage.loadClient(user);
 							</datalist>
 							<input type="submit">
 						</form>
-						<br><br>
+						<br>
 						<%}%>
 					</div>
 					<%} else { 
@@ -140,15 +141,29 @@ Client c = storage.loadClient(user);
 						<h4 align="center">You don't have enough data points to graph for <%=exerciseName %></h4>
 					</div>
 					<%}}%>
-					<div class ="row">
-						<div class="col-xs-6">
-							<div class="panel panel-default" id="setup">
+					<div class ="row" >
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4" onclick="location.href='/workout_list.jsp'">
+						<%} else { %>
+						<div class="col-xs-6" onclick="location.href='/workout_list.jsp'">
+						<%} %>
+							<div class="panel panel-default text-center" id="setup">
 			  					<div class="panel-text">Setup Workout</div>
 							</div>
 						</div>	
-						<div class="col-xs-6">				
-							<div class="panel panel-default" id="start">
-			  					<div class="panel-text">Start Workout</div>
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4" onclick="location.href='/workout.jsp'">				
+							<div class="panel panel-default text-center" id="setup">
+			  					<div class="panel-text">Resume Workout</div>
+							</div>
+						</div><%} %>
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4" onclick="location.href='/workout_build.jsp'">
+						<%} else { %>
+						<div class="col-xs-6" onclick="location.href='/workout_build.jsp'">
+						<%} %>			
+							<div class="panel panel-default text-center" id="start">
+			  					<div class="panel-text">Build Workout</div>
 							</div>
 						</div>
 					</div> <%
