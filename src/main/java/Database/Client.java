@@ -175,7 +175,7 @@ public class Client {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO display message (or add to a log?)
-		String friend = ((Client)arg0).getUser().getEmail();
+		String friend = t
 		String message = (String)arg1;
 		messageLog.add(friend + " said:  " + message);
 		Storage.getInstance().saveClient(this);

@@ -17,6 +17,7 @@ public class Workout {
 	
 	@Index String workoutName;
 	@Index String description;
+	@Index String emailOfOwner;
 	
 	@Index String imageName;
 	
