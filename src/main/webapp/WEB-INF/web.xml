@@ -12,6 +12,15 @@
 		<servlet-name>WorkoutServlet</servlet-name>
 		<url-pattern>/workoutservlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>Servlets.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logoutservlet</url-pattern>
+	</servlet-mapping>
  
    	<servlet>
 		<servlet-name>WorkoutListServlet</servlet-name>
