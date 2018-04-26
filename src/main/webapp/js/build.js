@@ -90,8 +90,11 @@ function create() {
     
     input = document.createElement("input");
     input.setAttribute("name","workoutName");
-    var randy = Math.floor(Math.random() * 100);
-    input.setAttribute("value","Custom Workout "+randy);
+    //var randy = Math.floor(Math.random() * 100);
+    //input.setAttribute("value","Custom Workout "+randy);
+    var name = document.getElementById("workoutNombre").value;
+    input.setAttribute("value",String(name+""));
+    
     form.appendChild(input);
     form.submit();
 }

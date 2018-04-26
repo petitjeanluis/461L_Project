@@ -48,7 +48,7 @@ Client c = storage.loadClient(user);
                 </div>
                 <div class="col-xs-6">
                     <div class="search">
-                        <input class="form-control" type="text" placeholder="Workout name...">
+                        <input class="form-control" type="text" id="workoutNombre" placeholder="Workout name...">
                     </div>
                 </div>
             </div>
