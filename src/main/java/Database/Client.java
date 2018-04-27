@@ -69,6 +69,15 @@ public class Client {
 		pastWorkouts.add(workout);
 	}*/
 	
+	public int getSet(Exercise e) {
+		for(ExerciseData exercises: exerciseData) {
+			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+				return exercises.getSetsBasedOnHistory();
+			} 
+		}
+		return 1;
+	}
+	
 	public int getWeight(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
