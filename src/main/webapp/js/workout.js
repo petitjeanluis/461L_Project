@@ -24,8 +24,8 @@ function ajax_return(data) {
 
 function sendResetWorkout() {
 	var request = new XMLHttpRequest();
-	xhttp.open("POST", "/workoutresetservlet", true);
-	xhttp.send();
+	request.open("POST", "/workoutresetservlet", true);
+	request.send();
 }
 
 
