@@ -64,6 +64,8 @@ Client c = storage.loadClient(user);
               <li class="active"><a href="#">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="geocoding.jsp">Lol</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">
             	
