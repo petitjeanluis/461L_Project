@@ -43,14 +43,14 @@ Client c = storage.loadClient(user);
                 <div class="col-xs-6">
                     <div class="search">
                         <span class="fa fa-search"></span>
-                        <input class="form-control" type="text" placeholder="Search exercises...">
+                        <input class="form-control" type="text" id="myInput" onkeyup="searchFilter()" placeholder="Search exercises...">
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="search">
-                        <span class="fa fa-search"></span>
-                        <input class="form-control" type="text" placeholder="Search workouts...">
+                        <input class="form-control" type="text" id="workoutNombre" placeholder="Workout name...">
                     </div>
+                    <button class="create-btn" onclick="create()">Create</button>
                 </div>
             </div>
             <div class="row">
@@ -78,7 +78,7 @@ Client c = storage.loadClient(user);
             <div class="row">
                 <a onclick="removeItem()"><i class="fa fa-arrow-left left-arrow"></i></a>
                 <a onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>
-                <button class="create-btn" onclick="create()">Create</button>
+                
             </div>
 		</div>
 		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>

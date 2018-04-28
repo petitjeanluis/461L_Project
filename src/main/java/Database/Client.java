@@ -69,7 +69,19 @@ public class Client {
 		pastWorkouts.add(workout);
 	}*/
 	
+	public int getSet(Exercise e) {
+		for(ExerciseData exercises: exerciseData) {
+			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+				return exercises.getSetsBasedOnHistory();
+			} 
+		}
+		return 1;
+	}
+	
 	public int getWeight(Exercise e) {
+		if(e.getStartingWeight() == 0) {
+			return e.getStartingWeight();
+		}
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//
@@ -80,6 +92,9 @@ public class Client {
 	}
 	
 	public int getReps(Exercise e) {
+		if(e.getStartingReps() == 0) {
+			return e.getStartingReps();
+		}
 		System.out.println("Client:GetReps: " + e.getName());
 		for(ExerciseData exercises: exerciseData) {
 			System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
@@ -175,7 +190,7 @@ public class Client {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO display message (or add to a log?)
-		String friend = ((Client)arg0).getUser().getEmail();
+		String friend = t
 		String message = (String)arg1;
 		messageLog.add(friend + " said:  " + message);
 		Storage.getInstance().saveClient(this);

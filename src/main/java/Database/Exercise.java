@@ -50,6 +50,17 @@ public class Exercise {
 		Storage.getInstance().saveExercise(this);
 	}
 	
+	public Exercise(String name, String description, ArrayList<String> keywords,	
+			String imageName, int startingWeight, int startingReps, int startingSets, boolean fake) {	//constructor just for tests
+		this.name = name;
+		this.description = description;
+		this.keywords = keywords;
+		this.imageName = imageName;
+		this.startingWeight = startingWeight;
+		this.startingReps = startingReps;
+		this.startingSets = startingSets;
+	}
+	
 	public String getName() {
 		return name;
 	}

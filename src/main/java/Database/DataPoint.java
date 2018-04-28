@@ -25,18 +25,24 @@ public class DataPoint {
 		
 	}
 	
-	public DataPoint(int weight, int reps, Date date) {
+	/*public DataPoint(int weight, int reps, Date date) {
 		this.weight = weight;
 		this.reps = reps;
 		this.date = date;
 		Storage.getInstance().saveDataPoint(this);
-	}
+	}*/
 	
 	public DataPoint(int weight, int reps, int sets, Date date) {
 		this.weight = weight;
 		this.reps = reps;
 		this.date = date;
 		Storage.getInstance().saveDataPoint(this);
+	}
+	
+	public DataPoint(int weight, int reps, int sets, Date date, boolean fake) {	//constructor just for tests
+		this.weight = weight;
+		this.reps = reps;
+		this.date = date;
 	}
 	
 	public int getWeight() {

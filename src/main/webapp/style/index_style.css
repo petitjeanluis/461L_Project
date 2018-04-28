@@ -1,9 +1,19 @@
 .panel {
-	height: 550px;
+	background-color: #C4C4C4;
 }
 
 .panel-text {
 	display: inline-block;
-	width: 100px;
 	margin: 10px 10px;
+	
+}
+
+.button-animation:hover {
+	background-color: #ABABAB;
+}
+
+canvas {
+	margin-left: 10%;
+	margin-right: auto;
+	display: block;
 }

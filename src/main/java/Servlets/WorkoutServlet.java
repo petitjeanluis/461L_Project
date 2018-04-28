@@ -30,13 +30,22 @@ public class WorkoutServlet extends HttpServlet {
         
         int reps = Integer.parseInt(req.getParameter("reps"));
         int weight = Integer.parseInt(req.getParameter("weight"));
+        int set = Integer.parseInt(req.getParameter("set"));
         
         System.out.println("WorkoutServlet: weight" + weight + " reps " + 
         		+ reps + " exerciseName " + exerciseName);
         
-        DataPoint d = new DataPoint(weight, reps, new Date());
+        DataPoint d = new DataPoint(weight, reps, set, new Date());
+        
+        if(set == currentExercise.getStartingSets()) {
+        	c.getCurrentWorkout().setCurrentExerciseIndex(c.getCurrentWorkout().getCurrentExerciseIndex()+1);
+        }
         
         c.updateExerciseData(currentExercise, d);
+        
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write("Data Successfully Stored");
 	}
 	
 }

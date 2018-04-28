@@ -25,6 +25,11 @@ public class BuildWorkoutServlet extends HttpServlet{
         
         int numOfExercises = Integer.parseInt(req.getParameter("numOfExercises"));
         String workoutName = req.getParameter("workoutName");
+        //handles no input in workout name
+        if(workoutName.equals("")) {
+        	workoutName = "CustomWorkout" + client.getCustomWorkouts().size();
+        }
+        
         
         ArrayList<Exercise> exercises = new ArrayList<Exercise>();
         String base = "Exercise";

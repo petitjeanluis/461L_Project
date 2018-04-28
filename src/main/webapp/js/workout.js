@@ -14,13 +14,14 @@ function ajax_update(exerciseName, exerciseReps, exerciseWeight, exerciseSet) {
 				weight : exerciseWeight,
 		        set : exerciseSet
 			});
-};
+}
 
-function ajax_return(data, status) {
+function ajax_return(data) {
 	//var divTag = document.getElementById("data");
 	//divTag.innerHTML = status;
-	alert("Data loaded was a " + status);
+	alert(data);
 }
+
 
 //Rest timer and next set logic
 /*REST TIMER*/

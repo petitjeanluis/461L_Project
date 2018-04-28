@@ -62,6 +62,7 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
+                        <%System.out.println("workout.jsp: exercise: " + workout.getExercises().toString());%>
                           <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
                         </div>
 
