@@ -22,6 +22,12 @@ function ajax_return(data) {
 	alert(data);
 }
 
+function sendResetWorkout() {
+	var request = new XMLHttpRequest();
+	xhttp.open("POST", "/workoutresetservlet", true);
+	xhttp.send();
+}
+
 
 //Rest timer and next set logic
 /*REST TIMER*/
@@ -146,7 +152,11 @@ function nextExercise() {
     $workout = $workoutGui.parent('.panel-body').parent('.panel-collapse');
     $nextWorkout = $workout.parent('.panel').next().find('.panel-collapse');
     $workout.removeClass('in');
-    $nextWorkout.addClass('in');
+    if($nextWorkout.is("div")) {
+    	$nextWorkout.addClass('in');
+    } else {
+    	sendResetWorkout();
+    }
 }
 
 function changeRep(delta, selected) {
