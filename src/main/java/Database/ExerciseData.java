@@ -69,7 +69,6 @@ public class ExerciseData {
 	}
 	
 	public int getSetsBasedOnHistory() {
-		//Do NOT use
 		System.out.print("ExerciseData: getSetsBasedOnHistory: exercise.getStartingSets: " + exercise.getStartingSets());
 		return (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets();
 	}

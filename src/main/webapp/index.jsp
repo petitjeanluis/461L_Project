@@ -25,6 +25,7 @@ Client c = storage.loadClient(user);
 			if(c != null && data != null && data.getDataPoints().size() > 3) {%>
 			$(document).ready(function() {
 				var chart = {
+					<%System.out.println("index.jsp: Chart " + exerciseName + data.getExerciseName());%>
 					title: "<%=data.getExerciseName()%>",
 					xLabel: 'Times Exercised',
 					yLabel: 'Amount of Weight',
@@ -120,7 +121,7 @@ Client c = storage.loadClient(user);
 							<datalist id="exercises">
 								<%
 								for(ExerciseData e: exerciseData) {
-									if(e.getDataPoints().size() > 3) {
+									if(e.getDataPoints().size() >= 3) {
 										%><option value="<%=e.getExerciseName() %>">
 										<%
 									}
