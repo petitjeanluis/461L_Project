@@ -67,12 +67,10 @@ Client c = storage.loadClient(user);
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
             </ul>
-            <div class="nav navbar-nav navbar-right">
-            	
+            <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
                 	<button class="btn navbar-btn">Logout</button>
                 </a>
-                
             </div>
           </div>
         </nav>
