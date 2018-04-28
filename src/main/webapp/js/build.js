@@ -76,6 +76,9 @@ function removeItem() {
 function create() {
     var form = document.getElementById('exercise-form');
     var size = displayRight.childElementCount;
+    if(size == 0) {
+    	return;
+    }
     var childList = displayRight.children;
     for(var i = 0; i < size; i++) {
         var input = document.createElement("input");
