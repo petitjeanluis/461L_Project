@@ -89,6 +89,9 @@ public class Client {
 	}
 	
 	public int getReps(Exercise e) {
+		if(e.getStartingReps() == 0) {
+			return e.getStartingReps();
+		}
 		System.out.println("Client:GetReps: " + e.getName());
 		for(ExerciseData exercises: exerciseData) {
 			System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());

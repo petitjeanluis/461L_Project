@@ -50,6 +50,7 @@ Client c = storage.loadClient(user);
                     <div class="search">
                         <input class="form-control" type="text" id="workoutNombre" placeholder="Workout name...">
                     </div>
+                    <button class="create-btn" onclick="create()">Create</button>
                 </div>
             </div>
             <div class="row">
@@ -77,7 +78,7 @@ Client c = storage.loadClient(user);
             <div class="row">
                 <a onclick="removeItem()"><i class="fa fa-arrow-left left-arrow"></i></a>
                 <a onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>
-                <button class="create-btn" onclick="create()">Create</button>
+                
             </div>
 		</div>
 		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>

@@ -76,18 +76,23 @@ public class ExcelParser {
 			while(line != null) {
 				//System.out.println(line);
 				String[] split = line.split(separator);
-				ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();
+				
 				
 				String workoutName = split[0];
 				String exerciseOne = split[1];
 				String exerciseTwo = split[2];
+				if(workoutName.equals("Basic Legs")) {
+					System.out.println("ExcelParser " + exerciseOne + " " + exerciseTwo);
+					System.out.println("ExcelParser " + getExercise(exerciseOne, exercises).getName());
+					System.out.println("ExcelParser " + getExercise(exerciseTwo, exercises).getName());
+				}
 				String exerciseThree = split[3];
 				String exerciseFour = split[4];
 				String exerciseFive = split[5];
 				String exerciseSix = split[6];
 				String workoutDescription = split[7];
 				//System.out.println(workoutName);
-				
+				ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();
 				
 				exerciseList.add(getExercise(exerciseOne, exercises));
 				exerciseList.add(getExercise(exerciseTwo, exercises));
@@ -97,6 +102,11 @@ public class ExcelParser {
 				exerciseList.add(getExercise(exerciseSix, exercises));
 				
 				workout = new Workout(workoutName, workoutDescription, exerciseList, 0);
+				System.out.println("ExcelParser " + workout.getWorkoutName());
+				System.out.println("ExcelParser " + workout.getExercises().toString());
+				/*for(Exercise e: workout.getExercises()) {
+					System.out.println("ExcelParser " + e.getName());
+				}*/
 				workoutList.add(workout);
 				line = reader.readLine();
 			}
@@ -123,6 +133,7 @@ public class ExcelParser {
 			}
 		}
 		
+		System.out.println(name);
 		//exercise not found
 		return null;
 	}

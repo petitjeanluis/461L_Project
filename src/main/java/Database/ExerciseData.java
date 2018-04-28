@@ -65,7 +65,8 @@ public class ExerciseData {
 	}
 	
 	public int getSetsBasedOnHistory() {
-		return (data.get(data.size()-1).getSets() + 1) % 3;
+		System.out.print("ExerciseData: getSetsBasedOnHistory: exercise.getStartingSets: " + exercise.getStartingSets());
+		return (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets();
 	}
 	
 	public int getWeightBasedOnHistory() {

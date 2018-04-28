@@ -148,13 +148,13 @@ Client c = storage.loadClient(user);
 						<%} else { %>
 						<div class="col-xs-6" onclick="location.href='/workout_list.jsp'">
 						<%} %>
-							<div class="panel panel-default text-center" id="setup">
+							<div class="panel panel-default text-center button-animation" id="setup">
 			  					<div class="panel-text">Setup Workout</div>
 							</div>
 						</div>	
 						<%if(c.getCurrentWorkout() != null) { %>
 						<div class="col-xs-4" onclick="location.href='/workout.jsp'">				
-							<div class="panel panel-default text-center" id="setup">
+							<div class="panel panel-default text-center button-animation" id="setup">
 			  					<div class="panel-text">Resume Workout</div>
 							</div>
 						</div><%} %>
@@ -163,7 +163,7 @@ Client c = storage.loadClient(user);
 						<%} else { %>
 						<div class="col-xs-6" onclick="location.href='/workout_build.jsp'">
 						<%} %>			
-							<div class="panel panel-default text-center" id="start">
+							<div class="panel panel-default text-center button-animation" id="start">
 			  					<div class="panel-text">Build Workout</div>
 							</div>
 						</div>

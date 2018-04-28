@@ -37,6 +37,10 @@ public class WorkoutServlet extends HttpServlet {
         
         DataPoint d = new DataPoint(weight, reps, set, new Date());
         
+        if(set == currentExercise.getStartingSets()) {
+        	c.getCurrentWorkout().setCurrentExerciseIndex(c.getCurrentWorkout().getCurrentExerciseIndex()+1);
+        }
+        
         c.updateExerciseData(currentExercise, d);
         
         resp.setContentType("text/plain");
