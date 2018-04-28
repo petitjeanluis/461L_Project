@@ -38,13 +38,13 @@
                 <div class="col-xs-6">
                     <div class="search">
                         <span class="fa fa-search"></span>
-                        <input class="form-control" type="text" placeholder="Search your workouts...">
+                        <input class="form-control" type="text" id="myInput1" onkeyup="searchFilter1()" placeholder="Search your workouts...">
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="search">
                         <span class="fa fa-search"></span>
-                        <input class="form-control" type="text" placeholder="Search our workouts...">
+                        <input class="form-control" type="text" id="myInput2" onkeyup="searchFilter2()" placeholder="Search our workouts...">
                     </div>
                 </div>
             </div>
