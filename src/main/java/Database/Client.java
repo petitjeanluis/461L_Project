@@ -70,14 +70,13 @@ public class Client {
 	}*/
 	
 	public int getSet(Exercise e) {
-		return e.getStartingSets();
-		/*for(ExerciseData exercises: exerciseData) {
+		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
 				
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}
-		return 3;*/
+		return 1;
 	}
 	
 	public int getWeight(Exercise e) {
@@ -149,13 +148,15 @@ public class Client {
 		ExerciseData atLeast3 = null;
 		for(ExerciseData e: exerciseData) {
 			//get the first dataSet that has atLeast3 datapoints
-			if(e.getDataPoints().size() > 3 && atLeast3 == null) {
+			if(e.getDataPoints().size() >= 3 && atLeast3 == null) {
 				atLeast3 = e;
 			}
-			if(e.getDataPoints().size() > 3 && e.getExerciseName().equals(exerciseName)) {
+			System.out.println("Client: getData: " + e.getExerciseName() + e.getDataPoints().size());
+			if(e.getDataPoints().size() >= 3 && e.getExerciseName().equals(exerciseName)) {
 				return e;
 			}
 		}
+		System.out.println("Client: getData: atLeast3: " + atLeast3.getExerciseName());
 		return atLeast3;
 	}
 	
