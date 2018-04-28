@@ -49,7 +49,11 @@ public class ExerciseData {
 	}
 	
 	public void addDataPoint(DataPoint dataPoint) {
-		if(data.size()>0) {
+		//this is code to test the graph NOT final code
+		data.add(dataPoint);
+		
+		//below is the correct code
+		/*if(data.size()>0) {
 			if(data.get(data.size()-1).getDate().equals(dataPoint.getDate())) {
 				data.set(data.size()-1, dataPoint);
 			} else {
@@ -57,7 +61,7 @@ public class ExerciseData {
 			}
 		} else {
 			data.add(dataPoint);
-		}
+		}*/
 	}
 	
 	public int getRepsBasedOnHistory() {
@@ -65,6 +69,7 @@ public class ExerciseData {
 	}
 	
 	public int getSetsBasedOnHistory() {
+		//Do NOT use
 		System.out.print("ExerciseData: getSetsBasedOnHistory: exercise.getStartingSets: " + exercise.getStartingSets());
 		return (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets();
 	}

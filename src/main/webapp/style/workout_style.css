@@ -8,7 +8,7 @@
 }
 
 .fa {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .subtitle{
@@ -17,6 +17,8 @@
 
 .arrow {
     display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .shifters {
@@ -36,8 +38,14 @@
     text-align: center;
 }
 
+.exercise-footer {
+    width: 220px;
+    margin: auto;
+}
+
 .rest-btn, .next-btn {
     vertical-align: middle;
-    float: right;
-    margin-left: 10px;
+    width: 48px;
+    height: 36px;
+    margin:10px 10px 10px 10px;
 }

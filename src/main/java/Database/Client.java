@@ -70,12 +70,14 @@ public class Client {
 	}*/
 	
 	public int getSet(Exercise e) {
-		for(ExerciseData exercises: exerciseData) {
+		return e.getStartingSets();
+		/*for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+				
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}
-		return 1;
+		return 3;*/
 	}
 	
 	public int getWeight(Exercise e) {
