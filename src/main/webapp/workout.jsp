@@ -10,23 +10,23 @@ UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();                   		 
 
 if(user == null) {
-	System.out.println("workout.jsp: test");
+	System.out.println("workout.jsp: null client");
 	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 }
 
 Storage storage = Storage.getInstance();
 //System.out.println(user);
 Client client =  storage.loadClient(user);
-System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
+//System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
 
 //will be future code
 Workout workout = client.getCurrentWorkout();
-System.out.println("workout.jsp: currentWorkout " + workout.getWorkoutName());
+//System.out.println("workout.jsp: currentWorkout " + workout.getWorkoutName());
 //code for testing
 //Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 
 int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
-int currentExercise = workout.getCurrentExerciseIndex();
+int currentExerciseIndex = workout.getCurrentExerciseIndex();
 String workoutName = workout.getWorkoutName();// add name of workout to GUI
 %>
 <html lang="en">
@@ -63,11 +63,11 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
                       <div class="carousel-inner">
                         <div class="item active">
                         <%System.out.println("workout.jsp: exercise: " + workout.getExercises().toString());%>
-                          <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
+                          <img src="/img/<%=workout.getExerciseNum(currentExerciseIndex).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
                         </div>
 
                         <div class="item">
-                          <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-2.jpg" alt="Workout 2" width= "600" height="500" id="image2" class="images">
+                          <img src="/img/<%=workout.getExerciseNum(currentExerciseIndex).getName() %>-2.jpg" alt="Workout 2" width= "600" height="500" id="image2" class="images">
                         </div>
                       </div>
 
@@ -87,7 +87,6 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
 
 <%
 String in = "";// this opens accordion
-int currentWorkoutIndex = workout.getCurrentExerciseIndex();
 int id  = 0;
                     		  
 for(int i = 0; i < numExercises; i++){
@@ -99,7 +98,7 @@ for(int i = 0; i < numExercises; i++){
 	//System.out.println(client);
 	int reps = client.getReps(exercise);
 	int weight = client.getWeight(exercise);
-	if(currentWorkoutIndex == i) {
+	if(currentExerciseIndex == i) {
 		in = "in";
 	} else {
 		in = "";

@@ -23,9 +23,11 @@ function ajax_return(data) {
 }
 
 function sendResetWorkout() {
-	var request = new XMLHttpRequest();
+	console.log("reset workout");
+	window.location.replace("/workoutresetservlet");
+	/*var request = new XMLHttpRequest();
 	request.open("POST", "/workoutresetservlet", true);
-	request.send();
+	request.send();*/
 }
 
 
