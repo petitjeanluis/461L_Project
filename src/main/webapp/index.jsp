@@ -22,9 +22,11 @@ Client c = storage.loadClient(user);
 			<%
 			String exerciseName = request.getParameter("exerciseName");
 			ExerciseData data = c.getData(exerciseName);
-			if(c != null && data != null && data.getDataPoints().size() > 3) {%>
+			System.out.println("index.jsp datasize" + data.getDataPoints().size());
+			if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 			$(document).ready(function() {
 				var chart = {
+					<%System.out.println("index.jsp: Chart " + exerciseName + data.getExerciseName());%>
 					title: "<%=data.getExerciseName()%>",
 					xLabel: 'Times Exercised',
 					yLabel: 'Amount of Weight',
@@ -67,12 +69,10 @@ Client c = storage.loadClient(user);
               <li><a href="map.jsp">Find A Gym</a></li>
               <li><a href="geocoding.jsp">Lol</a></li>
             </ul>
-            <div class="nav navbar-nav navbar-right">
-            	
+            <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
                 	<button class="btn navbar-btn">Logout</button>
                 </a>
-                
             </div>
           </div>
         </nav>
@@ -101,7 +101,7 @@ Client c = storage.loadClient(user);
 					</div>
 					<!--  This is going to be the graph of progress -->
 					<%
-					if(c != null && data != null && data.getDataPoints().size() > 3) {%>
+					if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 					<div class = "row" >
 						<br>
 						<canvas id="canvas" width="1000" height="400"></canvas>
@@ -111,7 +111,7 @@ Client c = storage.loadClient(user);
 						int count = 0;
 						ArrayList<ExerciseData> exerciseData = c.getExerciseData();
 						for(ExerciseData e: exerciseData) {
-							if(e.getDataPoints().size() > 5) {
+							if(e.getDataPoints().size() >= 3) {
 								count++;
 							}
 						}
@@ -122,7 +122,7 @@ Client c = storage.loadClient(user);
 							<datalist id="exercises">
 								<%
 								for(ExerciseData e: exerciseData) {
-									if(e.getDataPoints().size() > 3) {
+									if(e.getDataPoints().size() >= 3) {
 										%><option value="<%=e.getExerciseName() %>">
 										<%
 									}

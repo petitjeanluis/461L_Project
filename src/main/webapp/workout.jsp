@@ -10,23 +10,23 @@ UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();                   		 
 
 if(user == null) {
-	System.out.println("workout.jsp: test");
+	System.out.println("workout.jsp: null client");
 	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 }
 
 Storage storage = Storage.getInstance();
 //System.out.println(user);
 Client client =  storage.loadClient(user);
-System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
+//System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
 
 //will be future code
 Workout workout = client.getCurrentWorkout();
-System.out.println("workout.jsp: currentWorkout " + workout.getWorkoutName());
+//System.out.println("workout.jsp: currentWorkout " + workout.getWorkoutName());
 //code for testing
 //Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 
 int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
-int currentExercise = workout.getCurrentExerciseIndex();
+int currentExerciseIndex = workout.getCurrentExerciseIndex();
 String workoutName = workout.getWorkoutName();// add name of workout to GUI
 %>
 <html lang="en">
@@ -46,6 +46,11 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
             </ul>
+            <div class="nav navbar-nav navbar-right">  	
+                <a href= "/logoutservlet">
+                	<button class="btn navbar-btn">Logout</button>
+                </a>
+            </div>
           </div>
         </nav>
         <div class="container">
@@ -56,18 +61,17 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
                       <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
                       </ol>
 
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
                         <%System.out.println("workout.jsp: exercise: " + workout.getExercises().toString());%>
-                          <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
+                          <img src="/img/<%=workout.getExerciseNum(currentExerciseIndex).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
                         </div>
 
                         <div class="item">
-                          <img src="/img/<%=workout.getExerciseNum(currentExercise).getName() %>-2.jpg" alt="Workout 2" width= "600" height="500" id="image2" class="images">
+                          <img src="/img/<%=workout.getExerciseNum(currentExerciseIndex).getName() %>-2.jpg" alt="Workout 2" width= "600" height="500" id="image2" class="images">
                         </div>
                       </div>
 
@@ -87,7 +91,6 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
 
 <%
 String in = "";// this opens accordion
-int currentWorkoutIndex = workout.getCurrentExerciseIndex();
 int id  = 0;
                     		  
 for(int i = 0; i < numExercises; i++){
@@ -99,7 +102,7 @@ for(int i = 0; i < numExercises; i++){
 	//System.out.println(client);
 	int reps = client.getReps(exercise);
 	int weight = client.getWeight(exercise);
-	if(currentWorkoutIndex == i) {
+	if(currentExerciseIndex == i) {
 		in = "in";
 	} else {
 		in = "";
@@ -108,7 +111,7 @@ for(int i = 0; i < numExercises; i++){
 						<div class="panel panel-default">
                             <div class="panel-heading">
                               <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=id%>" onclick="updateCollapse(<%=name%>)"><%=name%></a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=id%>" onclick="updateCollapse('<%=name%>')"><%=name%></a>
                               </h4>
                             </div>
                             <div id="collapse<%=id%>" class="panel-collapse collapse <%=in%>">
@@ -124,6 +127,9 @@ for(int i = 0; i < numExercises; i++){
                                                 <div class="arrow">
                                                     <a onclick="changeRep(-1,this)"><i class="fa fa-arrow-down"></i></a>
                                                 </div>
+                                                <div class="arrow-subtitle">
+                                                    Reps
+                                                </div>
                                             </div>
                                             <div class="right-shifter">
                                                 <div class="arrow">
@@ -132,6 +138,9 @@ for(int i = 0; i < numExercises; i++){
                                                 <input type="text" name="weight" value="<%=weight%>" readonly="true" ondblclick="this.readOnly='';" size="3" maxlength="3" pattern="\d*">
                                                 <div class="arrow">
                                                     <a onclick="changeWeight(-5,this)"><i class="fa fa-arrow-down"></i></a>
+                                                </div>
+                                                <div class="arrow-subtitle">
+                                                    Weight
                                                 </div>
                                             </div>
                                         </div>

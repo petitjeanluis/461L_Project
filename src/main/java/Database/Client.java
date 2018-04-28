@@ -43,7 +43,7 @@ public class Client {
 		//System.out.println(exercise + "data: " + data);
 		//System.out.println(user);
 		for(ExerciseData exercises: exerciseData) {
-			System.out.println("Client: updateExerciseData" + exercises.getExerciseName());
+			//System.out.println("Client: updateExerciseData" + exercises.getExerciseName());
 			if(exercise.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//this is the exercise we want to update
 				exercises.addDataPoint(data);
@@ -72,6 +72,7 @@ public class Client {
 	public int getSet(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+				
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}
@@ -95,9 +96,9 @@ public class Client {
 		if(e.getStartingReps() == 0) {
 			return e.getStartingReps();
 		}
-		System.out.println("Client:GetReps: " + e.getName());
+		//System.out.println("Client:GetReps: " + e.getName());
 		for(ExerciseData exercises: exerciseData) {
-			System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
+			//System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//
 				return exercises.getRepsBasedOnHistory();
@@ -147,13 +148,15 @@ public class Client {
 		ExerciseData atLeast3 = null;
 		for(ExerciseData e: exerciseData) {
 			//get the first dataSet that has atLeast3 datapoints
-			if(e.getDataPoints().size() > 3 && atLeast3 == null) {
+			if(e.getDataPoints().size() >= 3 && atLeast3 == null) {
 				atLeast3 = e;
 			}
-			if(e.getDataPoints().size() > 3 && e.getExerciseName().equals(exerciseName)) {
+			//System.out.println("Client: getData: " + e.getExerciseName() + e.getDataPoints().size());
+			if(e.getDataPoints().size() >= 3 && e.getExerciseName().equals(exerciseName)) {
 				return e;
 			}
 		}
+		//System.out.println("Client: getData: atLeast3: " + atLeast3.getExerciseName());
 		return atLeast3;
 	}
 	
