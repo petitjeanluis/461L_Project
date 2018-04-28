@@ -79,6 +79,9 @@ public class Client {
 	}
 	
 	public int getWeight(Exercise e) {
+		if(e.getStartingWeight() == 0) {
+			return e.getStartingWeight();
+		}
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//
