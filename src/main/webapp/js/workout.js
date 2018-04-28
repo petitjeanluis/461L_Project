@@ -137,13 +137,12 @@ function restDone() {
 
 //must be callsed after updating $workoutGUI, or else it sends previous info
 function sendUpdate() {
-    console.log("sendUpate");
     var exerciseName = $workoutGui.parent('.panel-body').parent('.panel-collapse').parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
     var exerciseReps = $workoutGui.find('.shifters').find('.left-shifter').find('input').val();
     var exerciseWeight = $workoutGui.find('.shifters').find('.right-shifter').find('input').val();
     var subtitle =  $workoutGui.find('.subtitle').text();
     var exerciseSet = parseInt(subtitle.split(" ")[1]);
-    console.log("updating " + exerciseName + ": " + exerciseReps + " reps, " + exerciseWeight +" lbs, on set " + exerciseSet);
+    //console.log("updating " + exerciseName + ": " + exerciseReps + " reps, " + exerciseWeight +" lbs, on set " + exerciseSet);
     ajax_update(exerciseName, exerciseReps, exerciseWeight, exerciseSet);
 }
 
@@ -154,6 +153,9 @@ function nextExercise() {
     $workout.removeClass('in');
     if($nextWorkout.is("div")) {
     	$nextWorkout.addClass('in');
+    	var name = $nextWorkout.parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
+    	console.log(name +" test");
+    	updateCollapse(name);
     } else {
     	sendResetWorkout();
     }
