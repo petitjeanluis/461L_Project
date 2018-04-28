@@ -20,16 +20,11 @@ public class Storage {
 	private static ArrayList<Workout> workouts;
 	
 	static {
-		//try {
-			//ObjectifyService.register(Observable.class);
 			ObjectifyService.register(Exercise.class);
 			ObjectifyService.register(Workout.class);
 			ObjectifyService.register(DataPoint.class);
 			ObjectifyService.register(ExerciseData.class);
 			ObjectifyService.register(Client.class);
-		//} catch (Exception e) {
-		//	System.out.println(e);
-		//}
 	}
 	
 	private Storage() {
@@ -88,7 +83,7 @@ public class Storage {
 		ofy().clear();
 		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
-		System.out.println("Storage: LoadClient" + clients.toString());
+		//System.out.println("Storage: LoadClient" + clients.toString());
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(user.getEmail())) {
 				//ofy().delete().entity(c).now();
@@ -96,7 +91,7 @@ public class Storage {
 			}
 		}
 		
-		System.out.println("Storage: LoadClient: Making new client");
+		//System.out.println("Storage: LoadClient: Making new client");
 		//client not found and we are going to create one
 		Client newClient = new Client();
 		newClient.setUser(user);
