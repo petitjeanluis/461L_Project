@@ -46,6 +46,11 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
             </ul>
+            <div class="nav navbar-nav navbar-right">  	
+                <a href= "/logoutservlet">
+                	<button class="btn navbar-btn">Logout</button>
+                </a>
+            </div>
           </div>
         </nav>
         <div class="container">
@@ -56,7 +61,6 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
                       <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
                       </ol>
 
                       <!-- Wrapper for slides -->
@@ -123,6 +127,9 @@ for(int i = 0; i < numExercises; i++){
                                                 <div class="arrow">
                                                     <a onclick="changeRep(-1,this)"><i class="fa fa-arrow-down"></i></a>
                                                 </div>
+                                                <div class="arrow-subtitle">
+                                                    Reps
+                                                </div>
                                             </div>
                                             <div class="right-shifter">
                                                 <div class="arrow">
@@ -131,6 +138,9 @@ for(int i = 0; i < numExercises; i++){
                                                 <input type="text" name="weight" value="<%=weight%>" readonly="true" ondblclick="this.readOnly='';" size="3" maxlength="3" pattern="\d*">
                                                 <div class="arrow">
                                                     <a onclick="changeWeight(-5,this)"><i class="fa fa-arrow-down"></i></a>
+                                                </div>
+                                                <div class="arrow-subtitle">
+                                                    Weight
                                                 </div>
                                             </div>
                                         </div>
