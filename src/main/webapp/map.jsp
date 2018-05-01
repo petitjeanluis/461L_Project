@@ -63,10 +63,10 @@
               return;
             }
             
-            console.log(place.geometry.location.x);
-            console.log(place.geometry.location.y);
-            var latitude = place.geometry.location.lat;
-            var longitude = place.geometry.location.lng;
+            console.log(place.geometry.location.lat());
+            console.log(place.geometry.location.lng());
+            var latitude = place.geometry.location.lat();
+            var longitude = place.geometry.location.lng();
             var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude.toString() + "," + longitude.toString() + "&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyC1mQG3JvL53Vtdxhz-MJLTd6H2odupgDc";
             console.log(url);
             
