@@ -23,7 +23,7 @@ Client c = storage.loadClient(user);
 			<%
 			String exerciseName = request.getParameter("exerciseName");
 			ExerciseData data = c.getData(exerciseName);
-			System.out.println("index.jsp datasize" + data.getDataPoints().size());
+			//System.out.println("index.jsp datasize" + data.getDataPoints().size());
 			if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 			$(document).ready(function() {
 				var chart = {
@@ -67,6 +67,8 @@ Client c = storage.loadClient(user);
               <li class="active"><a href="#">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="geocoding.jsp">Lol</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
