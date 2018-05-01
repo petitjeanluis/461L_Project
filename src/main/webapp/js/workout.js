@@ -6,23 +6,38 @@ function updateCollapse(name) {
 	img2.setAttribute("src","/img/"+name+"-2.jpg");
 }
 
-function ajax_update(exerciseName, exerciseReps, exerciseWeight, exerciseSet) {
+function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
+	console.log("ajaxUpdateRepsWeight");
+	console.log(exerciseName + ": " + exerciseReps + ", " + exerciseWeight);
 	$.post("/workoutservlet",
 			{
 				name : exerciseName,
 				reps : exerciseReps,
 				weight : exerciseWeight,
-		        set : exerciseSet
 			});
 }
 
-function ajax_return(data) {
-	//var divTag = document.getElementById("data");
-	//divTag.innerHTML = status;
-	alert(data);
+function ajaxUpdateCurrentExercise(exerciseName) {
+	console.log("ajaxUpdateCurrentExercise");
+	console.log(exerciseName);
+	$.post("/workoutservlet",
+			{
+				name : exerciseName
+			});
 }
 
-function sendResetWorkout() {
+function ajaxUpdateSet(exerciseName, exerciseSet) {
+	console.log("ajaxUpdateSet");
+	console.log(exerciseName + ": " + exerciseSet);
+	$.post("/workoutservlet",
+			{
+				name : exerciseName,
+				set : exerciseSet
+			});
+}
+
+
+function ajaxFinishWorkout() {
 	console.log("reset workout");
 	window.location.replace("/workoutresetservlet");
 	/*var request = new XMLHttpRequest();
@@ -44,6 +59,7 @@ function rest(selected,time) {
     $workoutGui = $(selected).parent('.exercise-footer').parent('.workout-gui');
     $timerGui = $workoutGui.parent('.panel-body').find('.timer-gui');
     $playPauseButton = $timerGui.find('.timer-controls').find('.pause-btn');
+    sendRepsWeightUpdate();
     increaseSet();
     //show timer
     $workoutGui.hide();
@@ -61,6 +77,7 @@ function rest(selected,time) {
 function next(selected) {
     $workoutGui = $(selected).parent('.exercise-footer').parent('.workout-gui');
     $timerGui = $workoutGui.parent('.panel-body').find('.timer-gui');
+    sendRepsWeightUpdate();
     if(increaseSet()) {
         restDone();
     }
@@ -73,11 +90,11 @@ function increaseSet() {
     set++;
     if(set > 3) {
         $workoutGui.find('.subtitle').html("Set 1");
-        sendUpdate();
+        sendSetUpdate();
         return true;
     } else {
         $workoutGui.find('.subtitle').html("Set " + set);
-        sendUpdate();
+        sendSetUpdate();
         return false;
     }
 }
@@ -138,14 +155,18 @@ function restDone() {
 }
 
 //must be callsed after updating $workoutGUI, or else it sends previous info
-function sendUpdate() {
+function sendSetUpdate() {
     var exerciseName = $workoutGui.parent('.panel-body').parent('.panel-collapse').parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
-    var exerciseReps = $workoutGui.find('.shifters').find('.left-shifter').find('input').val();
-    var exerciseWeight = $workoutGui.find('.shifters').find('.right-shifter').find('input').val();
     var subtitle =  $workoutGui.find('.subtitle').text();
     var exerciseSet = parseInt(subtitle.split(" ")[1]);
-    //console.log("updating " + exerciseName + ": " + exerciseReps + " reps, " + exerciseWeight +" lbs, on set " + exerciseSet);
-    ajax_update(exerciseName, exerciseReps, exerciseWeight, exerciseSet);
+    ajaxUpdateSet(exerciseName, exerciseSet);
+}
+
+function sendRepsWeightUpdate() {
+	var exerciseName = $workoutGui.parent('.panel-body').parent('.panel-collapse').parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
+    var exerciseReps = $workoutGui.find('.shifters').find('.left-shifter').find('input').val();
+    var exerciseWeight = $workoutGui.find('.shifters').find('.right-shifter').find('input').val();
+    ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight);
 }
 
 function nextExercise() {
@@ -156,10 +177,10 @@ function nextExercise() {
     if($nextWorkout.is("div")) {
     	$nextWorkout.addClass('in');
     	var name = $nextWorkout.parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
-    	console.log(name +" test");
     	updateCollapse(name);
+    	ajaxUpdateCurrentExercise(name);
     } else {
-    	sendResetWorkout();
+    	ajaxFinishWorkout();
     }
 }
 
