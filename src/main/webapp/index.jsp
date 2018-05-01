@@ -15,6 +15,7 @@ Client c = storage.loadClient(user);
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
+		<link rel="stylesheet" href="style/style.css">
 		<link rel="stylesheet" href="style/index_style.css">
 		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
 		<script src="js/canvasChart.js" type="text/javascript"></script>
