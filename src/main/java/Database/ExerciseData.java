@@ -50,7 +50,7 @@ public class ExerciseData {
 	
 	public void addDataPoint(DataPoint dataPoint) {
 		//this is code to test the graph NOT final code
-		data.add(dataPoint);
+		data.add( dataPoint);
 		
 		//below is the correct code
 		/*if(data.size()>0) {
@@ -62,15 +62,29 @@ public class ExerciseData {
 		} else {
 			data.add(dataPoint);
 		}*/
+		
 	}
 	
 	public int getRepsBasedOnHistory() {
+		if(data.size()==0) {
+			return exercise.getStartingReps();
+		}
 		return data.get(data.size()-1).getReps();
 	}
 	
 	public int getSetsBasedOnHistory() {
-		System.out.print("ExerciseData: getSetsBasedOnHistory: exercise.getStartingSets: " + exercise.getStartingSets());
-		return (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets();
+
+
+		if(data.size() == 0) {
+			return 1;
+		}
+		for(DataPoint p: data) {
+			System.out.println("DataPoints" + p.getSets());
+		}
+		System.out.println("ExerciseData: getSetsBasedOnHistory: "+exercise.getName() +".getSets: " + (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets());
+		System.out.println("ExerciseData: getSetsBasedOnHistory: " + data.get(data.size()-1).getSets() + data.get(data.size()-2).getWeight());
+		System.out.println("ExerciseData: " + exercise.getName());
+		return ((data.get(data.size()-1).getSets()) % exercise.getStartingSets())+1;
 	}
 	
 	public int getWeightBasedOnHistory() {

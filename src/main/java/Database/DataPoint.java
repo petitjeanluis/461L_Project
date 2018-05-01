@@ -36,6 +36,7 @@ public class DataPoint {
 		this.weight = weight;
 		this.reps = reps;
 		this.date = date;
+		this.sets = sets;
 		Storage.getInstance().saveDataPoint(this);
 	}
 	

@@ -22,7 +22,6 @@ Client c = storage.loadClient(user);
 			<%
 			String exerciseName = request.getParameter("exerciseName");
 			ExerciseData data = c.getData(exerciseName);
-			System.out.println("index.jsp datasize" + data.getDataPoints().size());
 			if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 			$(document).ready(function() {
 				var chart = {

@@ -23,6 +23,8 @@ public class WorkoutResetServlet extends HttpServlet {
         
         c.setCurrentWorkout(null);
         
+        storage.saveClient(c);
+        
         resp.sendRedirect("index.jsp");
 	}
 
@@ -36,6 +38,8 @@ public class WorkoutResetServlet extends HttpServlet {
         Client c = storage.loadClient(user);
         
         c.setCurrentWorkout(null);
+        
+        storage.saveClient(c);
         
         resp.sendRedirect("index.jsp");
 	}

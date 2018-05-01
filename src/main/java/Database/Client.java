@@ -71,8 +71,9 @@ public class Client {
 	
 	public int getSet(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
-			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
-				
+			
+			if(e.getName().equals(exercises.getExerciseName())) {
+				System.out.println("Exercsie" + e.getName() + "ExerciseData" + exercises.getExerciseName());
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}
@@ -84,7 +85,7 @@ public class Client {
 			return e.getStartingWeight();
 		}
 		for(ExerciseData exercises: exerciseData) {
-			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+			if(e.getName().equals(exercises.getExerciseName())) {
 				//
 				return exercises.getWeightBasedOnHistory();
 			} 
@@ -99,7 +100,7 @@ public class Client {
 		//System.out.println("Client:GetReps: " + e.getName());
 		for(ExerciseData exercises: exerciseData) {
 			//System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
-			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+			if(e.getName().equals(exercises.getExerciseName())) {
 				//
 				return exercises.getRepsBasedOnHistory();
 			} 

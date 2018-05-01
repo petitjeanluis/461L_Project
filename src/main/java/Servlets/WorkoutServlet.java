@@ -35,13 +35,17 @@ public class WorkoutServlet extends HttpServlet {
         System.out.println("WorkoutServlet: weight" + weight + " reps " + 
         		+ reps + " exerciseName " + exerciseName);
         
+        System.out.println("WorkoutServlet" + set);
+        
         DataPoint d = new DataPoint(weight, reps, set, new Date());
+        
+        c.updateExerciseData(currentExercise, d);
         
         if(set == currentExercise.getStartingSets()) {
         	c.getCurrentWorkout().setCurrentExerciseIndex(c.getCurrentWorkout().getCurrentExerciseIndex()+1);
         }
         
-        c.updateExerciseData(currentExercise, d);
+        storage.saveClient(c);
         
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
