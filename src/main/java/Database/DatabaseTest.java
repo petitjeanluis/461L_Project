@@ -113,10 +113,9 @@ public class DatabaseTest {
 		ArrayList<Exercise> e = new ArrayList<Exercise>();
 		e.add(ex);
 		w.setExercises(e);
-		w.setCurrentExerciseIndex(0);
 		w.setDescription("Simon Peter");
 		w.setWorkoutName("what");
-		assertTrue(w.getCurrentExerciseIndex() == 0 && w.getDescription().equals("Simon Peter") && w.getExerciseNum(0).equals(ex) && 
+		assertTrue(w.getDescription().equals("Simon Peter") && w.getExerciseNum(0).equals(ex) && 
 				w.getExercises().equals(e) && w.getNumOfExercises() == 1 && w.getWorkoutName().equals("what"));
 	}
 

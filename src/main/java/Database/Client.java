@@ -16,6 +16,7 @@ public class Client {
 	@Index private User user;
 	
 	@Index private Workout currentWorkout;
+	@Index private int currentExerciseIndex;
 	
 	//past workouts with tracking data
 	//@Index private ArrayList<Workout> pastWorkouts;
@@ -180,6 +181,44 @@ public class Client {
 		return Storage.getInstance().getWorkoutFromName(name);
 	}
 	
+	public void resetSets() {
+		ArrayList<Exercise> e = currentWorkout.getExercises();
+		for(Exercise exercise: e) {
+			for(ExerciseData data: exerciseData)  {
+				if(data.getExerciseName().equals(exercise.getName())) {
+					//exercise found in the exercise data
+					data.resetSet();
+				}
+			}
+		}
+	}
+	
+	public void updateSetForExercise(Exercise e, int currentSet) {
+		for(ExerciseData data: exerciseData)  {
+			if(data.getExerciseName().equals(e.getName())) {
+				//exercise found in the exercise data
+				data.updateSet(currentSet);
+			}
+		}
+	}
+	
+	public void updateCurrentExerciseIndex(Exercise e) {
+		ArrayList<Exercise> exercises = currentWorkout.getExercises();
+		for (int i = 0; i < exercises.size(); i++) {
+			if(e.getName().equals(exercises.get(i).getName())) {
+				currentExerciseIndex = i;
+			}
+		}
+	}
+	
+	
+	public void setCurrentExerciseIndex(int i) {
+		currentExerciseIndex = i;
+	}
+	
+	public int getCurrentExerciseIndex() {
+		return currentExerciseIndex;
+	}
 	/*public void sendToFriends(String message) {
 		notifyObservers(message);
 	}

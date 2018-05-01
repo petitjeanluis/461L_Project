@@ -3,7 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+ 	<servlet>
+		<servlet-name>UpdateCurrentExerciseIndexServlet</servlet-name>
+		<servlet-class>Servlets.UpdateCurrentExerciseIndexServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateCurrentExerciseIndexServlet</servlet-name>
+		<url-pattern>/updatecurrentexerciseindexservlet</url-pattern>
+	</servlet-mapping>
  
+ 	<servlet>
+		<servlet-name>UpdateSetServlet</servlet-name>
+		<servlet-class>Servlets.UpdateSetServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateSetServlet</servlet-name>
+		<url-pattern>/updatesetservlet</url-pattern>
+	</servlet-mapping>
+  
     <servlet>
 		<servlet-name>WorkoutServlet</servlet-name>
 		<servlet-class>Servlets.WorkoutServlet</servlet-class>

@@ -50,18 +50,18 @@ public class ExerciseData {
 	
 	public void addDataPoint(DataPoint dataPoint) {
 		//this is code to test the graph NOT final code
-		data.add( dataPoint);
+		//data.add( dataPoint);
 		
 		//below is the correct code
-		/*if(data.size()>0) {
+		if(data.size()>0) {
 			if(data.get(data.size()-1).getDate().equals(dataPoint.getDate())) {
-				data.set(data.size()-1, dataPoint);
+				data.get(data.size()-1).updateDataPoint(dataPoint); 
 			} else {
 				data.add(dataPoint);
 			}
 		} else {
 			data.add(dataPoint);
-		}*/
+		}
 		
 	}
 	
@@ -125,5 +125,19 @@ public class ExerciseData {
 			}
 		}
 		return result;
+	}
+	
+	public void resetSet() {
+		if (data.size()> 0) {
+			DataPoint p = data.get(data.size()-1);
+			p.resetSet();
+		}
+	}
+	
+	public void updateSet(int currentSet) {
+		if (data.size()> 0) { 
+			DataPoint p = data.get(data.size()-1);
+			p.setSet(currentSet);
+		}
 	}
 }

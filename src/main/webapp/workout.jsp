@@ -26,7 +26,7 @@ Workout workout = client.getCurrentWorkout();
 //Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 
 int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
-int currentExerciseIndex = workout.getCurrentExerciseIndex();
+int currentExerciseIndex = client.getCurrentExerciseIndex(); 
 String workoutName = workout.getWorkoutName();// add name of workout to GUI
 %>
 <html lang="en">

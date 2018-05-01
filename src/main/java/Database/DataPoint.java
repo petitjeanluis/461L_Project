@@ -61,4 +61,19 @@ public class DataPoint {
 	public int getSets() {
 		return sets;
 	}
+	
+	public void setSet(int num) {
+		sets = num;
+	}
+	
+	public void resetSet() {
+		sets = 1;
+	}
+	
+	public void updateDataPoint(DataPoint p) {
+		date = p.getDate();
+		reps = p.getReps();
+		sets = p.getSets();
+		weight = p.getWeight();
+	}
 }
