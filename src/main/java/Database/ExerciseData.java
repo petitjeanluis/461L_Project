@@ -83,7 +83,7 @@ public class ExerciseData {
 		}
 		System.out.println("ExerciseData: getSetsBasedOnHistory: "+exercise.getName() +".getSets: " + (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets());
 		System.out.println("ExerciseData: getSetsBasedOnHistory: " + data.get(data.size()-1).getSets() + data.get(data.size()-2).getWeight());
-		System.out.println("ExerciseData: " + exercise.getName());
+		System.out.println("ExerciseData: " + exercise.getName() + ", current set: " + data.get(data.size()-1).getSets());
 		return ((data.get(data.size()-1).getSets()) % exercise.getStartingSets())+1;
 	}
 	

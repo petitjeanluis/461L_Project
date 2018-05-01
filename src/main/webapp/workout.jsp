@@ -165,6 +165,9 @@ for(int i = 0; i < numExercises; i++){
 <%
 id++;}%>                  
                     </div>
+                    <div class="footer">
+                    	<button class="finish-btn" onclick="ajaxFinishWorkout()">Finish</button>
+                    </div>
                 </div>
             </div>
         </div>
