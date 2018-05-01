@@ -18,7 +18,7 @@ if(user != null) {
 <html>
     <head>
         <title>Welcome</title>
-        <link rel="stylesheet" href="style/style2.css" type="text/css">
+        <link rel="stylesheet" href="style/home_style.css" type="text/css">
     </head>
     <body>
         <div class="heading">

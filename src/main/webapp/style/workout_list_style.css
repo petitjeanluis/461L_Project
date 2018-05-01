@@ -6,6 +6,11 @@
     margin-top: 10px;
 }
 
+.search {
+	width: 500px;
+    border-radius: 10px;
+}
+
 a {
     text-decoration: none;
     color: inherit;
