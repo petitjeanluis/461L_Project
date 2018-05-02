@@ -50,10 +50,10 @@ public class ExerciseData {
 	
 	public void addDataPoint(DataPoint dataPoint) {
 		//this is code to test the graph NOT final code
-		//data.add( dataPoint);
+		data.add( dataPoint);
 		
 		//below is the correct code
-		if(data.size()>0) {
+		/*if(data.size()>0) {
 			if(sameDate(data.get(data.size()-1).getDate(),dataPoint.getDate())) {
 				data.get(data.size()-1).updateDataPoint(dataPoint); 
 			} else {
@@ -61,7 +61,7 @@ public class ExerciseData {
 			}
 		} else {
 			data.add(dataPoint);
-		}
+		}*/
 		
 	}
 	
