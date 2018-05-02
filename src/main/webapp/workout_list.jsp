@@ -64,7 +64,7 @@
 
 	Storage storage = Storage.getInstance();
 	Client client =  storage.loadClient(user);
-	ArrayList<Workout> customWorkouts = client.getCustomWorkouts();
+	ArrayList<Workout> customWorkouts = client.getFriendAndCustomWorkout();
 	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();
 	int id;
 				%>

@@ -19,8 +19,11 @@ public class Client {
 	@Index private int currentExerciseIndex;
 	
 	//past workouts with tracking data
-	//@Index private ArrayList<Workout> pastWorkouts;
 	@Index private ArrayList<Workout> customWorkouts;
+	@Index private ArrayList<Workout> friendsWorkouts;
+	
+	//holds friends that you have added based on email
+	@Index private ArrayList<String> friendsEmails;
 	
 	//holds data on each individual exercise performed by user
 	@Index private ArrayList<ExerciseData> exerciseData;
@@ -38,7 +41,7 @@ public class Client {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
 		boolean updated = false;
 		//System.out.println(exercise + "data: " + data);
@@ -85,6 +88,29 @@ public class Client {
 		return e.getStartingWeight();
 	}
 	
+	public void addFriend(String email) {
+		friendsEmails.add(email);
+	}
+	
+	public void removeFriend(String email) {
+		for(int i = 0; i < friendsEmails.size(); i++ ) {
+			if(friendsEmails.get(i).equals(email)) {
+				friendsEmails.remove(i);
+			}
+		}
+	}
+	
+	public void addFriendsWorkout(String email, String friendsWorkout) {
+		Storage storage = Storage.getInstance();
+		Workout w = storage.getFriendsWorkoutFromEmail(email, friendsWorkout);
+		
+		friendsWorkouts.add(w);
+	}
+	
+	public ArrayList<String> getFriendsEmails() {
+		return friendsEmails;
+	}
+	
 	public int getReps(Exercise e) {
 		if(e.getStartingReps() == 0) {
 			return e.getStartingReps();
@@ -102,6 +128,10 @@ public class Client {
 	
 	public User getUser() {
 		return user;
+	}
+	
+	public String getEmail() {
+		return user.getEmail();
 	}
 
 	public Workout getCurrentWorkout() {
@@ -123,6 +153,17 @@ public class Client {
 	
 	public ArrayList<Workout> getCustomWorkouts() {
 		return customWorkouts;
+	}
+	
+	public ArrayList<Workout> getFriendAndCustomWorkout() {
+		ArrayList<Workout> result = new ArrayList<Workout>();
+		for(Workout w: customWorkouts) {
+			result.add(w);
+		}
+		for(Workout w: friendsWorkouts) {
+			result.add(w);
+		}
+		return result;
 	}
 
 	public ArrayList<ExerciseData> getExerciseData() {
@@ -164,6 +205,12 @@ public class Client {
 	
 	public Workout getWorkoutFromName(String name) {
 		for(Workout w: customWorkouts) {
+			if(w.getWorkoutName().equals(name)) {
+				return w;
+			}
+		}
+		
+		for(Workout w: friendsWorkouts) {
 			if(w.getWorkoutName().equals(name)) {
 				return w;
 			}
