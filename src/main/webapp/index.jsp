@@ -8,10 +8,12 @@
 <%
 UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
+
 if(user == null) {
 	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 	return;
 }
+
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
 %>
@@ -28,6 +30,7 @@ Client c = storage.loadClient(user);
 			<%
 			String exerciseName = request.getParameter("exerciseName");
 			ExerciseData data = c.getData(exerciseName);
+			
 			if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 			$(document).ready(function() {
 				var chart = {
@@ -42,7 +45,10 @@ Client c = storage.loadClient(user);
 					ArrayList<DataPoint> d = data.getDataPoints();
 					DataPoint value;
 					SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd");
+					
+					//used if the client has a lot of datapoints
 					int divisor = d.size()/15;
+					
 					for(int i = 0; i < d.size() -1 ; i = i + 1 + divisor) {
 						value = d.get(i);
 						%>{ x: '<%=dateFormat.format(value.getDate()) %>', y: <%=value.getWeight()%> },
@@ -105,13 +111,16 @@ Client c = storage.loadClient(user);
 					</div>
 					<div class = "row">
 						<%
+						//counts how many dataPoints are >= 3 to determine if graph, etc... is displayed
 						int count = 0;
 						ArrayList<ExerciseData> exerciseData = c.getExerciseData();
+						
 						for(ExerciseData e: exerciseData) {
 							if(e.getDataPoints().size() >= 3) {
 								count++;
 							}
 						}
+						
 						if(count > 0) {%>
 						<h5 align = "center">Select other exercises from the dropdown menu to see your other graphs</h5>
 						<form action = "/index.jsp" align = "center">

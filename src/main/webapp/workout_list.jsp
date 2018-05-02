@@ -16,6 +16,7 @@ if(user == null) {
 
 Storage storage = Storage.getInstance();
 Client client =  storage.loadClient(user);
+
 %>
     <header>
 		<jsp:include page="header.jsp"/>
