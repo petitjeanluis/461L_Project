@@ -246,12 +246,15 @@ public class Client {
 	public void resetSets() {
 		//resets all of the datapoints to 1 so that the next time they are used in 
 		//a workout the proper number of sets is displayed
-		ArrayList<Exercise> e = currentWorkout.getExercises();
-		for(Exercise exercise: e) {
-			for(ExerciseData data: exerciseData)  {
-				if(data.getExerciseName().equals(exercise.getName())) {
-					//exercise found in the exercise data
-					data.resetSet();
+		if(currentWorkout != null) {
+			ArrayList<Exercise> e = currentWorkout.getExercises();
+			for(Exercise exercise: e) {
+				for(ExerciseData data: exerciseData)  {
+					if(data.getExerciseName().equals(exercise.getName())) {
+						//exercise found in the exercise data
+						System.out.println(data);
+						data.resetSet();
+					}
 				}
 			}
 		}
