@@ -27,10 +27,10 @@ Client c = storage.loadClient(user);
 			$(document).ready(function() {
 				var chart = {
 					title: "<%=data.getExerciseName()%>",
-					xLabel: 'Times Exercised',
+					xLabel: '',
 					yLabel: 'Amount of Weight',
-					labelFont: '19pt Arial',
-					dataPointFont: '10pt Arial',
+					labelFont: '19pt Roboto Slab',
+					dataPointFont: '10pt Roboto Slab',
 					renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
 					dataPoints: [
 						<% 
@@ -66,7 +66,6 @@ Client c = storage.loadClient(user);
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
               <li><a href="map.jsp">Find A Gym</a></li>
-              <li><a href="geocoding.jsp">Lol</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">

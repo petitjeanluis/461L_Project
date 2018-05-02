@@ -36,6 +36,8 @@ public class Client {
 		//can't set user because client has to have a no-arg constructor
 		this.exerciseData = new ArrayList<ExerciseData>();
 		this.customWorkouts = new ArrayList<Workout>();
+		this.friendsWorkouts = new ArrayList<Workout>();
+		this.friendsEmails = new ArrayList<String>();
 	}
 	
 	public void setUser(User user) {
