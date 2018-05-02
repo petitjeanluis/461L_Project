@@ -24,14 +24,14 @@ public class UpdateSetServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
         int currentSet = Integer.parseInt(req.getParameter("set"));
         
         c.updateSetForExercise(storage.getExercise(exerciseName), currentSet);
         
-        storage.saveClient(c);
+        storage.saveClientSync(user, c);
         System.out.println("UpdateSetServlet + set: " + currentSet);
 	}
 	

@@ -24,13 +24,13 @@ public class UpdateCurrentExerciseIndexServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
         
         c.updateCurrentExerciseIndex(storage.getExercise(exerciseName));
         
-        storage.saveClient(c);
+        storage.saveClientSync(user, c);
 	}
 	
 }

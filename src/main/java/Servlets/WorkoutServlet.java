@@ -23,7 +23,7 @@ public class WorkoutServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
         Exercise currentExercise = storage.getExercise(exerciseName);
@@ -40,7 +40,7 @@ public class WorkoutServlet extends HttpServlet {
         
         c.updateExerciseData(currentExercise, d);
         
-        storage.saveClient(c);
+        storage.saveClientSync(user, c);
         
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
