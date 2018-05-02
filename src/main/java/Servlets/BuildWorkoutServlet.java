@@ -22,6 +22,7 @@ public class BuildWorkoutServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         Storage storage = Storage.getInstance();
         Client client = storage.loadClient(user);
+        client.resetSets();
         
         int numOfExercises = Integer.parseInt(req.getParameter("numOfExercises"));
         String workoutName = req.getParameter("workoutName");

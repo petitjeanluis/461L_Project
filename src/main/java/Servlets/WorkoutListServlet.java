@@ -26,6 +26,8 @@ public class WorkoutListServlet extends HttpServlet{
         Storage storage = Storage.getInstance();
         Client c = storage.loadClient(user);
         
+        c.resetSets();
+        
         String workoutName = req.getParameter("workoutName");
         Workout currentWorkout = c.getWorkoutFromName(workoutName);
         c.setCurrentWorkout(currentWorkout);

@@ -251,6 +251,7 @@ public class Client {
 			for(ExerciseData data: exerciseData)  {
 				if(data.getExerciseName().equals(exercise.getName())) {
 					//exercise found in the exercise data
+					data.resetSet();
 				}
 			}
 		}
