@@ -31,7 +31,6 @@ public class UpdateSetServlet extends HttpServlet {
         c.updateSetForExercise(storage.getExerciseFromName(exerciseName), currentSet);
         
         storage.saveClientSync(user, c);
-        System.out.println("UpdateSetServlet + set: " + currentSet);
 	}
 	
 }
