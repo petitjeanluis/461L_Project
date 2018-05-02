@@ -15,9 +15,18 @@ $(document).ready(function (){
 
 function addFollower() {
 	$("#friend-list").append($('#'+selectedUser).removeClass("active"));
-    
+	var userEmail = $('#'+selectedUser).html();
+	console.log(userEmail);
+    $.post("/addfriendservlet",{
+    	email : userEmail
+    });
 }
 
 function addWorkout() {
-
+	var userEmail = $("#"+selectedWorkout +" td:first-child").html();
+	var userWorkout = $("#"+selectedWorkout +" td:last-child").html();
+	$.post("/addfriendsworkoutservlet",{
+    	email : userEmail,
+    	workout : userWorkout
+    });
 }

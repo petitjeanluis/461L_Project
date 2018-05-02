@@ -5,6 +5,15 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
+<%
+	UserService userService = UserServiceFactory.getUserService(); 
+	User user = userService.getCurrentUser();
+	Storage storage = Storage.getInstance();
+	Client c = storage.loadClient(user);
+	
+	ArrayList<String> friendEmailList = c.getFriendsEmails();
+	ArrayList<String> globalEmailList = storage.getAllClientsEmails();
+%>
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
@@ -34,9 +43,11 @@
                     <h2>Followers</h2>
                     <div class="box">
                         <ul id="friend-list">
-                            <li>Name 1</li>
-                            <li>Name 2</li>
-                            <li>Name 3</li>
+             			<%
+             				for(String email : friendEmailList) {
+             					%><li><%=email%></li><%
+             				}
+             			%>
                         </ul>
                     </div>
                 </div>
@@ -44,15 +55,13 @@
                     <h2>Start Following</h2>
                     <div class="box">
                         <ul id="follow-list">
-                            <li id="user0">Name 0</li>
-                            <li id="user1">Name 1</li>
-                            <li id="user2">Name 2</li>
-                            <li id="user3">Name 3</li>
-                            <li id="user4">Name 4</li>
-                            <li id="user5">Name 5</li>
-                            <li id="user6">Name 6</li>
-                            <li id="user7">Name 7</li>
-                            <li id="user8">Name 8</li>
+                        <%
+                            int id = 0;
+             				for(String email : globalEmailList) {
+             					%><li id="user<%=id%>"><%=email%></li><%
+   								id++;
+             				}
+             			%>
                         </ul>
                     </div>
                     <input type="text" id="follow-search">
@@ -67,17 +76,25 @@
                         <th>Workout Name</th>
                     </thead>
                     <tbody id="workout-table-body">
-                        <tr id="row0">
-                            <td>A name</td>
-                            <td>A workout name</td>
-                        </tr>
-                        <tr id="row1">
-                            <td>A name</td>
-                            <td>A workout name</td>
-                        </tr>
+                   	<%
+                   		id = 0;
+                   		ArrayList<String> workoutNameList;
+                    	for(String email : friendEmailList) {
+                    		workoutNameList = storage.getFriendsWorkoutNamesFromEmail(email);
+                    		for(String workoutName : workoutNameList) {
+                    			%>
+                        		<tr id="row<%=id%>">
+                        			<td><%=email%></td>
+                        			<td><%=workoutName%></td>
+                        		</tr>
+                        		<%	
+                        		id++;
+                    		}
+                    	}		
+                   	%>
                     </tbody>
                 </table>
-                <button type="button" name="add-workout-btn" onclick="sendWorkout()">Add Workout</button>
+                <button type="button" name="add-workout-btn" onclick="addWorkout()">Add Workout</button>
             </div>
         </div>
     </body>

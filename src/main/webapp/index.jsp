@@ -5,11 +5,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
-<%UserService userService = UserServiceFactory.getUserService(); 
+<%
+UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
-//c.populateFakeData();
 %>
 
 <html lang="en">
