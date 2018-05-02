@@ -27,10 +27,10 @@ Client c = storage.loadClient(user);
 			$(document).ready(function() {
 				var chart = {
 					title: "<%=data.getExerciseName()%>",
-					xLabel: 'Times Exercised',
+					xLabel: '',
 					yLabel: 'Amount of Weight',
-					labelFont: '19pt Arial',
-					dataPointFont: '10pt Arial',
+					labelFont: '19pt Roboto Slab',
+					dataPointFont: '10pt Roboto Slab',
 					renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
 					dataPoints: [
 						<% 
