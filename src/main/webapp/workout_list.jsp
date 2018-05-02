@@ -31,7 +31,7 @@
  
 		<div class="container">
 			
-			<div class="row"f>
+			<div class="row">
 	  			<div class="col-xs-6">
 	  			  	<h1 align="center">Your workouts.</h1>
 	  			</div>
@@ -64,7 +64,7 @@
 
 	Storage storage = Storage.getInstance();
 	Client client =  storage.loadClient(user);
-	ArrayList<Workout> customWorkouts = client.getCustomWorkouts();
+	ArrayList<Workout> customWorkouts = client.getFriendAndCustomWorkout();
 	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();
 	int id;
 				%>

@@ -16,10 +16,14 @@ public class Client {
 	@Index private User user;
 	
 	@Index private Workout currentWorkout;
+	@Index private int currentExerciseIndex;
 	
 	//past workouts with tracking data
-	//@Index private ArrayList<Workout> pastWorkouts;
 	@Index private ArrayList<Workout> customWorkouts;
+	@Index private ArrayList<Workout> friendsWorkouts;
+	
+	//holds friends that you have added based on email
+	@Index private ArrayList<String> friendsEmails;
 	
 	//holds data on each individual exercise performed by user
 	@Index private ArrayList<ExerciseData> exerciseData;
@@ -37,7 +41,7 @@ public class Client {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
 		boolean updated = false;
 		//System.out.println(exercise + "data: " + data);
@@ -60,19 +64,11 @@ public class Client {
 		Storage.getInstance().saveClient(this);
 	}
 	
-	/*public void addCustomWorkout(Workout workout) {
-		customWorkouts.add(workout);
-		Storage.getInstance().saveClient(this);
-	}*/
-	
-	/*public void addPastWorkout(Workout workout) {
-		pastWorkouts.add(workout);
-	}*/
-	
 	public int getSet(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
-			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
-				
+			
+			if(e.getName().equals(exercises.getExerciseName())) {
+				//System.out.println("Exercsie" + e.getName() + "ExerciseData" + exercises.getExerciseName());
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}
@@ -84,12 +80,35 @@ public class Client {
 			return e.getStartingWeight();
 		}
 		for(ExerciseData exercises: exerciseData) {
-			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+			if(e.getName().equals(exercises.getExerciseName())) {
 				//
 				return exercises.getWeightBasedOnHistory();
 			} 
 		}
 		return e.getStartingWeight();
+	}
+	
+	public void addFriend(String email) {
+		friendsEmails.add(email);
+	}
+	
+	public void removeFriend(String email) {
+		for(int i = 0; i < friendsEmails.size(); i++ ) {
+			if(friendsEmails.get(i).equals(email)) {
+				friendsEmails.remove(i);
+			}
+		}
+	}
+	
+	public void addFriendsWorkout(String email, String friendsWorkout) {
+		Storage storage = Storage.getInstance();
+		Workout w = storage.getFriendsWorkoutFromEmail(email, friendsWorkout);
+		
+		friendsWorkouts.add(w);
+	}
+	
+	public ArrayList<String> getFriendsEmails() {
+		return friendsEmails;
 	}
 	
 	public int getReps(Exercise e) {
@@ -99,7 +118,7 @@ public class Client {
 		//System.out.println("Client:GetReps: " + e.getName());
 		for(ExerciseData exercises: exerciseData) {
 			//System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
-			if(e.getName().compareTo(exercises.getExerciseName()) == 0) {
+			if(e.getName().equals(exercises.getExerciseName())) {
 				//
 				return exercises.getRepsBasedOnHistory();
 			} 
@@ -109,6 +128,10 @@ public class Client {
 	
 	public User getUser() {
 		return user;
+	}
+	
+	public String getEmail() {
+		return user.getEmail();
 	}
 
 	public Workout getCurrentWorkout() {
@@ -130,6 +153,17 @@ public class Client {
 	
 	public ArrayList<Workout> getCustomWorkouts() {
 		return customWorkouts;
+	}
+	
+	public ArrayList<Workout> getFriendAndCustomWorkout() {
+		ArrayList<Workout> result = new ArrayList<Workout>();
+		for(Workout w: customWorkouts) {
+			result.add(w);
+		}
+		for(Workout w: friendsWorkouts) {
+			result.add(w);
+		}
+		return result;
 	}
 
 	public ArrayList<ExerciseData> getExerciseData() {
@@ -176,9 +210,53 @@ public class Client {
 			}
 		}
 		
+		for(Workout w: friendsWorkouts) {
+			if(w.getWorkoutName().equals(name)) {
+				return w;
+			}
+		}
+		
 		return Storage.getInstance().getWorkoutFromName(name);
 	}
 	
+	public void resetSets() {
+		ArrayList<Exercise> e = currentWorkout.getExercises();
+		for(Exercise exercise: e) {
+			for(ExerciseData data: exerciseData)  {
+				if(data.getExerciseName().equals(exercise.getName())) {
+					//exercise found in the exercise data
+					data.resetSet();
+				}
+			}
+		}
+	}
+	
+	public void updateSetForExercise(Exercise e, int currentSet) {
+		for(ExerciseData data: exerciseData)  {
+			if(data.getExerciseName().equals(e.getName())) {
+				//exercise found in the exercise data
+				data.updateSet(currentSet);
+			}
+		}
+	}
+	
+	public void updateCurrentExerciseIndex(Exercise e) {
+		ArrayList<Exercise> exercises = currentWorkout.getExercises();
+		for (int i = 0; i < exercises.size(); i++) {
+			if(e.getName().equals(exercises.get(i).getName())) {
+				currentExerciseIndex = i;
+			}
+		}
+	}
+	
+	
+	public void setCurrentExerciseIndex(int i) {
+		currentExerciseIndex = i;
+	}
+	
+	public int getCurrentExerciseIndex() {
+		return currentExerciseIndex;
+	}
 	/*public void sendToFriends(String message) {
 		notifyObservers(message);
 	}

@@ -23,20 +23,16 @@ public class Workout {
 	
 	@Index ArrayList<Exercise> exercises;
 	@Index ArrayList<String> keywords;
-	
-	@Index int currentExerciseIndex;
 
 	public Workout() {
 		
 	}
 	
-	public Workout(String workoutName, String description, BufferedImage image, ArrayList<Exercise> exercises,
-			int currentExerciseIndex) {
+	public Workout(String workoutName, String description, BufferedImage image, ArrayList<Exercise> exercises) {
 		this.workoutName = workoutName;
 		this.description = description;
 		//this.image = image;
 		this.exercises = exercises;
-		this.currentExerciseIndex = currentExerciseIndex;
 		Storage.getInstance().saveWorkout(this);
 	}
 	
@@ -45,35 +41,21 @@ public class Workout {
 		this.workoutName = workoutName;
 		this.description = description;
 		this.exercises = exercises;
-		this.currentExerciseIndex = currentExerciseIndex;
 		Storage.getInstance().saveWorkout(this);
 	}
 	
-	public Workout(String workoutName, String description, ArrayList<Exercise> exercises, ArrayList<String> keywords,
-			int currentExerciseIndex) {
+	public Workout(String workoutName, String description, ArrayList<Exercise> exercises, ArrayList<String> keywords) {
 		this.keywords = keywords;
 		this.workoutName = workoutName;
 		this.description = description;
 		this.exercises = exercises;
-		this.currentExerciseIndex = currentExerciseIndex;
 		Storage.getInstance().saveWorkout(this);
 	}
 	
 	public Workout(String workoutName, ArrayList<Exercise> exercises) {
 		this.workoutName = workoutName;
-		this.description = "";
 		this.exercises = exercises;
-		this.currentExerciseIndex = 0;
 		Storage.getInstance().saveWorkout(this);
-	}
-
-	public Exercise getNextExercise() {
-		if(currentExerciseIndex < exercises.size()) {
-			currentExerciseIndex++;
-			return exercises.get(currentExerciseIndex);
-		} else {
-			return exercises.get(currentExerciseIndex);
-		}
 	}
 	
 	public Exercise getExerciseNum(int index) {
@@ -110,14 +92,6 @@ public class Workout {
 
 	public void setExercises(ArrayList<Exercise> exercises) {
 		this.exercises = exercises;
-	}
-
-	public int getCurrentExerciseIndex() {
-		return currentExerciseIndex;
-	}
-
-	public void setCurrentExerciseIndex(int currentExerciseIndex) {
-		this.currentExerciseIndex = currentExerciseIndex;
 	}
 	
 	public int getNumOfExercises() {

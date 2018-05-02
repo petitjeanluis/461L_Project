@@ -6,8 +6,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
+import java.util.concurrent.locks.*;
 
 import javax.imageio.ImageIO;
 
@@ -18,6 +20,7 @@ public class Storage {
 	private static Storage storage;
 	private static ArrayList<Exercise> exercises;
 	private static ArrayList<Workout> workouts;
+	private HashMap<String, ReentrantLock> hash = new HashMap<String,ReentrantLock>();
 	
 	static {
 			ObjectifyService.register(Exercise.class);
@@ -83,7 +86,6 @@ public class Storage {
 		ofy().clear();
 		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
-		//System.out.println("Storage: LoadClient" + clients.toString());
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(user.getEmail())) {
 				//ofy().delete().entity(c).now();
@@ -99,6 +101,25 @@ public class Storage {
 		
 		return newClient;
 
+	}
+	
+	public Client loadClientSync(User user) {
+		ReentrantLock lock = null;
+		if(hash.containsKey(user.getEmail())) {
+			//lock has already been created for this user
+			lock = hash.get(user.getEmail());
+		} else {
+			lock = new ReentrantLock();
+			hash.put(user.getEmail(), lock);
+		}
+		//lock is now held
+		lock.lock();
+		return loadClient(user);
+	}
+	
+	public void saveClientSync(User user, Client c) {
+		saveClient(c);
+		hash.get(user.getEmail()).unlock();
 	}
 	
 	public Client findFriend(String name) {
@@ -184,4 +205,50 @@ public class Storage {
 		return null;
 	}
 	
+	public ArrayList<String> getAllClientsEmails() {
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
+		List<Client> clients = ofy().load().type(Client.class).list();
+		
+		ArrayList<String> emailList = new ArrayList<String>();
+		for(Client c: clients) {
+			emailList.add(c.getEmail());
+		}
+		
+		return emailList;
+	}
+	
+	public Workout getFriendsWorkoutFromEmail(String email, String friendsWorkout) {
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
+		List<Client> clients = ofy().load().type(Client.class).list();
+		
+		for(Client c: clients) {
+			if(c.getEmail().equals(email)) {
+				for(Workout w: c.getCustomWorkouts()) {
+					if(w.getWorkoutName().equals(friendsWorkout)) {
+						return new Workout(friendsWorkout, w.getExercises());
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	public ArrayList<String> getFriendsWorkoutNamesFromEmail(String email) {
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
+		List<Client> clients = ofy().load().type(Client.class).list();
+		
+		ArrayList<String> result = new ArrayList<String>();
+		
+		for(Client c: clients) {
+			if(c.getEmail().equals(email)) {
+				for(Workout w: c.getCustomWorkouts()) {
+					result.add(w.getWorkoutName());
+				}
+			}
+		}
+		return result;
+	}
 }

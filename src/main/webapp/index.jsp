@@ -15,6 +15,7 @@ Client c = storage.loadClient(user);
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
+		<link rel="stylesheet" href="style/style.css">
 		<link rel="stylesheet" href="style/index_style.css">
 		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
 		<script src="js/canvasChart.js" type="text/javascript"></script>
@@ -22,11 +23,9 @@ Client c = storage.loadClient(user);
 			<%
 			String exerciseName = request.getParameter("exerciseName");
 			ExerciseData data = c.getData(exerciseName);
-			//System.out.println("index.jsp datasize" + data.getDataPoints().size());
 			if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 			$(document).ready(function() {
 				var chart = {
-					<%System.out.println("index.jsp: Chart " + exerciseName + data.getExerciseName());%>
 					title: "<%=data.getExerciseName()%>",
 					xLabel: 'Times Exercised',
 					yLabel: 'Amount of Weight',

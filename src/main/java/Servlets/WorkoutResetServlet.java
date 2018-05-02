@@ -19,9 +19,14 @@ public class WorkoutResetServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
+        
+        c.resetSets();
         
         c.setCurrentWorkout(null);
+        c.setCurrentExerciseIndex(-1);
+        
+        storage.saveClientSync(user, c);
         
         resp.sendRedirect("index.jsp");
 	}
@@ -33,9 +38,14 @@ public class WorkoutResetServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
+        
+        c.resetSets();
         
         c.setCurrentWorkout(null);
+        c.setCurrentExerciseIndex(-1);
+        
+        storage.saveClientSync(user, c);
         
         resp.sendRedirect("index.jsp");
 	}

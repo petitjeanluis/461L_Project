@@ -23,25 +23,24 @@ public class WorkoutServlet extends HttpServlet {
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
         Exercise currentExercise = storage.getExercise(exerciseName);
         
         int reps = Integer.parseInt(req.getParameter("reps"));
         int weight = Integer.parseInt(req.getParameter("weight"));
-        int set = Integer.parseInt(req.getParameter("set"));
         
-        System.out.println("WorkoutServlet: weight" + weight + " reps " + 
+        /*System.out.println("WorkoutServlet: weight" + weight + " reps " + 
         		+ reps + " exerciseName " + exerciseName);
         
-        DataPoint d = new DataPoint(weight, reps, set, new Date());
+        System.out.println("WorkoutServlet" + set);*/
         
-        if(set == currentExercise.getStartingSets()) {
-        	c.getCurrentWorkout().setCurrentExerciseIndex(c.getCurrentWorkout().getCurrentExerciseIndex()+1);
-        }
+        DataPoint d = new DataPoint(weight, reps, c.getSet(currentExercise), new Date());
         
         c.updateExerciseData(currentExercise, d);
+        
+        storage.saveClientSync(user, c);
         
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");

@@ -50,27 +50,42 @@ public class ExerciseData {
 	
 	public void addDataPoint(DataPoint dataPoint) {
 		//this is code to test the graph NOT final code
-		data.add(dataPoint);
+		data.add( dataPoint);
 		
 		//below is the correct code
 		/*if(data.size()>0) {
-			if(data.get(data.size()-1).getDate().equals(dataPoint.getDate())) {
-				data.set(data.size()-1, dataPoint);
+			if(sameDate(data.get(data.size()-1).getDate(),dataPoint.getDate())) {
+				data.get(data.size()-1).updateDataPoint(dataPoint); 
 			} else {
 				data.add(dataPoint);
 			}
 		} else {
 			data.add(dataPoint);
 		}*/
+		
 	}
 	
 	public int getRepsBasedOnHistory() {
+		if(data.size()==0) {
+			return exercise.getStartingReps();
+		}
 		return data.get(data.size()-1).getReps();
 	}
 	
 	public int getSetsBasedOnHistory() {
-		System.out.print("ExerciseData: getSetsBasedOnHistory: exercise.getStartingSets: " + exercise.getStartingSets());
-		return (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets();
+
+
+		if(data.size() == 0) {
+			return 1;
+		} else {
+			return data.get(data.size()-1).getSets();
+		}
+		/*for(DataPoint p: data) {
+			System.out.println("DataPoints" + p.getSets());
+		}
+		System.out.println("ExerciseData: getSetsBasedOnHistory: "+exercise.getName() +".getSets: " + (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets());
+		System.out.println("ExerciseData: getSetsBasedOnHistory: " + data.get(data.size()-1).getSets() + data.get(data.size()-2).getWeight());
+		System.out.println("ExerciseData: " + exercise.getName() + ", current set: " + data.get(data.size()-1).getSets());*/
 	}
 	
 	public int getWeightBasedOnHistory() {
@@ -111,5 +126,23 @@ public class ExerciseData {
 			}
 		}
 		return result;
+	}
+	
+	public void resetSet() {
+		if (data.size()> 0) {
+			DataPoint p = data.get(data.size()-1);
+			p.resetSet();
+		}
+	}
+	
+	public void updateSet(int currentSet) {
+		if (data.size()> 0) { 
+			DataPoint p = data.get(data.size()-1);
+			p.setSet(currentSet);
+		}
+	}
+	
+	public boolean sameDate (Date d1, Date d2) {
+		return (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDay() == d2.getDay());
 	}
 }

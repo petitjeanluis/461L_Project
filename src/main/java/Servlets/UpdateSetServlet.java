@@ -1,8 +1,10 @@
 package Servlets;
 
 import java.io.IOException;
-import java.util.*;
-import javax.servlet.http.*;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -10,12 +12,10 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import Database.Client;
 import Database.Storage;
-import Database.Workout;
 
-public class WorkoutListServlet extends HttpServlet{
+public class UpdateSetServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -24,15 +24,15 @@ public class WorkoutListServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
         
-        String workoutName = req.getParameter("workoutName");
-        Workout currentWorkout = c.getWorkoutFromName(workoutName);
-        c.setCurrentWorkout(currentWorkout);
-        c.setCurrentExerciseIndex(0);
+        String exerciseName = req.getParameter("name");
+        int currentSet = Integer.parseInt(req.getParameter("set"));
         
-        storage.saveClient(c);
+        c.updateSetForExercise(storage.getExercise(exerciseName), currentSet);
         
-        resp.sendRedirect("/workout.jsp");
+        storage.saveClientSync(user, c);
+        System.out.println("UpdateSetServlet + set: " + currentSet);
 	}
+	
 }

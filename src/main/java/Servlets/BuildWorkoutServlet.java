@@ -41,6 +41,7 @@ public class BuildWorkoutServlet extends HttpServlet{
         Workout customWorkout = new Workout(workoutName, exercises);
         client.addCustomWorkout(customWorkout);
         client.setCurrentWorkout(customWorkout);
+        client.setCurrentExerciseIndex(0);
         
         storage.saveClient(client);
         

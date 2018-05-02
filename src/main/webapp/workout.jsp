@@ -26,7 +26,7 @@ Workout workout = client.getCurrentWorkout();
 //Workout workout = Storage.getInstance().getAllWorkouts().get(0);
 
 int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
-int currentExerciseIndex = workout.getCurrentExerciseIndex();
+int currentExerciseIndex = client.getCurrentExerciseIndex(); 
 String workoutName = workout.getWorkoutName();// add name of workout to GUI
 %>
 <html lang="en">
@@ -66,7 +66,6 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
-                        <%System.out.println("workout.jsp: exercise: " + workout.getExercises().toString());%>
                           <img src="/img/<%=workout.getExerciseNum(currentExerciseIndex).getName() %>-1.jpg" alt="Workout 1" width= "600" height="500" id="image1" class="images">
                         </div>
 
@@ -164,6 +163,9 @@ for(int i = 0; i < numExercises; i++){
                         </div>
 <%
 id++;}%>                  
+                    </div>
+                    <div class="footer">
+                    	<button class="finish-btn" onclick="ajaxFinishWorkout()">Finish</button>
                     </div>
                 </div>
             </div>

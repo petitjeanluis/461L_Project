@@ -8,31 +8,25 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import Database.Client;
-import Database.Storage;
-import Database.Workout;
+import Database.*;
 
-public class WorkoutListServlet extends HttpServlet{
+public class AddFriendsWorkoutServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
+
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-        
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client client = storage.loadClientSync(user);
         
-        String workoutName = req.getParameter("workoutName");
-        Workout currentWorkout = c.getWorkoutFromName(workoutName);
-        c.setCurrentWorkout(currentWorkout);
-        c.setCurrentExerciseIndex(0);
+        String email = req.getParameter("email");
+        String workout = req.getParameter("workout");
+        client.addFriendsWorkout(email, workout);
         
-        storage.saveClient(c);
-        
-        resp.sendRedirect("/workout.jsp");
+        storage.saveClientSync(user, client);
 	}
 }
