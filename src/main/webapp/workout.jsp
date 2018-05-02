@@ -36,7 +36,7 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
 		<script src="js/workout.js"></script>
 	</header>
     <body>
-        <nav class="navbar navbar-inverse">
+    	<nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
@@ -45,6 +45,9 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li class="active"><a href="#">Current Workout</a></li>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
