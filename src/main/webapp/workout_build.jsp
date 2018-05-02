@@ -17,7 +17,7 @@ Client c = storage.loadClient(user);
 		<script src="js/build.js"></script>
 	</header>
     <body>
-        <nav class="navbar navbar-inverse">
+    	<nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
@@ -26,6 +26,11 @@ Client c = storage.loadClient(user);
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li class="active"><a href="#">Build Workout</a></li>
+       		  <%if(c.getCurrentWorkout() != null) { %>
+              <li><a href="workout.jsp">Current Workout</a></li>
+              <%} %>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
@@ -34,7 +39,7 @@ Client c = storage.loadClient(user);
             </div>
           </div>
         </nav>
-		
+ 
 		<div class="container">
             <div class="row">
                 <div class="col-xs-6">

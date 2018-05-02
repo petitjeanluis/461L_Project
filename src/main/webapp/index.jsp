@@ -5,11 +5,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
-<%UserService userService = UserServiceFactory.getUserService(); 
+<%
+UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
-//c.populateFakeData();
 %>
 
 <html lang="en">
@@ -27,10 +27,10 @@ Client c = storage.loadClient(user);
 			$(document).ready(function() {
 				var chart = {
 					title: "<%=data.getExerciseName()%>",
-					xLabel: 'Times Exercised',
+					xLabel: '',
 					yLabel: 'Amount of Weight',
-					labelFont: '19pt Arial',
-					dataPointFont: '10pt Arial',
+					labelFont: '19pt Roboto Slab',
+					dataPointFont: '10pt Roboto Slab',
 					renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
 					dataPoints: [
 						<% 
@@ -49,10 +49,9 @@ Client c = storage.loadClient(user);
 				CanvasChart.render('canvas', chart);
 			});	
 			
-			<%} else {
-				%> 
-				<h4>You need to do more exercises in order for us to create your progress graph</h4> <%
-			}%>
+			<%} else {%> 
+				<h4>You need to do more exercises in order for us to create your progress graph</h4>
+			<%}%>
 		</script> 
 	</header>
     <body>
@@ -65,8 +64,11 @@ Client c = storage.loadClient(user);
               <li class="active"><a href="#">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <%if(c.getCurrentWorkout() != null) { %>
+              <li><a href="workout.jsp">Current Workout</a></li>
+              <%} %>
               <li><a href="map.jsp">Find A Gym</a></li>
-              <li><a href="geocoding.jsp">Lol</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
