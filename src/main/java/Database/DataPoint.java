@@ -81,6 +81,5 @@ public class DataPoint {
 		date = p.getDate();
 		reps = p.getReps();
 		weight = p.getWeight();
-		sets = p.getSets();
 	}
 }

@@ -30,29 +30,17 @@ public class WorkoutServlet extends HttpServlet {
         
         int reps = Integer.parseInt(req.getParameter("reps"));
         int weight = Integer.parseInt(req.getParameter("weight"));
-        int set = Integer.parseInt(req.getParameter("set"));
-        
-        if(set == 1) {
-        	set = 2;
-        } else if (set == 2) {
-        	set = 3;
-        } else {
-        	set = 1;
-        }
         
         /*System.out.println("WorkoutServlet: weight" + weight + " reps " + 
         		+ reps + " exerciseName " + exerciseName);
         
         System.out.println("WorkoutServlet" + set);*/
         
-        System.out.println("Sets: " + set);
-        
-        DataPoint d = new DataPoint(weight, reps, set, new Date());
+        DataPoint d = new DataPoint(weight, reps, new Date());
         
         c.updateExerciseData(currentExercise, d);
         
         storage.saveClient(c);
-        System.out.println("WorkoutServlet Done");
         
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
