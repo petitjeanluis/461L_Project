@@ -61,15 +61,6 @@ public class Client {
 		Storage.getInstance().saveClient(this);
 	}
 	
-	/*public void addCustomWorkout(Workout workout) {
-		customWorkouts.add(workout);
-		Storage.getInstance().saveClient(this);
-	}*/
-	
-	/*public void addPastWorkout(Workout workout) {
-		pastWorkouts.add(workout);
-	}*/
-	
 	public int getSet(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
 			
