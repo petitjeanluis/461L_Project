@@ -28,7 +28,6 @@ public class UpdateSetServlet extends HttpServlet {
         
         String exerciseName = req.getParameter("name");
         int currentSet = Integer.parseInt(req.getParameter("set"));
-        
         c.updateSetForExercise(storage.getExerciseFromName(exerciseName), currentSet);
         
         storage.saveClientSync(user, c);
