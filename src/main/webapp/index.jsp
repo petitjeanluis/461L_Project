@@ -8,6 +8,10 @@
 <%
 UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
+if(user == null) {
+	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	return;
+}
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
 %>
@@ -52,7 +56,7 @@ Client c = storage.loadClient(user);
 			
 			<%} else {%> 
 				<h4>You need to do more exercises in order for us to create your progress graph</h4>
-			<%}%>
+			<%}%> 
 		</script> 
 	</header>
     <body>
@@ -91,15 +95,6 @@ Client c = storage.loadClient(user);
 			</div>
 			
 			<div class ="row">
-				<%      
-					if(user == null) {
-						%><br><br><h1 align="center">You need to login to continue!</h1><br>
-						<a href= "<%=userService.createLoginURL(request.getRequestURI()) %>">
-                			<button class="btn navbar-btn login-btn">Login</button>
-                		</a>
-                	<%
-                	} else {
-		        	%>
 					</div>
 					<!--  This is going to be the graph of progress -->
 					<%
@@ -171,9 +166,7 @@ Client c = storage.loadClient(user);
 			  					<div class="panel-text">Build Workout</div>
 							</div>
 						</div>
-					</div> <%
-					
-					}%>
+					</div>
 				<div class="row">
 					<%if(c.getAllowSharing()){%>
 					<h4>You have allowed sharing! Your friends can now use your workouts!</h4>

@@ -11,6 +11,7 @@ User user = userService.getCurrentUser();
 
 if(user == null) {
 	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	return;
 }
 
 Storage storage = Storage.getInstance();
