@@ -15,7 +15,6 @@ Client c = storage.loadClient(user);
 <html lang="en">
     <header>
 		<jsp:include page="header.jsp"/>
-		<link rel="stylesheet" href="style/style.css">
 		<link rel="stylesheet" href="style/index_style.css">
 		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
 		<script src="js/canvasChart.js" type="text/javascript"></script>
@@ -28,7 +27,7 @@ Client c = storage.loadClient(user);
 				var chart = {
 					title: "<%=data.getExerciseName()%>",
 					xLabel: '',
-					yLabel: 'Amount of Weight',
+					yLabel: 'Weight',
 					labelFont: '19pt Roboto Slab',
 					dataPointFont: '10pt Roboto Slab',
 					renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
@@ -69,24 +68,14 @@ Client c = storage.loadClient(user);
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="btn navbar-btn">Logout</button>
+                	<button class="btn login-btn navbar-btn">Logout</button>
                 </a>
             </div>
           </div>
         </nav>
         <div class="container">
-        	<div class="row">
-	  			<div class="col-xs-4">
-	  			</div>
-	  			<div class="col-xs-4">
-	  				<h1 align="center">Simply Stronger</h1>
-	  				<h5 align="center">the new way to get fit.</h5>
-	  			</div>
-	  			<div class="col-xs-4">
-	  			</div>
-			</div>
 			
-			<div class ="row">
+			<div class ="row first-row">
 				<%      
 					if(user == null) {
 						%><br><br><h1 align="center">You need to login to continue!</h1><br>
@@ -96,6 +85,34 @@ Client c = storage.loadClient(user);
                 	<%
                 	} else {
 		        	%>
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4">
+							<div class="panel panel-default button-animation" id="setup" onclick="location.href='/workout_list.jsp'" style="width: 50%; margin-left:auto;margin-right:-90px">
+			  					<div class="panel-text">Setup Workout</div>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="panel panel-default button-animation" id="resume" onclick="location.href='/workout.jsp'" style="width: 50%; margin:auto;">
+			  					<div class="panel-text">Resume Workout</div>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="panel panel-default button-animation" id="build" onclick="location.href='/workout_build.jsp'" style="width: 50%; margin-left:-90px">
+			  					<div class="panel-text">Build Workout</div>
+							</div>
+						</div>
+						<%} else { %>
+						<div class="col-xs-6">
+							<div class="panel panel-default button-animation" id="start" onclick="location.href='/workout_list.jsp'" style="width: 50%; margin-left:auto;margin-right:10px">
+			  					<div class="panel-text">Setup Workout</div> 
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="panel panel-default button-animation" id="build" onclick="location.href='/workout_build.jsp'" style="width: 50%; margin-left:10px;">
+			  					<div class="panel-text">Build Workout</div>
+							</div>
+						</div>
+						<%} %>
 					</div>
 					<!--  This is going to be the graph of progress -->
 					<%
@@ -114,9 +131,12 @@ Client c = storage.loadClient(user);
 							}
 						}
 						if(count > 0) {%>
-						<h5 align = "center">Select other exercises from the dropdown menu to see your other graphs</h5>
+						<h5 align = "center">Select Exercise To Plot</h5>
 						<form action = "/index.jsp" align = "center">
-							<input list="exercises" name="exerciseName">
+						<%
+						String val = exerciseData.get(0).getExerciseName();
+						%>
+							<input list="exercises" name="exerciseName" value="<%=val%>">
 							<datalist id="exercises">
 								<%
 								for(ExerciseData e: exerciseData) {
@@ -141,34 +161,8 @@ Client c = storage.loadClient(user);
 					<div>
 						<h4 align="center">You don't have enough data points to graph for <%=exerciseName %></h4>
 					</div>
-					<%}}%>
-					<div class ="row" >
-						<%if(c.getCurrentWorkout() != null) { %>
-						<div class="col-xs-4" onclick="location.href='/workout_list.jsp'">
-						<%} else { %>
-						<div class="col-xs-6" onclick="location.href='/workout_list.jsp'">
-						<%} %>
-							<div class="panel panel-default text-center button-animation" id="setup">
-			  					<div class="panel-text">Setup Workout</div>
-							</div>
-						</div>	
-						<%if(c.getCurrentWorkout() != null) { %>
-						<div class="col-xs-4" onclick="location.href='/workout.jsp'">				
-							<div class="panel panel-default text-center button-animation" id="setup">
-			  					<div class="panel-text">Resume Workout</div>
-							</div>
-						</div><%} %>
-						<%if(c.getCurrentWorkout() != null) { %>
-						<div class="col-xs-4" onclick="location.href='/workout_build.jsp'">
-						<%} else { %>
-						<div class="col-xs-6" onclick="location.href='/workout_build.jsp'">
-						<%} %>			
-							<div class="panel panel-default text-center button-animation" id="start">
-			  					<div class="panel-text">Build Workout</div>
-							</div>
-						</div>
-					</div> <%
-					
+					<%}}
+	
 					}%>
         </div>
     </body>

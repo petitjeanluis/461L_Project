@@ -13,7 +13,7 @@
         chartHeight = canvas.getAttribute('height');
         chartWidth = canvas.getAttribute('width');
         xMax = chartWidth - (margin.left + margin.right);
-        yMax = chartHeight - (margin.top + margin.bottom);
+        yMax = chartHeight - margin.bottom/2;
         ratio = yMax / maxYValue;
         ctx = canvas.getContext("2d");
         renderChart();

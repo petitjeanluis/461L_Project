@@ -1,11 +1,12 @@
 .panel {
 	background-color: #C4C4C4;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
 }
 
 .panel-text {
 	display: inline-block;
-	margin: 10px 10px;
-	
 }
 
 .button-animation:hover {
@@ -13,8 +14,20 @@
 }
 
 canvas {
-	width: 70%;
 	margin-left: 10%;
 	margin-right: auto;
+	margin-bottom: 10px;
 	display: block;
+}
+
+input::-webkit-calendar-picker-indicator {
+  opacity: 100;
+}
+
+a {
+	color: inherit;
+}
+
+.first-row {
+	margin-top:20px;
 }

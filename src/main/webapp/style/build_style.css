@@ -1,18 +1,37 @@
+
 .workout-name {
-	width: 240px;
+	display: inline-block;
+}
+
+.workout-name input{
+	width: 400px;
     border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height:35px;
+}
+
+.create-btn {
+	width: 80px;
+	height: 32px;
+	margin-left: 20px;
+	margin-top:0px;
+	margin-bottom: auto;
+	display: inline-block;
 }
 
 .search input {
-    width: 240px;
+    width: 500px;
     text-indent: 24px;
     border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .search .fa-search {
     position: absolute;
     font-size: 20px;
-    top: 7px;
+    top: 16px;
     left: 24px;
 }
 
@@ -33,6 +52,7 @@
 
 .left-arrow {
     left: 45%;
+    margin-bottom: 20px;
 }
 
 .right-arrow {
@@ -44,21 +64,16 @@ a {
     color: inherit;
 }
 
+ul {
+	padding: 0px;
+}
+
 .workout-list {
     width: inherit;
     height: inherit;
     list-style: none;
-    overflow: scroll;
-}
-
-.workout-list li {
-    width: auto;
-    height: 40px;
-}
-
-.create-btn {
-    float: right;
-    margin-top: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .active {
@@ -68,4 +83,10 @@ a {
 
 li {
     list-style: none;
+    text-indent: 10px;
+	border-radius: 10px;
+	width: auto;
+    height: 40px;
+    line-height: 40px;
 }
+

@@ -23,7 +23,7 @@
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="btn navbar-btn">Logout</button>
+                	<button class="btn login-btn navbar-btn">Logout</button>
                 </a>
             </div>
           </div>
@@ -95,7 +95,7 @@
                 </div>
 			</div>
 			<div class="row">
-				<button class="start-btn" onclick="start()">Start</button>
+				<button class="start-btn btn" onclick="start()">Start</button>
 			</div>
 		</div>
 		<form id="workout-form" action="/workoutlistservlet" method="post" hidden>

@@ -29,7 +29,7 @@ Client c = storage.loadClient(user);
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="btn navbar-btn">Logout</button>
+                	<button class="btn login-btn navbar-btn">Logout</button>
                 </a>
             </div>
           </div>
@@ -38,10 +38,10 @@ Client c = storage.loadClient(user);
 		<div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    <h1>Exercises</h1>
+                    <h1 align="center">Exercises</h1>
                 </div>
                 <div class="col-xs-6">
-                    <h1>Workout</h1>
+                    <h1 align="center">Workout</h1>
                 </div>
             </div>
             <div class="row">
@@ -55,7 +55,7 @@ Client c = storage.loadClient(user);
                     <div class="workout-name">
                         <input class="form-control" type="text" id="workoutNombre" placeholder="Workout name...">
                     </div>
-                    <button class="create-btn" onclick="create()">Create</button>
+                    <button class="create-btn btn" onclick="create()">Create</button>
                 </div>
             </div>
             <div class="row">
@@ -82,8 +82,7 @@ Client c = storage.loadClient(user);
             </div>
             <div class="row">
                 <a onclick="removeItem()"><i class="fa fa-arrow-left left-arrow"></i></a>
-                <a onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>
-                
+                <a onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>    
             </div>
 		</div>
 		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>

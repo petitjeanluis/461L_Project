@@ -7,8 +7,21 @@
 }
 
 .search {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.search  input{
 	width: 500px;
     border-radius: 10px;
+    text-indent: 24px;
+}
+
+.search .fa-search {
+    position: absolute;
+    font-size: 20px;
+    top: 16px;
+    left: 24px;
 }
 
 a {
@@ -18,14 +31,23 @@ a {
 
 li {
     list-style: none;
-    height: 40px;
+    vertical-align: middle;
+    height:40px;
+    line-height: 40px;
+    text-indent: 10px;
+    border-radius: 10px;
+}
+
+ul {
+	padding: 0px;
 }
 
 .workout-list {
     width: inherit;
     height: inherit;
     list-style: none;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .active {
@@ -38,5 +60,6 @@ li {
     position: absolute;
     font-size: 18px;
     margin-top: 20px;
+    margin-bottom: 20px;
     left: 46%;
 }

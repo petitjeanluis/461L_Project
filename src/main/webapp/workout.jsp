@@ -48,7 +48,7 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="btn navbar-btn">Logout</button>
+                	<button class="login-btn navbar-btn">Logout</button>
                 </a>
             </div>
           </div>
