@@ -36,7 +36,7 @@ public class WorkoutServlet extends HttpServlet {
         
         System.out.println("WorkoutServlet" + set);*/
         
-        DataPoint d = new DataPoint(weight, reps, new Date());
+        DataPoint d = new DataPoint(weight, reps, c.getSet(currentExercise), new Date());
         
         c.updateExerciseData(currentExercise, d);
         

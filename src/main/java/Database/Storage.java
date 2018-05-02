@@ -86,7 +86,6 @@ public class Storage {
 		ofy().clear();
 		ofy().load().type(Client.class).first().now();
 		List<Client> clients = ofy().load().type(Client.class).list();
-		//System.out.println("Storage: LoadClient" + clients.toString());
 		for(Client c: clients) {
 			if(c.getUser().getEmail().equals(user.getEmail())) {
 				//ofy().delete().entity(c).now();
@@ -206,4 +205,50 @@ public class Storage {
 		return null;
 	}
 	
+	public ArrayList<String> getAllClientsEmails() {
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
+		List<Client> clients = ofy().load().type(Client.class).list();
+		
+		ArrayList<String> emailList = new ArrayList<String>();
+		for(Client c: clients) {
+			emailList.add(c.getEmail());
+		}
+		
+		return emailList;
+	}
+	
+	public Workout getFriendsWorkoutFromEmail(String email, String friendsWorkout) {
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
+		List<Client> clients = ofy().load().type(Client.class).list();
+		
+		for(Client c: clients) {
+			if(c.getEmail().equals(email)) {
+				for(Workout w: c.getCustomWorkouts()) {
+					if(w.getWorkoutName().equals(friendsWorkout)) {
+						return new Workout(friendsWorkout, w.getExercises());
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	public ArrayList<String> getFriendsWorkoutNamesFromEmail(String email) {
+		ofy().clear();
+		ofy().load().type(Client.class).first().now();
+		List<Client> clients = ofy().load().type(Client.class).list();
+		
+		ArrayList<String> result = new ArrayList<String>();
+		
+		for(Client c: clients) {
+			if(c.getEmail().equals(email)) {
+				for(Workout w: c.getCustomWorkouts()) {
+					result.add(w.getWorkoutName());
+				}
+			}
+		}
+		return result;
+	}
 }
