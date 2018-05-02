@@ -25,13 +25,15 @@
       
       //https://maps.googleapis.com/maps/api/js?key=AIzaSyBLm9hpR1kCLdc5R9Z6Kgy2GXip2U3B0fs&libraries=places&callback=initAutocomplete
 	  //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAq7kNUlpz-ljjD0gD1Cm5CD1kdrjwvUdU
-
+	  var infowindow;
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 30.2672, lng: -97.7431},
           zoom: 4,
           mapTypeId: 'roadmap'
         });
+        
+        infowindow = new google.maps.InfoWindow();
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
@@ -144,9 +146,10 @@
       function callback(results, status) {
     	  if(status == google.maps.places.PlacesServiceStatus.OK) {
     		  var map = new google.maps.Map(document.getElementById('map'), {
-    			 center: {lat: 30.2672, lng: -97.7431},
-    			 zoom: 15 
+    			 center: results[0].geometry.location,
+    			 zoom: 14 
     		  });
+    		  
     		  for(var i = 0; i < results.length; i++) {
     			  var place = results[i];
     			  console.log(place.name);
@@ -155,6 +158,13 @@
     				  map: map,
     				  title: place.name
     			  });
+    			  //console.log(place);
+    			  //var photo = place.reference;
+    			  google.maps.event.addListener(marker, 'click', function() {
+    	              infowindow.setContent(this.title);
+    	              infowindow.open(map,this);
+    				  //window.open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photo+"&key=AIzaSyC1mQG3JvL53Vtdxhz-MJLTd6H2odupgDc");
+    	          });
     			  marker.setMap(map);
     		  }
     	  }
