@@ -24,14 +24,16 @@ public class WorkoutListServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
+        Client c = storage.loadClientSync(user);
+        c.resetSets();
         
         String workoutName = req.getParameter("workoutName");
         Workout currentWorkout = c.getWorkoutFromName(workoutName);
+        
         c.setCurrentWorkout(currentWorkout);
         c.setCurrentExerciseIndex(0);
         
-        storage.saveClient(c);
+        storage.saveClientSync(user, c);
         
         resp.sendRedirect("/workout.jsp");
 	}

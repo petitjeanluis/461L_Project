@@ -26,22 +26,17 @@ public class WorkoutServlet extends HttpServlet {
         Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
-        Exercise currentExercise = storage.getExercise(exerciseName);
-        
         int reps = Integer.parseInt(req.getParameter("reps"));
         int weight = Integer.parseInt(req.getParameter("weight"));
         
-        /*System.out.println("WorkoutServlet: weight" + weight + " reps " + 
-        		+ reps + " exerciseName " + exerciseName);
-        
-        System.out.println("WorkoutServlet" + set);*/
-        
+        Exercise currentExercise = storage.getExerciseFromName(exerciseName);
         DataPoint d = new DataPoint(weight, reps, c.getSet(currentExercise), new Date());
         
         c.updateExerciseData(currentExercise, d);
         
         storage.saveClientSync(user, c);
         
+        //response that the ajax can receive to confirm successful completion
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write("Data Successfully Stored");

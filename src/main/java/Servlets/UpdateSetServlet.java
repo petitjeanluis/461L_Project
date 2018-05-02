@@ -28,11 +28,9 @@ public class UpdateSetServlet extends HttpServlet {
         
         String exerciseName = req.getParameter("name");
         int currentSet = Integer.parseInt(req.getParameter("set"));
-        
-        c.updateSetForExercise(storage.getExercise(exerciseName), currentSet);
+        c.updateSetForExercise(storage.getExerciseFromName(exerciseName), currentSet);
         
         storage.saveClientSync(user, c);
-        System.out.println("UpdateSetServlet + set: " + currentSet);
 	}
 	
 }

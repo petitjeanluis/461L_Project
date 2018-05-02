@@ -27,8 +27,7 @@ public class UpdateCurrentExerciseIndexServlet extends HttpServlet {
         Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
-        
-        c.updateCurrentExerciseIndex(storage.getExercise(exerciseName));
+        c.updateCurrentExerciseIndex(storage.getExerciseFromName(exerciseName));
         
         storage.saveClientSync(user, c);
 	}

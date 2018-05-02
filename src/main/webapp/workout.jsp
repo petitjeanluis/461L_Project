@@ -15,19 +15,13 @@ if(user == null) {
 }
 
 Storage storage = Storage.getInstance();
-//System.out.println(user);
 Client client =  storage.loadClient(user);
-//System.out.println("workout.jsp: clientName " + client.getUser().getEmail());
 
-//will be future code
 Workout workout = client.getCurrentWorkout();
-//System.out.println("workout.jsp: currentWorkout " + workout.getWorkoutName());
-//code for testing
-//Workout workout = Storage.getInstance().getAllWorkouts().get(0);
-
-int numExercises = workout.getNumOfExercises();// from db, dummy limited to 3 max
+int numExercises = workout.getNumOfExercises();
 int currentExerciseIndex = client.getCurrentExerciseIndex(); 
-String workoutName = workout.getWorkoutName();// add name of workout to GUI
+String workoutName = workout.getWorkoutName();
+
 %>
 <html lang="en">
     <header>
@@ -36,7 +30,7 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
 		<script src="js/workout.js"></script>
 	</header>
     <body>
-        <nav class="navbar navbar-inverse">
+    	<nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
@@ -45,6 +39,9 @@ String workoutName = workout.getWorkoutName();// add name of workout to GUI
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li class="active"><a href="#">Current Workout</a></li>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
@@ -94,13 +91,14 @@ int id  = 0;
                     		  
 for(int i = 0; i < numExercises; i++){
 	Exercise exercise = workout.getExerciseNum(i);
-	//System.out.println(exercise.getName());
+	
 	String name = exercise.getName();
 	String description = exercise.getDescription();
+	
 	int set = client.getSet(exercise);
-	//System.out.println(client);
 	int reps = client.getReps(exercise);
 	int weight = client.getWeight(exercise);
+	
 	if(currentExerciseIndex == i) {
 		in = "in";
 	} else {

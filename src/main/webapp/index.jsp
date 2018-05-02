@@ -8,6 +8,12 @@
 <%
 UserService userService = UserServiceFactory.getUserService(); 
 User user = userService.getCurrentUser();
+
+if(user == null) {
+	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	return;
+}
+
 Storage storage = Storage.getInstance();
 Client c = storage.loadClient(user);
 %>
@@ -18,10 +24,12 @@ Client c = storage.loadClient(user);
 		<link rel="stylesheet" href="style/index_style.css">
 		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
 		<script src="js/canvasChart.js" type="text/javascript"></script>
+		<script src="js/index.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			<%
 			String exerciseName = request.getParameter("exerciseName");
 			ExerciseData data = c.getData(exerciseName);
+			
 			if(c != null && data != null && data.getDataPoints().size() >= 3) {%>
 			$(document).ready(function() {
 				var chart = {
@@ -36,7 +44,10 @@ Client c = storage.loadClient(user);
 					ArrayList<DataPoint> d = data.getDataPoints();
 					DataPoint value;
 					SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd");
+					
+					//used if the client has a lot of datapoints
 					int divisor = d.size()/15;
+					
 					for(int i = 0; i < d.size() -1 ; i = i + 1 + divisor) {
 						value = d.get(i);
 						%>{ x: '<%=dateFormat.format(value.getDate()) %>', y: <%=value.getWeight()%> },
@@ -48,10 +59,9 @@ Client c = storage.loadClient(user);
 				CanvasChart.render('canvas', chart);
 			});	
 			
-			<%} else {
-				%> 
-				<h4>You need to do more exercises in order for us to create your progress graph</h4> <%
-			}%>
+			<%} else {%> 
+				<h4>You need to do more exercises in order for us to create your progress graph</h4>
+			<%}%> 
 		</script> 
 	</header>
     <body>
@@ -64,7 +74,11 @@ Client c = storage.loadClient(user);
               <li class="active"><a href="#">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <%if(c.getCurrentWorkout() != null) { %>
+              <li><a href="workout.jsp">Current Workout</a></li>
+              <%} %>
               <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
@@ -74,7 +88,6 @@ Client c = storage.loadClient(user);
           </div>
         </nav>
         <div class="container">
-			
 			<div class ="row first-row">
 				<%      
 					if(user == null) {
@@ -123,13 +136,16 @@ Client c = storage.loadClient(user);
 					</div>
 					<div class = "row">
 						<%
+						//counts how many dataPoints are >= 3 to determine if graph, etc... is displayed
 						int count = 0;
 						ArrayList<ExerciseData> exerciseData = c.getExerciseData();
+						
 						for(ExerciseData e: exerciseData) {
 							if(e.getDataPoints().size() >= 3) {
 								count++;
 							}
 						}
+						
 						if(count > 0) {%>
 						<h5 align = "center">Select Exercise To Plot</h5>
 						<form action = "/index.jsp" align = "center">
@@ -161,9 +177,51 @@ Client c = storage.loadClient(user);
 					<div>
 						<h4 align="center">You don't have enough data points to graph for <%=exerciseName %></h4>
 					</div>
+<<<<<<< HEAD
 					<%}}
 	
 					}%>
+=======
+					<%}}%>
+					<div class ="row" >
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4" onclick="location.href='/workout_list.jsp'">
+						<%} else { %>
+						<div class="col-xs-6" onclick="location.href='/workout_list.jsp'">
+						<%} %>
+							<div class="panel panel-default text-center button-animation" id="setup">
+			  					<div class="panel-text">Setup Workout</div>
+							</div>
+						</div>	
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4" onclick="location.href='/workout.jsp'">				
+							<div class="panel panel-default text-center button-animation" id="setup">
+			  					<div class="panel-text">Resume Workout</div>
+							</div>
+						</div><%} %>
+						<%if(c.getCurrentWorkout() != null) { %>
+						<div class="col-xs-4" onclick="location.href='/workout_build.jsp'">
+						<%} else { %>
+						<div class="col-xs-6" onclick="location.href='/workout_build.jsp'">
+						<%} %>			
+							<div class="panel panel-default text-center button-animation" id="start">
+			  					<div class="panel-text">Build Workout</div>
+							</div>
+						</div>
+					</div>
+				<div class="row">
+					<%if(c.getAllowSharing()){%>
+					<h4>You have allowed sharing! Your friends can now use your workouts!</h4>
+					<%} else { %>
+					<h4>Privacy Toggle (Right now your workouts are private)</h4>
+					<label class="switch">
+  						<input type="checkbox" id = "toggle-switch" onchange="togglePrivacy()">
+  						<span class="slider round"></span>
+					</label>
+					<h4>WARNING: Making workouts public is IRREVERSIBLE!</h4>
+					<%} %>
+				</div>
+>>>>>>> d106070654dc8b597d17cecef74e7031d2a74fc1
         </div>
     </body>
 </html>

@@ -10,15 +10,15 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class HomeServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		//System.out.println("home");
+		
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
         if(user == null) {
+        	//not logged in
         	resp.sendRedirect("home.jsp");
-        	//resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
         } else {
-        	//System.out.println("found a user");
+        	//logged in
         	resp.sendRedirect("index.jsp");
         }
 	}

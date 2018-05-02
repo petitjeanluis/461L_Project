@@ -13,15 +13,14 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class LogoutServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		//System.out.println("home");
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
         if(user == null) {
+        	//logged out - redirecting to home page
         	resp.sendRedirect("home.jsp");
-        	//resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
         } else {
-        	//System.out.println("found a user");
+        	//log user out - will reconnect to here and then redirect to the homepage
         	resp.sendRedirect(userService.createLogoutURL(req.getRequestURI()));
         }
 	}

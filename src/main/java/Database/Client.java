@@ -14,6 +14,7 @@ import com.googlecode.objectify.annotation.Index;
 public class Client {
 	@Id Long id;
 	@Index private User user;
+	@Index boolean allowSharing;
 	
 	@Index private Workout currentWorkout;
 	@Index private int currentExerciseIndex;
@@ -27,38 +28,49 @@ public class Client {
 	
 	//holds data on each individual exercise performed by user
 	@Index private ArrayList<ExerciseData> exerciseData;
-
-
-	//holds log of messages from friends
-	//@Index private ArrayList<String> messageLog;
 	
 	public Client() {
+		//objectify requires there to be a no-arg constructor
 		//can't set user because client has to have a no-arg constructor
 		this.exerciseData = new ArrayList<ExerciseData>();
 		this.customWorkouts = new ArrayList<Workout>();
-		this.friendsWorkouts = new ArrayList<Workout>();
 		this.friendsEmails = new ArrayList<String>();
+		this.friendsWorkouts = new ArrayList<Workout>();
+		
+		allowSharing = false;
 	}
 	
+	//always set user after making the client
 	public void setUser(User user) {
 		this.user = user;
 	}
 	
+	public boolean getAllowSharing() {
+		return allowSharing;
+	}
+	
+	public void toggleAllowSharingTrue() {
+		//sharing can only ever be turned on never off
+		allowSharing = true;
+	}
+	
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
+		//captures whether or not the exercise was able to updated
+		//or if an ExerciseData object will have to be created because
+		//it is the first time for the client to do the exercise
 		boolean updated = false;
-		//System.out.println(exercise + "data: " + data);
-		//System.out.println(user);
+		
 		for(ExerciseData exercises: exerciseData) {
-			//System.out.println("Client: updateExerciseData" + exercises.getExerciseName());
 			if(exercise.getName().compareTo(exercises.getExerciseName()) == 0) {
 				//this is the exercise we want to update
 				exercises.addDataPoint(data);
 				updated = true;
 			} 
 		}
-		//was not available to update
+		
+		//was not available to update because the client has never done the exercise before
 		if (updated == false){
-			//will create a new DataStorage for the exercise
+			//will create a new ExerciseData entry for the new exercise to the Client
 			ExerciseData newDataEntry = new ExerciseData(exercise, data);
 			exerciseData.add(newDataEntry);
 		}
@@ -68,25 +80,29 @@ public class Client {
 	
 	public int getSet(Exercise e) {
 		for(ExerciseData exercises: exerciseData) {
-			
 			if(e.getName().equals(exercises.getExerciseName())) {
-				//System.out.println("Exercsie" + e.getName() + "ExerciseData" + exercises.getExerciseName());
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}
+		//if no exercisedata exists yet then it means that the client has not 
+		//done the exercise yet i.e. the client should start on the first set
 		return 1;
 	}
 	
 	public int getWeight(Exercise e) {
+		//this accounts for some exercises like planks where the weight is not applicable
 		if(e.getStartingWeight() == 0) {
 			return e.getStartingWeight();
 		}
+		
+		
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().equals(exercises.getExerciseName())) {
-				//
 				return exercises.getWeightBasedOnHistory();
 			} 
 		}
+		
+		//if no history then use the default/startingweight
 		return e.getStartingWeight();
 	}
 	
@@ -114,17 +130,18 @@ public class Client {
 	}
 	
 	public int getReps(Exercise e) {
+		//accounts for exercises in which the reps don't matter such as plank
 		if(e.getStartingReps() == 0) {
 			return e.getStartingReps();
 		}
-		//System.out.println("Client:GetReps: " + e.getName());
+		
 		for(ExerciseData exercises: exerciseData) {
-			//System.out.println("Client: GetReps: " + e.getName() + "exerciseData " + exercises.getExerciseName());
 			if(e.getName().equals(exercises.getExerciseName())) {
-				//
 				return exercises.getRepsBasedOnHistory();
 			} 
 		}
+		
+		//if no history then using the starting value
 		return e.getStartingReps();
 	}
 	
@@ -145,10 +162,6 @@ public class Client {
 		Storage.getInstance().saveClient(this);
 	}
 
-	/*public ArrayList<Workout> getPastWorkouts() {
-		return pastWorkouts;
-	}*/
-
 	public void addCustomWorkout(Workout workout) {
 		customWorkouts.add(workout);
 	}
@@ -159,12 +172,14 @@ public class Client {
 	
 	public ArrayList<Workout> getFriendAndCustomWorkout() {
 		ArrayList<Workout> result = new ArrayList<Workout>();
+		
 		for(Workout w: customWorkouts) {
 			result.add(w);
 		}
 		for(Workout w: friendsWorkouts) {
 			result.add(w);
 		}
+		
 		return result;
 	}
 
@@ -173,6 +188,7 @@ public class Client {
 	}
 	
 	public ExerciseData getFirstExerciseDataSet() {
+		//gets first set of data for testing purposes
 		if(exerciseData.size() > 0 && exerciseData.get(0) != null) {
 			return exerciseData.get(0);
 		} else {
@@ -181,27 +197,33 @@ public class Client {
 	}
 	
 	public ExerciseData getData(String exerciseName) {
+		//gets data for the graph
+		//we want at least 3 data points in order for it to be graphed
 		ExerciseData atLeast3 = null;
+		
 		for(ExerciseData e: exerciseData) {
 			//get the first dataSet that has atLeast3 datapoints
 			if(e.getDataPoints().size() >= 3 && atLeast3 == null) {
 				atLeast3 = e;
 			}
-			//System.out.println("Client: getData: " + e.getExerciseName() + e.getDataPoints().size());
+			
+			//gets the exercisedata for the exercise you want or just the data for a
 			if(e.getDataPoints().size() >= 3 && e.getExerciseName().equals(exerciseName)) {
 				return e;
 			}
 		}
-		//System.out.println("Client: getData: atLeast3: " + atLeast3.getExerciseName());
+		
 		return atLeast3;
 	}
 	
 	public void populateFakeData() {
+		//old method to allow us to try running the website before we could input data
+		//not used anymore but might be needed
 		DataPoint d;
 		for(int i = 0; i < 10; i++) {
 			d = new DataPoint(10+i, 8, 3, new Date(18, 3, i+1));
-			System.out.println("Client:PopulateFakeData:" + Storage.getInstance().getExercise("Bench press").getName());
-			updateExerciseData(Storage.getInstance().getExercise("Bench press"), d);
+			System.out.println("Client:PopulateFakeData:" + Storage.getInstance().getExerciseFromName("Bench press").getName());
+			updateExerciseData(Storage.getInstance().getExerciseFromName("Bench press"), d);
 		}
 	}
 	
@@ -222,12 +244,17 @@ public class Client {
 	}
 	
 	public void resetSets() {
-		ArrayList<Exercise> e = currentWorkout.getExercises();
-		for(Exercise exercise: e) {
-			for(ExerciseData data: exerciseData)  {
-				if(data.getExerciseName().equals(exercise.getName())) {
-					//exercise found in the exercise data
-					data.resetSet();
+		//resets all of the datapoints to 1 so that the next time they are used in 
+		//a workout the proper number of sets is displayed
+		if(currentWorkout != null) {
+			ArrayList<Exercise> e = currentWorkout.getExercises();
+			for(Exercise exercise: e) {
+				for(ExerciseData data: exerciseData)  {
+					if(data.getExerciseName().equals(exercise.getName())) {
+						//exercise found in the exercise data
+						System.out.println(data);
+						data.resetSet();
+					}
 				}
 			}
 		}
@@ -259,24 +286,4 @@ public class Client {
 	public int getCurrentExerciseIndex() {
 		return currentExerciseIndex;
 	}
-	/*public void sendToFriends(String message) {
-		notifyObservers(message);
-	}
-	
-	public void addFriends(String name) {
-		Client client = Storage.getInstance().findFriend(name);
-		if(client != null) {
-			client.addObserver(this);
-		} else System.out.println("No such name");
-	}
-	
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO display message (or add to a log?)
-		String friend = t
-		String message = (String)arg1;
-		messageLog.add(friend + " said:  " + message);
-		Storage.getInstance().saveClient(this);
-	}*/
-	
 }

@@ -14,13 +14,11 @@ import Database.*;
 public class WorkoutResetServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		System.out.println("workoutresetServlet reached");
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
         Storage storage = Storage.getInstance();
         Client c = storage.loadClientSync(user);
-        
         c.resetSets();
         
         c.setCurrentWorkout(null);
@@ -33,21 +31,5 @@ public class WorkoutResetServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		System.out.println("workoutresetServlet reached");
-		UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
-        
-        Storage storage = Storage.getInstance();
-        Client c = storage.loadClientSync(user);
-        
-        c.resetSets();
-        
-        c.setCurrentWorkout(null);
-        c.setCurrentExerciseIndex(-1);
-        
-        storage.saveClientSync(user, c);
-        
-        resp.sendRedirect("index.jsp");
 	}
-	
 }

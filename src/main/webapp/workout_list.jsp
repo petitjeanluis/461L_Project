@@ -5,13 +5,26 @@
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
+<%
+UserService userService = UserServiceFactory.getUserService();
+User user = userService.getCurrentUser();                   		 
+
+if(user == null) {
+	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	return;
+}
+
+Storage storage = Storage.getInstance();
+Client client =  storage.loadClient(user);
+
+%>
     <header>
 		<jsp:include page="header.jsp"/>
 		<link rel="stylesheet" href="style/workout_list_style.css">
 		<script src="js/workout_list.js"></script>
 	</header>
     <body>
-        <nav class="navbar navbar-inverse">
+    	<nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
@@ -20,6 +33,11 @@
               <li><a href="index.jsp">Home</a></li>
               <li class="active"><a href="#">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <%if(client.getCurrentWorkout() != null) { %>
+              <li><a href="workout.jsp">Current Workout</a></li>
+              <%} %>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
@@ -54,16 +72,7 @@
                 </div>
             </div>
 			<div class ="row">
-<%
-	UserService userService = UserServiceFactory.getUserService();
-	User user = userService.getCurrentUser();                   		 
-
-	if(user == null) {
-		response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
-	}
-
-	Storage storage = Storage.getInstance();
-	Client client =  storage.loadClient(user);
+	<%
 	ArrayList<Workout> customWorkouts = client.getFriendAndCustomWorkout();
 	ArrayList<Workout> standardWorkouts = storage.getAllWorkouts();
 	int id;

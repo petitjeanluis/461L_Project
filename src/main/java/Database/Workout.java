@@ -17,35 +17,16 @@ public class Workout {
 	
 	@Index String workoutName;
 	@Index String description;
-	@Index String emailOfOwner;
 	
 	@Index String imageName;
 	
 	@Index ArrayList<Exercise> exercises;
-	@Index ArrayList<String> keywords;
 
 	public Workout() {
-		
+		//no-arg constructor for objectify
 	}
 	
-	public Workout(String workoutName, String description, BufferedImage image, ArrayList<Exercise> exercises) {
-		this.workoutName = workoutName;
-		this.description = description;
-		//this.image = image;
-		this.exercises = exercises;
-		Storage.getInstance().saveWorkout(this);
-	}
-	
-	public Workout(String workoutName, String description, ArrayList<Exercise> exercises, 
-			int currentExerciseIndex) {
-		this.workoutName = workoutName;
-		this.description = description;
-		this.exercises = exercises;
-		Storage.getInstance().saveWorkout(this);
-	}
-	
-	public Workout(String workoutName, String description, ArrayList<Exercise> exercises, ArrayList<String> keywords) {
-		this.keywords = keywords;
+	public Workout(String workoutName, String description, ArrayList<Exercise> exercises) {
 		this.workoutName = workoutName;
 		this.description = description;
 		this.exercises = exercises;
@@ -82,10 +63,6 @@ public class Workout {
 		this.description = description;
 	}
 
-	public BufferedImage getImage() {
-		return Storage.getImageFromName(imageName);
-	}
-
 	public ArrayList<Exercise> getExercises() {
 		return exercises;
 	}
@@ -96,9 +73,5 @@ public class Workout {
 	
 	public int getNumOfExercises() {
 		return exercises.size();
-	}
-	
-	public ArrayList<String> getKeywords() {
-		return keywords;
 	}
 }
