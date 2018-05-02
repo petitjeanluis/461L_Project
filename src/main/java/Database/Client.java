@@ -14,6 +14,7 @@ import com.googlecode.objectify.annotation.Index;
 public class Client {
 	@Id Long id;
 	@Index private User user;
+	@Index boolean allowSharing;
 	
 	@Index private Workout currentWorkout;
 	@Index private int currentExerciseIndex;
@@ -35,11 +36,22 @@ public class Client {
 		this.customWorkouts = new ArrayList<Workout>();
 		this.friendsEmails = new ArrayList<String>();
 		this.friendsWorkouts = new ArrayList<Workout>();
+		
+		allowSharing = false;
 	}
 	
 	//always set user after making the client
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public boolean getAllowSharing() {
+		return allowSharing;
+	}
+	
+	public void toggleAllowSharingTrue() {
+		//sharing can only ever be turned on never off
+		allowSharing = true;
 	}
 	
 	public void updateExerciseData(Exercise exercise, DataPoint data) {
