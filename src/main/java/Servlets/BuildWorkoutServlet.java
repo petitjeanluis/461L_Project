@@ -35,7 +35,7 @@ public class BuildWorkoutServlet extends HttpServlet{
         ArrayList<Exercise> exercises = new ArrayList<Exercise>();
         String base = "Exercise";
         for(int i = 0; i < numOfExercises; i++) {
-        	Exercise e = storage.getExercise(req.getParameter(base + Integer.toString(i)));
+        	Exercise e = storage.getExerciseFromName(req.getParameter(base + Integer.toString(i)));
         	exercises.add(e);
         }
         

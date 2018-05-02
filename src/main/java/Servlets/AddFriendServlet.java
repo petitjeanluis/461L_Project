@@ -20,6 +20,7 @@ public class AddFriendServlet extends HttpServlet{
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        
         Storage storage = Storage.getInstance();
         Client client = storage.loadClientSync(user);
         

@@ -13,14 +13,9 @@ public class ExerciseData {
 	@Index private Exercise exercise;
 	
 	@Index private ArrayList<DataPoint> data;
-	/*
-	private Long id;
-	private Exercise exercise;
-	
-	private ArrayList<DataPoint> data;*/
-	
+
 	public ExerciseData() {
-		
+		//no-arg constructor for objectify
 	}
 	
 	public ExerciseData(Exercise exercise, DataPoint dataPoint) {
@@ -30,7 +25,8 @@ public class ExerciseData {
 		Storage.getInstance().saveExerciseData(this);
 	}
 	
-	public ExerciseData(Exercise exercise, DataPoint dataPoint, boolean fake) {		//constructor just for tests
+	//constructor just for tests
+	public ExerciseData(Exercise exercise, DataPoint dataPoint, boolean fake) {		
 		this.exercise = exercise;
 		data = new ArrayList<DataPoint>();
 		data.add(dataPoint);
@@ -49,10 +45,9 @@ public class ExerciseData {
 	}
 	
 	public void addDataPoint(DataPoint dataPoint) {
-		//this is code to test the graph NOT final code
 		data.add( dataPoint);
 		
-		//below is the correct code
+		//below is code for if we only want one datapoint per exercise per day
 		/*if(data.size()>0) {
 			if(sameDate(data.get(data.size()-1).getDate(),dataPoint.getDate())) {
 				data.get(data.size()-1).updateDataPoint(dataPoint); 
@@ -73,19 +68,12 @@ public class ExerciseData {
 	}
 	
 	public int getSetsBasedOnHistory() {
-
-
 		if(data.size() == 0) {
 			return 1;
 		} else {
 			return data.get(data.size()-1).getSets();
 		}
-		/*for(DataPoint p: data) {
-			System.out.println("DataPoints" + p.getSets());
-		}
-		System.out.println("ExerciseData: getSetsBasedOnHistory: "+exercise.getName() +".getSets: " + (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets());
-		System.out.println("ExerciseData: getSetsBasedOnHistory: " + data.get(data.size()-1).getSets() + data.get(data.size()-2).getWeight());
-		System.out.println("ExerciseData: " + exercise.getName() + ", current set: " + data.get(data.size()-1).getSets());*/
+		
 	}
 	
 	public int getWeightBasedOnHistory() {
@@ -116,15 +104,17 @@ public class ExerciseData {
 	}
 	
 	private int exerciseInLast2Weeks() {
-		int result = 0;
 		Date twoWeeksAgo = new Date();
 		twoWeeksAgo.setTime(twoWeeksAgo.getTime()-20160000);
+		
+		int result = 0;
 		for(int i = data.size() -1; i >= 0; i--) {
 			Date pastDate = data.get(i).getDate();
 			if(pastDate.before(twoWeeksAgo)) {
 				result++;
 			}
 		}
+		
 		return result;
 	}
 	

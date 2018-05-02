@@ -26,7 +26,7 @@ public class WorkoutServlet extends HttpServlet {
         Client c = storage.loadClientSync(user);
         
         String exerciseName = req.getParameter("name");
-        Exercise currentExercise = storage.getExercise(exerciseName);
+        Exercise currentExercise = storage.getExerciseFromName(exerciseName);
         
         int reps = Integer.parseInt(req.getParameter("reps"));
         int weight = Integer.parseInt(req.getParameter("weight"));

@@ -96,7 +96,7 @@ public class ExcelParser {
 				exerciseList.add(getExercise(exerciseFive, exercises));
 				exerciseList.add(getExercise(exerciseSix, exercises));
 				
-				workout = new Workout(workoutName, workoutDescription, exerciseList, 0);
+				workout = new Workout(workoutName, workoutDescription, exerciseList);
 				workoutList.add(workout);
 				line = reader.readLine();
 			}

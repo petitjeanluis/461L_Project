@@ -14,23 +14,10 @@ public class DataPoint {
 	@Index int reps;
 	@Index int sets;
 	@Index Date date;
-	/*long id;
-	
-	int weight;
-	int reps;
-	int sets;
-	Date date;*/
 	
 	public DataPoint() {
-		
+		//need this no-arg constructor for objectify
 	}
-	
-	/*public DataPoint(int weight, int reps, Date date) {
-		this.weight = weight;
-		this.reps = reps;
-		this.date = date;
-		Storage.getInstance().saveDataPoint(this);
-	}*/
 	
 	public DataPoint(int weight, int reps, Date date) {
 		this.weight = weight;
@@ -47,7 +34,8 @@ public class DataPoint {
 		Storage.getInstance().saveDataPoint(this);
 	}
 	
-	public DataPoint(int weight, int reps, int sets, Date date, boolean fake) {	//constructor just for tests
+	//constructor just for tests
+	public DataPoint(int weight, int reps, int sets, Date date, boolean fake) {	
 		this.weight = weight;
 		this.reps = reps;
 		this.date = date;
@@ -78,6 +66,7 @@ public class DataPoint {
 	}
 	
 	public void updateDataPoint(DataPoint p) {
+		//does NOT update sets
 		date = p.getDate();
 		reps = p.getReps();
 		weight = p.getWeight();

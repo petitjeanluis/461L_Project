@@ -222,8 +222,8 @@ public class Client {
 		DataPoint d;
 		for(int i = 0; i < 10; i++) {
 			d = new DataPoint(10+i, 8, 3, new Date(18, 3, i+1));
-			System.out.println("Client:PopulateFakeData:" + Storage.getInstance().getExercise("Bench press").getName());
-			updateExerciseData(Storage.getInstance().getExercise("Bench press"), d);
+			System.out.println("Client:PopulateFakeData:" + Storage.getInstance().getExerciseFromName("Bench press").getName());
+			updateExerciseData(Storage.getInstance().getExerciseFromName("Bench press"), d);
 		}
 	}
 	
@@ -283,24 +283,4 @@ public class Client {
 	public int getCurrentExerciseIndex() {
 		return currentExerciseIndex;
 	}
-	/*public void sendToFriends(String message) {
-		notifyObservers(message);
-	}
-	
-	public void addFriends(String name) {
-		Client client = Storage.getInstance().findFriend(name);
-		if(client != null) {
-			client.addObserver(this);
-		} else System.out.println("No such name");
-	}
-	
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO display message (or add to a log?)
-		String friend = t
-		String message = (String)arg1;
-		messageLog.add(friend + " said:  " + message);
-		Storage.getInstance().saveClient(this);
-	}*/
-	
 }
