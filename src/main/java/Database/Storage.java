@@ -212,7 +212,9 @@ public class Storage {
 		
 		ArrayList<String> emailList = new ArrayList<String>();
 		for(Client c: clients) {
-			emailList.add(c.getEmail());
+			if(c.getAllowSharing()) {
+				emailList.add(c.getEmail());
+			}
 		}
 		
 		return emailList;

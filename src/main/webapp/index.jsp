@@ -19,6 +19,7 @@ Client c = storage.loadClient(user);
 		<link rel="stylesheet" href="style/index_style.css">
 		<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
 		<script src="js/canvasChart.js" type="text/javascript"></script>
+		<script src="js/index.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			<%
 			String exerciseName = request.getParameter("exerciseName");
@@ -173,6 +174,18 @@ Client c = storage.loadClient(user);
 					</div> <%
 					
 					}%>
+				<div class="row">
+					<%if(c.getAllowSharing()){%>
+					<h4>You have allowed sharing! Your friends can now use your workouts!</h4>
+					<%} else { %>
+					<h4>Privacy Toggle (Right now your workouts are private)</h4>
+					<label class="switch">
+  						<input type="checkbox" id = "toggle-switch" onchange="togglePrivacy()">
+  						<span class="slider round"></span>
+					</label>
+					<h4>WARNING: Making workouts public is IRREVERSIBLE!</h4>
+					<%} %>
+				</div>
         </div>
     </body>
 </html>

@@ -5,6 +5,15 @@
          version="3.1">
 
  	<servlet>
+		<servlet-name>TogglePrivacyServlet</servlet-name>
+		<servlet-class>Servlets.TogglePrivacyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TogglePrivacyServlet</servlet-name>
+		<url-pattern>/toggleprivacyservlet</url-pattern>
+	</servlet-mapping>
+
+ 	<servlet>
 		<servlet-name>AddFriendServlet</servlet-name>
 		<servlet-class>Servlets.AddFriendServlet</servlet-class>
 	</servlet>
