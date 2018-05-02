@@ -6,7 +6,7 @@ function updateCollapse(name) {
 	img2.setAttribute("src","/img/"+name+"-2.jpg");
 }
 
-function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
+function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight, exerciseSet) {
 	console.log("ajaxUpdateRepsWeight");
 	console.log(exerciseName + ": " + exerciseReps + ", " + exerciseWeight);
 	$.post("/workoutservlet",
@@ -14,13 +14,16 @@ function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
 				name : exerciseName,
 				reps : exerciseReps,
 				weight : exerciseWeight,
+				set : exerciseSet
+			}, function(data) {
+				console.log("Success on updating datapoint")
 			});
 }
 
 function ajaxUpdateCurrentExercise(exerciseName) {
 	console.log("ajaxUpdateCurrentExercise");
 	console.log(exerciseName);
-	$.post("/workoutservlet",
+	$.post("/updatecurrentexerciseindexservlet",
 			{
 				name : exerciseName
 			});
@@ -29,7 +32,7 @@ function ajaxUpdateCurrentExercise(exerciseName) {
 function ajaxUpdateSet(exerciseName, exerciseSet) {
 	console.log("ajaxUpdateSet");
 	console.log(exerciseName + ": " + exerciseSet);
-	$.post("/workoutservlet",
+	$.post("/updatesetservlet",
 			{
 				name : exerciseName,
 				set : exerciseSet
@@ -156,17 +159,21 @@ function restDone() {
 
 //must be callsed after updating $workoutGUI, or else it sends previous info
 function sendSetUpdate() {
-    var exerciseName = $workoutGui.parent('.panel-body').parent('.panel-collapse').parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
+    /*var exerciseName = $workoutGui.parent('.panel-body').parent('.panel-collapse').parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
     var subtitle =  $workoutGui.find('.subtitle').text();
     var exerciseSet = parseInt(subtitle.split(" ")[1]);
-    ajaxUpdateSet(exerciseName, exerciseSet);
+    ajaxUpdateSet(exerciseName, exerciseSet);*/
 }
 
 function sendRepsWeightUpdate() {
 	var exerciseName = $workoutGui.parent('.panel-body').parent('.panel-collapse').parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
     var exerciseReps = $workoutGui.find('.shifters').find('.left-shifter').find('input').val();
     var exerciseWeight = $workoutGui.find('.shifters').find('.right-shifter').find('input').val();
-    ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight);
+    
+    var subtitle =  $workoutGui.find('.subtitle').text();
+    var exerciseSet = parseInt(subtitle.split(" ")[1]);
+    
+    ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight, exerciseSet);
 }
 
 function nextExercise() {

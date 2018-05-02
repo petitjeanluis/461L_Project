@@ -16,17 +16,6 @@ import Database.Storage;
 public class UpdateCurrentExerciseIndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
-        
-        Storage storage = Storage.getInstance();
-        Client c = storage.loadClient(user);
-        
-        String exerciseName = req.getParameter("name");
-        
-        c.updateCurrentExerciseIndex(storage.getExercise(exerciseName));
-        
-        storage.saveClient(c);
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -38,9 +27,8 @@ public class UpdateCurrentExerciseIndexServlet extends HttpServlet {
         Client c = storage.loadClient(user);
         
         String exerciseName = req.getParameter("name");
-        int currentSet = Integer.parseInt(req.getParameter("set"));
         
-        c.updateSetForExercise(storage.getExercise(exerciseName), currentSet);
+        c.updateCurrentExerciseIndex(storage.getExercise(exerciseName));
         
         storage.saveClient(c);
 	}

@@ -29,6 +29,7 @@ public class WorkoutListServlet extends HttpServlet{
         String workoutName = req.getParameter("workoutName");
         Workout currentWorkout = c.getWorkoutFromName(workoutName);
         c.setCurrentWorkout(currentWorkout);
+        c.setCurrentExerciseIndex(0);
         
         storage.saveClient(c);
         

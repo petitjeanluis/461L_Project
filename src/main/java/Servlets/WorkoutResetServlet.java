@@ -21,7 +21,10 @@ public class WorkoutResetServlet extends HttpServlet {
         Storage storage = Storage.getInstance();
         Client c = storage.loadClient(user);
         
+        c.resetSets();
+        
         c.setCurrentWorkout(null);
+        c.setCurrentExerciseIndex(-1);
         
         storage.saveClient(c);
         

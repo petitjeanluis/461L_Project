@@ -74,7 +74,7 @@ public class Client {
 		for(ExerciseData exercises: exerciseData) {
 			
 			if(e.getName().equals(exercises.getExerciseName())) {
-				System.out.println("Exercsie" + e.getName() + "ExerciseData" + exercises.getExerciseName());
+				//System.out.println("Exercsie" + e.getName() + "ExerciseData" + exercises.getExerciseName());
 				return exercises.getSetsBasedOnHistory();
 			} 
 		}

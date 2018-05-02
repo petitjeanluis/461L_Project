@@ -32,6 +32,13 @@ public class DataPoint {
 		Storage.getInstance().saveDataPoint(this);
 	}*/
 	
+	public DataPoint(int weight, int reps, Date date) {
+		this.weight = weight;
+		this.reps = reps;
+		this.date = date;
+		Storage.getInstance().saveDataPoint(this);
+	}
+	
 	public DataPoint(int weight, int reps, int sets, Date date) {
 		this.weight = weight;
 		this.reps = reps;
@@ -73,7 +80,7 @@ public class DataPoint {
 	public void updateDataPoint(DataPoint p) {
 		date = p.getDate();
 		reps = p.getReps();
-		sets = p.getSets();
 		weight = p.getWeight();
+		sets = p.getSets();
 	}
 }

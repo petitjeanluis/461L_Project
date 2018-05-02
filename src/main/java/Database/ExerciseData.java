@@ -54,7 +54,7 @@ public class ExerciseData {
 		
 		//below is the correct code
 		if(data.size()>0) {
-			if(data.get(data.size()-1).getDate().equals(dataPoint.getDate())) {
+			if(sameDate(data.get(data.size()-1).getDate(),dataPoint.getDate())) {
 				data.get(data.size()-1).updateDataPoint(dataPoint); 
 			} else {
 				data.add(dataPoint);
@@ -77,14 +77,15 @@ public class ExerciseData {
 
 		if(data.size() == 0) {
 			return 1;
+		} else {
+			return data.get(data.size()-1).getSets();
 		}
-		for(DataPoint p: data) {
+		/*for(DataPoint p: data) {
 			System.out.println("DataPoints" + p.getSets());
 		}
 		System.out.println("ExerciseData: getSetsBasedOnHistory: "+exercise.getName() +".getSets: " + (data.get(data.size()-1).getSets() + 1) % exercise.getStartingSets());
 		System.out.println("ExerciseData: getSetsBasedOnHistory: " + data.get(data.size()-1).getSets() + data.get(data.size()-2).getWeight());
-		System.out.println("ExerciseData: " + exercise.getName() + ", current set: " + data.get(data.size()-1).getSets());
-		return ((data.get(data.size()-1).getSets()) % exercise.getStartingSets())+1;
+		System.out.println("ExerciseData: " + exercise.getName() + ", current set: " + data.get(data.size()-1).getSets());*/
 	}
 	
 	public int getWeightBasedOnHistory() {
@@ -139,5 +140,9 @@ public class ExerciseData {
 			DataPoint p = data.get(data.size()-1);
 			p.setSet(currentSet);
 		}
+	}
+	
+	public boolean sameDate (Date d1, Date d2) {
+		return (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDay() == d2.getDay());
 	}
 }
