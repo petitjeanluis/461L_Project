@@ -148,15 +148,15 @@ Client c = storage.loadClient(user);
 						<h5 align = "center" class="datalist-title">Select Exercise To Plot</h5>
 						<form action = "/index.jsp" align = "center">
 						<%
-						String val = exerciseData.get(0).getExerciseName();
+						//String val = c.getFirstExerciseDataSetForGraph().getExerciseName();
 						%>
-							<input list="exercises" name="exerciseName" value="<%=val%>">
+							<input list="exercises" name="exerciseName">
 							<datalist id="exercises">
 								<%
 								for(ExerciseData e: exerciseData) {
 									if(e.getDataPoints().size() >= 3) {
-										%><option value="<%=e.getExerciseName() %>">
-										<%
+								%><option value="<%=e.getExerciseName() %>">
+								<%
 									}
 								}
 								%>
