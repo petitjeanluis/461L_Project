@@ -29,13 +29,13 @@ Client client =  storage.loadClient(user);
             </div>
             <ul class="nav navbar-nav">
               <li><a href="index.jsp">Home</a></li>
-              <li class="active"><a href="#">Your Workouts</a></li>
+              <li><a href="#">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li class="active"><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Friends</a></li>
               <%if(client.getCurrentWorkout() != null) { %>
               <li><a href="workout.jsp">Current Workout</a></li>
               <%} %>
-              <li><a href="map.jsp">Find A Gym</a></li>
-              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
