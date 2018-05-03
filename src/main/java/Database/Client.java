@@ -140,14 +140,18 @@ public class Client {
 	public ArrayList<String> getAllPotentialFriends() {
 		Storage storage = Storage.getInstance();
 		ArrayList<String> all = storage.getAllClientsEmails();
-		
 		ArrayList<String> result = new ArrayList<String>();
 		for(String s: all) {
 			
 			//we don't want to be able to add our friends twice
 			boolean found = false;
+			
+			if(s.equals(user.getEmail())) {
+				found = true;
+			}
+			
 			for(String friend: friendsEmails) {
-				if(s.equals(friend) || s.equals(user.getEmail())) {
+				if(s.equals(friend)) {
 					found = true;
 				}
 			}
@@ -155,9 +159,7 @@ public class Client {
 			if(found == false) {
 				result.add(s);
 			}
-			
 		}
-		
 		return result;
 	}
 	
