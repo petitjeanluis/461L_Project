@@ -26,8 +26,13 @@ public class AddFriendsWorkoutServlet extends HttpServlet{
         
         String email = req.getParameter("email");
         String workout = req.getParameter("workout");
-        client.addFriendsWorkout(email, workout);
         
+        if(email != null && workout != null) {
+        	client.addFriendsWorkout(email, workout);
+        }
+        	
         storage.saveClientSync(user, client);
+        
+        resp.sendRedirect("social.jsp");
 	}
 }
