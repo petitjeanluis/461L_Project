@@ -4,6 +4,7 @@ function updateCollapse(name) {
 	var img2 = document.getElementById("image2");
 	img1.setAttribute("src","/img/"+name+"-1.jpg");
 	img2.setAttribute("src","/img/"+name+"-2.jpg");
+	ajaxUpdateCurrentExercise(name);
 }
 
 function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
