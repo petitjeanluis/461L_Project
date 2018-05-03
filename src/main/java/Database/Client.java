@@ -147,7 +147,7 @@ public class Client {
 			//we don't want to be able to add our friends twice
 			boolean found = false;
 			for(String friend: friendsEmails) {
-				if(s.equals(friend)) {
+				if(s.equals(friend) || s.equals(user.getEmail())) {
 					found = true;
 				}
 			}
@@ -225,13 +225,18 @@ public class Client {
 		return exerciseData;
 	}
 	
-	public ExerciseData getFirstExerciseDataSet() {
+	public ExerciseData getFirstExerciseDataSetForGraph() {
 		//gets first set of data for testing purposes
 		if(exerciseData.size() > 0 && exerciseData.get(0) != null) {
-			return exerciseData.get(0);
+			for(ExerciseData e: exerciseData) {
+				if(e.getDataPoints().size() >= 3) {
+					return e;
+				}
+			}
 		} else {
 			return null;
 		}
+		return null;
 	}
 	
 	public ExerciseData getData(String exerciseName) {
