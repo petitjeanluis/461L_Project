@@ -22,7 +22,7 @@ if(user != null) {
     </head>
     <body>
         <div class="heading">
-            <span class="title1">Simply Stronger</span>
+            <span class="title1">Basically Fit</span>
             <span class="title2">the new you.</span>
             <a style= "text-decoration:none;" href= "<%= userService.createLoginURL(request.getRequestURI()) %>">
 	            <button class="register">

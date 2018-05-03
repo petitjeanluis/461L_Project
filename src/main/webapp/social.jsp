@@ -30,7 +30,7 @@
     	 <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
+              <a class="navbar-brand" href="index.jsp">Basically Fit</a>
             </div>
             <ul class="nav navbar-nav">
               <li><a href="index.jsp">Home</a></li>
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-xs-5">
                     <div class="box left-box">
-                        <h2 align="center">Followers</h2>
+                        <h2 align="center">Friends</h2>
                         <ul id="friend-list">
              			<%
              				for(String email : friendEmailList) {
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-xs-5">
                     <div class="box right-box">
-                        <h2 align="center">Start Following</h2>
+                        <h2 align="center">Add Friends</h2>
                         <ul id="follow-list">
                         <%
                             int id = 0;
@@ -86,7 +86,7 @@
             </div>
             <div class="row">
                 <div class="workouts-box">
-                    <h2>Followers' Workouts</h2>
+                    <h2>Friends' Workouts</h2>
                     <table>
                         <thead>
                             <th width="50%">User</th>
