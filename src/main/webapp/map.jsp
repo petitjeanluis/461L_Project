@@ -186,6 +186,9 @@ Client client =  storage.loadClient(user);
 		  }
 		  map.fitBounds(bounds);
 		 }
+		 else {
+			 alert("Sorry! No gyms nearby. Try another address!");
+		 }
 		}
 
     </script>
