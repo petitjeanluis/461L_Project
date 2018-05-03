@@ -7,8 +7,6 @@ function updateCollapse(name) {
 }
 
 function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
-	console.log("ajaxUpdateRepsWeight");
-	console.log(exerciseName + ": " + exerciseReps + ", " + exerciseWeight);
 	$.post("/workoutservlet",
 			{
 				name : exerciseName,
@@ -20,8 +18,6 @@ function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
 }
 
 function ajaxUpdateCurrentExercise(exerciseName) {
-	console.log("ajaxUpdateCurrentExercise");
-	console.log(exerciseName);
 	$.post("/updatecurrentexerciseindexservlet",
 			{
 				name : exerciseName
@@ -29,8 +25,6 @@ function ajaxUpdateCurrentExercise(exerciseName) {
 }
 
 function ajaxUpdateSet(exerciseName, exerciseSet) {
-	console.log("ajaxUpdateSet");
-	console.log(exerciseName + ": " + exerciseSet);
 	$.post("/updatesetservlet",
 			{
 				name : exerciseName,
@@ -40,7 +34,6 @@ function ajaxUpdateSet(exerciseName, exerciseSet) {
 
 
 function ajaxFinishWorkout() {
-	console.log("reset workout");
 	window.location.replace("/workoutresetservlet");
 	/*var request = new XMLHttpRequest();
 	request.open("POST", "/workoutresetservlet", true);

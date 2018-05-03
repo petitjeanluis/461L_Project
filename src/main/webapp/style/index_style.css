@@ -42,6 +42,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .share-row {
+	margin-top: 50px;
 	margin-bottom: 20px;
 }
 
@@ -61,4 +62,9 @@ h4 {
 	margin-left: 10px;
 	background-color: #FC4A1A;
 	color: #fff;
+}
+
+.no-graph-text {
+	margin-left: 32%;;
+	margin-bottom: 60px;
 }

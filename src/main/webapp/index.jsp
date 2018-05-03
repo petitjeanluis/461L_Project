@@ -59,9 +59,7 @@ Client c = storage.loadClient(user);
 				CanvasChart.render('canvas', chart);
 			});	
 			
-			<%} else {%>
-				<h4>You need to do more exercises in order for us to create your progress graph</h4>
-			<%}%> 
+			<%}%>
 		</script> 
 	</header>
     <body>
@@ -171,18 +169,18 @@ Client c = storage.loadClient(user);
 					<%} else { 
 						if(exerciseName == null) {%>
 					<div>
-						<h4 align="center">You don't have enough data points to graph</h4>
+						<h4 align="center" class="no-graph-text">You don't have enough data points to graph</h4>
 					</div>
 						<% } else { %>
 					<div>
-						<h4 align="center">You don't have enough data points to graph for <%=exerciseName %></h4>
+						<h4 align="center" class="no-graph-text">You don't have enough data points to graph for <%=exerciseName %></h4>
 					</div>
 					<%}}
 	
 					}%>
 				<div class="row share-row">
 					<%if(c.getAllowSharing()){%>
-					<h4>You have allowed workout sharing! Your friends can now use your workouts!</h4>
+					<h4>Your workouts are public!</h4>
 					<%} else { %>
 					<h4>Allow Workout Sharing: </h4>
 					<button class="btn share-btn" onclick="togglePrivacy()">Activate</button>
