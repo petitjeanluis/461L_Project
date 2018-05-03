@@ -1,19 +1,19 @@
 var selected = [];
 $(document).ready(function(){
     $(".workout-list li").click(function(){
-        if($(this).hasClass("active")) {
-            $(this).removeClass("active");
+        if($(this).hasClass("active-select")) {
+            $(this).removeClass("active-select");
             var index = selected.indexOf($(this).attr("id"));
             selected.splice(index,1);
         } else {
-        	var selectedItems = document.getElementsByClassName("active");
+        	var selectedItems = document.getElementsByClassName("active-select");
         	for(var i = 0; i < selectedItems.length; i++) {
-        		var item = selectedItems[i].classList.remove("active");
+        		var item = selectedItems[i].classList.remove("active-select");
         	}
         	while(selected.length) {
         		selected.pop();
         	}
-            $(this).addClass("active");
+            $(this).addClass("active-select");
             selected.push($(this).attr("id"));
         }
         console.log(selected);

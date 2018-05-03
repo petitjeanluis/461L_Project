@@ -2,13 +2,13 @@ var selectedUser = null;
 var selectedWorkout = null;
 $(document).ready(function (){
     $("#follow-list li").click(function(){
-        $("#follow-list li").removeClass("active");
-        $(this).addClass("active");
+        $("#follow-list li").removeClass("active-select");
+        $(this).addClass("active-select");
         selectedUser = $(this).attr("id");
     });
     $("#workout-table-body tr").click(function(){
-        $("#workout-table-body tr").removeClass("active");
-        $(this).addClass("active");
+        $("#workout-table-body tr").removeClass("active-select");
+        $(this).addClass("active-select");
         selectedWorkout = $(this).attr("id");
     });
 });

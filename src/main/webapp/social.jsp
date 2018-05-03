@@ -36,24 +36,24 @@
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li class="active"><a href="#">Friends</a></li>
               <%if(c.getCurrentWorkout() != null) { %>
               <li><a href="workout.jsp">Current Workout</a></li>
               <%} %>
-              <li><a href="map.jsp">Find A Gym</a></li>
-              <li class="active"><a href="#">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="btn navbar-btn">Logout</button>
+                	<button class="btn navbar-btn login-btn">Logout</button>
                 </a>
             </div>
           </div>
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-xs-6">
-                    <h2>Followers</h2>
-                    <div class="box">
+                <div class="col-xs-5">
+                    <div class="box left-box">
+                        <h2 align="center">Followers</h2>
                         <ul id="friend-list">
              			<%
              				for(String email : friendEmailList) {
@@ -63,9 +63,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <h2>Start Following</h2>
-                    <div class="box">
+                <div class="col-xs-2">
+                    <div class="btn-wrapper">
+                        <button type="button" class="btn" id="add-follower-btn" onclick="addFollower()"><span id="left-arrow" class="fa fa-arrow-left"><span><span id="btn-text"></span> Follow</button>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="box right-box">
+                        <h2 align="center">Start Following</h2>
                         <ul id="follow-list">
                         <%
                             int id = 0;
@@ -75,19 +80,19 @@
              				}
              			%>
                         </ul>
+                        <input type="text" id="follow-search" onkeyup="searchFilter()" placeholder="Search users...">
                     </div>
-                    <input type="text" id="follow-search">
-                    <button type="button" name="add-follower-btn" onclick="addFollower()">Add</button>
                 </div>
             </div>
             <div class="row">
-                <h2>Followers' Workouts</h2>
-                <table>
-                    <thead>
-                        <th>User</th>
-                        <th>Workout Name</th>
-                    </thead>
-                    <tbody id="workout-table-body">
+                <div class="workouts-box">
+                    <h2>Followers' Workouts</h2>
+                    <table>
+                        <thead>
+                            <th>User</th>
+                            <th>Workout Name</th>
+                        </thead>
+                        <tbody id="workout-table-body">
                    	<%
                    		id = 0;
                    		ArrayList<String> workoutNameList;
@@ -96,17 +101,18 @@
                     		for(String workoutName : workoutNameList) {
                     			%>
                         		<tr id="row<%=id%>">
-                        			<td><%=email%></td>
-                        			<td><%=workoutName%></td>
+                        			<td width="35%"><%=email%></td>
+                        			<td width="65%"><%=workoutName%></td>
                         		</tr>
                         		<%	
                         		id++;
                     		}
                     	}		
                    	%>
-                    </tbody>
-                </table>
-                <button type="button" name="add-workout-btn" onclick="addWorkout()">Add Workout</button>
+                    	</tbody>
+                    </table>
+                    <button type="button"class="btn" onclick="addWorkout()">Add Workout</button>
+                </div>
             </div>
         </div>
     </body>

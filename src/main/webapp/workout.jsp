@@ -39,13 +39,15 @@ String workoutName = workout.getWorkoutName();
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
-              <li class="active"><a href="#">Current Workout</a></li>
               <li><a href="map.jsp">Find A Gym</a></li>
-              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
+              <li><a href="social.jsp">Friends</a></li>
+              <%if(client.getCurrentWorkout() != null) { %>
+              <li class="active"><a href="workout.jsp">Current Workout</a></li>
+              <%} %>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="login-btn navbar-btn">Logout</button>
+                	<button class="btn login-btn navbar-btn">Logout</button>
                 </a>
             </div>
           </div>

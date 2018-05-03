@@ -38,7 +38,7 @@
 .box {
     border: 1px solid #d3d3d3;
     width: 500px;
-    height: 500px;
+    height: 450px;
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -59,12 +59,12 @@
     left: 48%;
 }
 
-a {
+.arrow-link {
     text-decoration: none;
     color: inherit;
 }
 
-ul {
+.box ul {
 	padding: 0px;
 }
 
@@ -76,17 +76,16 @@ ul {
     overflow-x: hidden;
 }
 
-.active {
-    background-color: #23527c;
-    color: white;
-}
-
-li {
+.box li {
     list-style: none;
     text-indent: 10px;
 	border-radius: 10px;
 	width: auto;
     height: 40px;
     line-height: 40px;
+}
+
+.create-btn {
+	background-color: #F7B733;
 }
 

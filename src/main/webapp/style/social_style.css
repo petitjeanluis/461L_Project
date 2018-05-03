@@ -1,4 +1,112 @@
-.active {
-    background-color: #23527c;
-    color: white;
+
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50%;
+}
+
+#add-follower-btn {
+    width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    background-color: #F7B733;
+}
+
+#add-follower-btn #btn-text {
+    margin-left: 6px;
+}
+
+.box {
+    width: 300px;
+}
+
+.left-box {
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.right-box {
+    margin-left: 0px;
+}
+
+.right-box input {
+    width: 220px;
+    margin-left: 30px;
+}
+
+.box ul {
+    height: 285px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.box li {
+    text-decoration: none;
+    text-indent: 10px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+}
+
+
+
+table {
+    width: 500px;
+    border-collapse:separate;
+    border: 1px solid #d3d3d3;
+    border-radius:6px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tr {
+    font-size: 16px;
+    height: 40px;
+}
+
+td, th {
+    border-left: 1px solid #d3d3d3;
+    border-top: 1px solid #d3d3d3;
+}
+
+th {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    border-top: none;
+}
+
+td {
+    text-align: left;
+    text-indent: 12px;
+
+}
+
+td:first-child, th:first-child {
+    border-left: none;
+}
+
+.workouts-box {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.workouts-box h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.workouts-box button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #F7B733;
 }

@@ -4,6 +4,42 @@
 
 /*--------Navbar------------*/
 .login-btn {
+    margin-left: 10px;
     margin-right: 10px;
+    color: #fff;
+    background-color: #FC4A1A;
 }
 
+.navbar{
+    background-color: #4ABDAC;
+    border-color: #4ABDAC;
+    color: #000;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar {
+    font-size: 18px;
+
+}
+
+.navbar-nav li a, .navbar-header a{
+    color: #fff !important;
+}
+
+.active a{
+    background-color: #369688 !important;
+    border-radius: 10px;
+}
+
+.active-select {
+    background-color: #DFDCE3;
+    color: black;
+}
+
+.underline {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #FC4A1A;
+}

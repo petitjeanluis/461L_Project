@@ -1,7 +1,7 @@
 .box {
     border: 1px solid #d3d3d3;
     width: 500px;
-    height: 500px;
+    height: 450px;
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -29,7 +29,7 @@ a {
     color: inherit;
 }
 
-li {
+.box li {
     list-style: none;
     vertical-align: middle;
     height:40px;
@@ -38,7 +38,7 @@ li {
     border-radius: 10px;
 }
 
-ul {
+.box ul {
 	padding: 0px;
 }
 
@@ -50,11 +50,6 @@ ul {
     overflow-x: hidden;
 }
 
-.active {
-    background-color: #23527c;
-    color: white;
-}
-
 .start-btn {
     display: inline-block;
     position: absolute;
@@ -62,4 +57,8 @@ ul {
     margin-top: 20px;
     margin-bottom: 20px;
     left: 46%;
+}
+
+.start-btn {
+	background-color: #F7B733;
 }

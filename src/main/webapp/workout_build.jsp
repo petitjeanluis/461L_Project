@@ -32,11 +32,11 @@ Client c = storage.loadClient(user);
               <li><a href="index.jsp">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li class="active"><a href="#">Build Workout</a></li>
-       		  <%if(c.getCurrentWorkout() != null) { %>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Friends</a></li>
+              <%if(c.getCurrentWorkout() != null) { %>
               <li><a href="workout.jsp">Current Workout</a></li>
               <%} %>
-              <li><a href="map.jsp">Find A Gym</a></li>
-              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
@@ -66,7 +66,7 @@ Client c = storage.loadClient(user);
                     <div class="workout-name">
                         <input class="form-control" type="text" id="workoutNombre" placeholder="Workout name...">
                     </div>
-                    <button class="create-btn btn" onclick="create()">Create</button>
+                    <button class="create-btn btn create-btn" onclick="create()">Create</button>
                 </div>
             </div>
             <div class="row">
@@ -92,8 +92,8 @@ Client c = storage.loadClient(user);
                 </div>
             </div>
             <div class="row">
-                <a onclick="removeItem()"><i class="fa fa-arrow-left left-arrow"></i></a>
-                <a onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>    
+                <a class="arrow-link" onclick="removeItem()"><i class="fa fa-arrow-left left-arrow"></i></a>
+                <a class="arrow-link" onclick="addItem()"><i class="fa fa-arrow-right right-arrow"></i></a>    
             </div>
 		</div>
 		<form id="exercise-form" action="/buildworkoutservlet" method="post" hidden>

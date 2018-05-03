@@ -7,12 +7,12 @@ $(document).ready(function(){
     displayRight = document.getElementById('create-list');
 
     $("#exercise-list li").click(function(){
-        if($(this).hasClass("active")) {
-            $(this).removeClass("active");
+        if($(this).hasClass("active-select")) {
+            $(this).removeClass("active-select");
             var index = selectedLeft.indexOf($(this).attr("id"));
             selectedLeft.splice(index,1);
         } else {
-            $(this).addClass("active");
+            $(this).addClass("active-select");
             selectedLeft.push($(this).attr("id"));
         }
     });
@@ -32,16 +32,16 @@ function addItem() {
         var id = selectedLeft[i];
         var item = document.getElementById(id);
         var newItem = item.cloneNode(true);
-        newItem.classList.remove("active");
+        newItem.classList.remove("active-select");
         item.remove();
         displayRight.appendChild(newItem);
         $("#"+id).click(function(){
-            if($(this).hasClass("active")) {
-                $(this).removeClass("active");
+            if($(this).hasClass("active-select")) {
+                $(this).removeClass("active-select");
                 var index = selectedRight.indexOf($(this).attr("id"));
                 selectedRight.splice(index,1);
             } else {
-                $(this).addClass("active");
+                $(this).addClass("active-select");
                 selectedRight.push($(this).attr("id"));
             }
         });
@@ -57,15 +57,15 @@ function removeItem() {
         var item = document.getElementById(id);
         var newItem = item.cloneNode(true);
         item.remove();
-        newItem.classList.remove("active");
+        newItem.classList.remove("active-select");
         displayLeft.appendChild(newItem);
         $("#"+id).click(function(){
-            if($(this).hasClass("active")) {
-                $(this).removeClass("active");
+            if($(this).hasClass("active-select")) {
+                $(this).removeClass("active-select");
                 var index = selectedLeft.indexOf($(this).attr("id"));
                 selectedLeft.splice(index,1);
             } else {
-                $(this).addClass("active");
+                $(this).addClass("active-select");
                 selectedLeft.push($(this).attr("id"));
             }
         });
@@ -93,8 +93,6 @@ function create() {
     
     input = document.createElement("input");
     input.setAttribute("name","workoutName");
-    //var randy = Math.floor(Math.random() * 100);
-    //input.setAttribute("value","Custom Workout "+randy);
     var name = document.getElementById("workoutNombre").value;
     input.setAttribute("value",String(name+""));
     

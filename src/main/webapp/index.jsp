@@ -59,7 +59,7 @@ Client c = storage.loadClient(user);
 				CanvasChart.render('canvas', chart);
 			});	
 			
-			<%} else {%> 
+			<%} else {%>
 				<h4>You need to do more exercises in order for us to create your progress graph</h4>
 			<%}%> 
 		</script> 
@@ -74,11 +74,11 @@ Client c = storage.loadClient(user);
               <li class="active"><a href="#">Home</a></li>
               <li><a href="workout_list.jsp">Your Workouts</a></li>
               <li><a href="workout_build.jsp">Build Workout</a></li>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Friends</a></li>
               <%if(c.getCurrentWorkout() != null) { %>
               <li><a href="workout.jsp">Current Workout</a></li>
               <%} %>
-              <li><a href="map.jsp">Find A Gym</a></li>
-              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
@@ -177,38 +177,9 @@ Client c = storage.loadClient(user);
 					<div>
 						<h4 align="center">You don't have enough data points to graph for <%=exerciseName %></h4>
 					</div>
-<<<<<<< HEAD
 					<%}}
 	
 					}%>
-=======
-					<%}}%>
-					<div class ="row" >
-						<%if(c.getCurrentWorkout() != null) { %>
-						<div class="col-xs-4" onclick="location.href='/workout_list.jsp'">
-						<%} else { %>
-						<div class="col-xs-6" onclick="location.href='/workout_list.jsp'">
-						<%} %>
-							<div class="panel panel-default text-center button-animation" id="setup">
-			  					<div class="panel-text">Setup Workout</div>
-							</div>
-						</div>	
-						<%if(c.getCurrentWorkout() != null) { %>
-						<div class="col-xs-4" onclick="location.href='/workout.jsp'">				
-							<div class="panel panel-default text-center button-animation" id="setup">
-			  					<div class="panel-text">Resume Workout</div>
-							</div>
-						</div><%} %>
-						<%if(c.getCurrentWorkout() != null) { %>
-						<div class="col-xs-4" onclick="location.href='/workout_build.jsp'">
-						<%} else { %>
-						<div class="col-xs-6" onclick="location.href='/workout_build.jsp'">
-						<%} %>			
-							<div class="panel panel-default text-center button-animation" id="start">
-			  					<div class="panel-text">Build Workout</div>
-							</div>
-						</div>
-					</div>
 				<div class="row">
 					<%if(c.getAllowSharing()){%>
 					<h4>You have allowed sharing! Your friends can now use your workouts!</h4>
@@ -221,7 +192,6 @@ Client c = storage.loadClient(user);
 					<h4>WARNING: Making workouts public is IRREVERSIBLE!</h4>
 					<%} %>
 				</div>
->>>>>>> d106070654dc8b597d17cecef74e7031d2a74fc1
         </div>
     </body>
 </html>

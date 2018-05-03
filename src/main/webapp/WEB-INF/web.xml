@@ -12,7 +12,8 @@
 		<servlet-name>TogglePrivacyServlet</servlet-name>
 		<url-pattern>/toggleprivacyservlet</url-pattern>
 	</servlet-mapping>
-
+ 	
+ 	
  	<servlet>
 		<servlet-name>AddFriendServlet</servlet-name>
 		<servlet-class>Servlets.AddFriendServlet</servlet-class>
