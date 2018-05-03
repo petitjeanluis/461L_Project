@@ -41,5 +41,4 @@ public class WorkoutServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write("Data Successfully Stored");
 	}
-	
 }
