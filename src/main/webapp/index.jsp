@@ -150,7 +150,7 @@ Client c = storage.loadClient(user);
 						<%
 						String val = exerciseData.get(0).getExerciseName();
 						%>
-							<input list="exercises" name="exerciseName" value="<%=val%>">
+							<input list="exercises" name="exerciseName">
 							<datalist id="exercises">
 								<%
 								for(ExerciseData e: exerciseData) {

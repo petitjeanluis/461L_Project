@@ -5,6 +5,7 @@ function updateCollapse(name) {
 	img1.setAttribute("src","/img/"+name+"-1.jpg");
 	img2.setAttribute("src","/img/"+name+"-2.jpg");
 	ajaxUpdateCurrentExercise(name);
+	$workout.removeClass('in');
 }
 
 function ajaxUpdateRepsWeight(exerciseName, exerciseReps, exerciseWeight) {
@@ -49,6 +50,7 @@ var minute,second;
 var running = false;
 $workoutGui = null;
 $timerGui = null;
+$workout = null;
 
 function rest(selected,time) {
     //remove workout-gui and show timer-gui
@@ -176,6 +178,7 @@ function nextExercise() {
     	var name = $nextWorkout.parent('.panel').find('.panel-heading').find('.panel-title').find('a').text();
     	updateCollapse(name);
     	ajaxUpdateCurrentExercise(name);
+    	$workout = $nextWorkout;
     } else {
     	ajaxFinishWorkout();
     }
