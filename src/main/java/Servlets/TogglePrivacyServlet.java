@@ -16,6 +16,11 @@ import Database.Storage;
 public class TogglePrivacyServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
+		
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
 		//window.relocation so its in the get method
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
@@ -28,9 +33,5 @@ public class TogglePrivacyServlet extends HttpServlet{
         storage.saveClientSync(user, c);
         
         resp.sendRedirect("index.jsp");
-	}
-
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
 	}
 }
