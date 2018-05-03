@@ -90,12 +90,7 @@ public class Client {
 	}
 	
 	public int getWeight(Exercise e) {
-		//this accounts for some exercises like planks where the weight is not applicable
-		if(e.getStartingWeight() == 0) {
-			return e.getStartingWeight();
-		}
-		
-		
+		//this accounts for some exercises like planks where the weight is not applicable		
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().equals(exercises.getExerciseName())) {
 				return exercises.getWeightBasedOnHistory();
@@ -129,12 +124,7 @@ public class Client {
 		return friendsEmails;
 	}
 	
-	public int getReps(Exercise e) {
-		//accounts for exercises in which the reps don't matter such as plank
-		if(e.getStartingReps() == 0) {
-			return e.getStartingReps();
-		}
-		
+	public int getReps(Exercise e) {	
 		for(ExerciseData exercises: exerciseData) {
 			if(e.getName().equals(exercises.getExerciseName())) {
 				return exercises.getRepsBasedOnHistory();
