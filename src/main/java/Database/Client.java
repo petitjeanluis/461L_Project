@@ -113,6 +113,54 @@ public class Client {
 		}
 	}
 	
+	public ArrayList<String> getAllPotentialFriendWorkouts(String email) {
+		Storage storage = Storage.getInstance();
+		ArrayList<String> all = storage.getFriendsWorkoutNamesFromEmail(email);
+		
+		ArrayList<String> result = new ArrayList<String>();
+		for(String s: all) {
+			
+			//we don't want to be able to add two of the same friend's workout
+			boolean found = false;
+			
+			for(Workout w: friendsWorkouts) {
+				if(s.equals(w.getWorkoutName())) {
+					found = true;
+				}
+			}
+			
+			if(found == false) {
+				result.add(s);
+			}
+		}
+		
+		return result;
+	}
+	
+	public ArrayList<String> getAllPotentialFriends() {
+		Storage storage = Storage.getInstance();
+		ArrayList<String> all = storage.getAllClientsEmails();
+		
+		ArrayList<String> result = new ArrayList<String>();
+		for(String s: all) {
+			
+			//we don't want to be able to add our friends twice
+			boolean found = false;
+			for(String friend: friendsEmails) {
+				if(s.equals(friend)) {
+					found = true;
+				}
+			}
+			
+			if(found == false) {
+				result.add(s);
+			}
+			
+		}
+		
+		return result;
+	}
+	
 	public void addFriendsWorkout(String email, String friendsWorkout) {
 		Storage storage = Storage.getInstance();
 		Workout w = storage.getFriendsWorkoutFromEmail(email, friendsWorkout);
