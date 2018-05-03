@@ -89,8 +89,8 @@
                     <h2>Followers' Workouts</h2>
                     <table>
                         <thead>
-                            <th>User</th>
-                            <th>Workout Name</th>
+                            <th width="50%">User</th>
+                            <th width="50%">Workout Name</th>
                         </thead>
                         <tbody id="workout-table-body">
                    	<%
@@ -101,8 +101,8 @@
                     		for(String workoutName : workoutNameList) {
                     			%>
                         		<tr id="row<%=id%>">
-                        			<td width="35%"><%=email%></td>
-                        			<td width="65%"><%=workoutName%></td>
+                        			<td width="50%"><%=email%></td>
+                        			<td width="50%"><%=workoutName%></td>
                         		</tr>
                         		<%	
                         		id++;

@@ -3,26 +3,46 @@
 	height: 70px;
 	line-height: 70px;
 	text-align: center;
+	background-color: #F7B733;
 }
 
 .panel-text {
 	display: inline-block;
+	font-size: 18px;
 }
 
 .button-animation:hover {
 	background-color: #ABABAB;
 }
 
+.datalist-title {
+	font-size: 22px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.update-btn {
+	background-color: #F7B733;
+	margin-left: 10px;
+}
+
+form datalist{
+	font-size: 16px;
+}
+
 canvas {
-	margin-left: 10%;
+	margin-left: 7%;;
 	margin-right: auto;
 	margin-bottom: 10px;
 	display: block;
 }
 
-<<<<<<< HEAD
 input::-webkit-calendar-picker-indicator {
   opacity: 100;
+}
+
+.share-row {
+	margin-bottom: 20px;
 }
 
 a {
@@ -31,67 +51,14 @@ a {
 
 .first-row {
 	margin-top:20px;
-=======
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 24px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translateX(16px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 h4 {
 	display: inline;
->>>>>>> d106070654dc8b597d17cecef74e7031d2a74fc1
+}
+
+.share-btn {
+	margin-left: 10px;
+	background-color: #FC4A1A;
+	color: #fff;
 }

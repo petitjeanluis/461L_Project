@@ -55,7 +55,7 @@ String workoutName = workout.getWorkoutName();
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div id="myCarousel" class="carousel slide workout-image" data-ride="carousel">
                       <!-- Indicators -->
                       <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -144,18 +144,18 @@ for(int i = 0; i < numExercises; i++){
                                             </div>
                                         </div>
                                         <div class="exercise-footer">
-                                            <button class="rest-btn" onclick="rest(this,30)">30s</button>
-                                            <button class="rest-btn" onclick="rest(this,60)">60s</button>
-                                            <button class="next-btn" onclick="next(this)">Next</button>
+                                            <button class="rest-btn btn" onclick="rest(this,30)">30s</button>
+                                            <button class="rest-btn btn middle-btn" onclick="rest(this,60)">60s</button>
+                                            <button class="next-btn btn" onclick="next(this)">Next</button>
                                         </div>
                                     </div>
                                     <div class="timer-gui" hidden>
                                         <div class="timer-display">
-
+										
                                         </div>
                                         <div class="timer-controls">
-                                            <button class="pause-btn" onclick="pausePlay()">Pause</button>
-                                            <button onclick="done()">Done</button>
+                                            <button class="pause-btn btn" onclick="pausePlay()">Pause</button>
+                                            <button class="done-btn btn" onclick="done()">Done</button>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@ for(int i = 0; i < numExercises; i++){
 id++;}%>                  
                     </div>
                     <div class="footer">
-                    	<button class="finish-btn" onclick="ajaxFinishWorkout()">Finish</button>
+                    	<button class="finish-btn btn" onclick="ajaxFinishWorkout()">Finish</button>
                     </div>
                 </div>
             </div>

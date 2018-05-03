@@ -147,7 +147,7 @@ Client c = storage.loadClient(user);
 						}
 						
 						if(count > 0) {%>
-						<h5 align = "center">Select Exercise To Plot</h5>
+						<h5 align = "center" class="datalist-title">Select Exercise To Plot</h5>
 						<form action = "/index.jsp" align = "center">
 						<%
 						String val = exerciseData.get(0).getExerciseName();
@@ -163,7 +163,7 @@ Client c = storage.loadClient(user);
 								}
 								%>
 							</datalist>
-							<input type="submit">
+							<input class="btn update-btn"type="submit" value="Update">
 						</form>
 						<br>
 						<%}%>
@@ -180,16 +180,12 @@ Client c = storage.loadClient(user);
 					<%}}
 	
 					}%>
-				<div class="row">
+				<div class="row share-row">
 					<%if(c.getAllowSharing()){%>
-					<h4>You have allowed sharing! Your friends can now use your workouts!</h4>
+					<h4>You have allowed workout sharing! Your friends can now use your workouts!</h4>
 					<%} else { %>
-					<h4>Privacy Toggle (Right now your workouts are private)</h4>
-					<label class="switch">
-  						<input type="checkbox" id = "toggle-switch" onchange="togglePrivacy()">
-  						<span class="slider round"></span>
-					</label>
-					<h4>WARNING: Making workouts public is IRREVERSIBLE!</h4>
+					<h4>Allow Workout Sharing: </h4>
+					<button class="btn share-btn" onclick="togglePrivacy()">Activate</button>
 					<%} %>
 				</div>
         </div>

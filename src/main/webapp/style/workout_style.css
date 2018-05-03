@@ -2,6 +2,11 @@
 	width:100%;
 }
 
+#myCarousel {
+	width: 550px;
+	position: fixed;
+}
+
 .carousel-inner{
   width:100%;
   max-height: 500px !important;
@@ -9,10 +14,16 @@
 
 .fa {
     font-size: 28px;
+    color: #4ABDAC;
 }
 
 .subtitle{
     text-align: center;
+    font-size: 22px;
+}
+
+.arrow-subtitle {
+	font-size: 18px;
 }
 
 .arrow {
@@ -36,16 +47,79 @@
 .left-shifter input,
 .right-shifter input {
     text-align: center;
+    font-size: 16px;
+    width: 40px;
+    height: 30px;
 }
 
 .exercise-footer {
-    width: 220px;
+    width: 300px;
     margin: auto;
+    padding-left: 45px;
+    align
 }
 
 .rest-btn, .next-btn {
     vertical-align: middle;
-    width: 48px;
+    width: 64px;
     height: 36px;
-    margin:10px 10px 10px 10px;
+    margin:10px auto 10px auto;
+}
+
+
+.middle-btn {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.rest-btn {
+	background-color: #F7B733;
+}
+
+.next-btn {
+	background-color: #F7B733;
+}
+
+.panel-title a {
+	color: #000;
+}
+
+.panel-default {
+	border: 4px solid #DFDCE3;
+}
+
+.panel-default > .panel-heading {
+  background: #DFDCE3;
+}
+.panel-body {
+  background: #fff;
+  border: none;
+}
+
+.timer-display {
+	text-align: center;
+	font-size: 24px;
+}
+
+.pause-btn {
+	float-left:left;
+	margin-left: 50px;
+	background-color: #F7B733;
+}
+
+.done-btn {
+	float: right;
+	margin-right: 50px;
+	background-color: #F7B733;
+}
+
+.finish-btn {
+	font-size: 16px;
+	background-color: #FC4A1A;
+	color: #fff;
+	margin-top: 5px;
+	margin-bottom: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	
 }

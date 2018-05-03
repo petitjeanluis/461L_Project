@@ -39,7 +39,7 @@ Client client =  storage.loadClient(user);
             </ul>
             <div class="nav navbar-nav navbar-right">  	
                 <a href= "/logoutservlet">
-                	<button class="btn navbar-btn">Logout</button>
+                	<button class="btn navbar-btn login-btn">Logout</button>
                 </a>
             </div>
           </div>

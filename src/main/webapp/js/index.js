@@ -1,5 +1,5 @@
 function togglePrivacy() {
-	if(confirm("Making your profile public is IRREVERSIBLE!")) {
+	if(confirm("WARNING: Allowing Workout Sharing is IRREVERSIBLE!")) {
 		$.post("/toggleprivacyservlet");
 		console.log("PrivacyToggled");
 	} else {
