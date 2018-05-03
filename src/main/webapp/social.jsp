@@ -115,5 +115,9 @@
                 </div>
             </div>
         </div>
+        <form id="add-friend-form" action="/addfriendservlet" method="post" hidden>
+        </form>
+        <form id="add-friend-workout-form" action="/addfriendsworkoutservlet" method="post" hidden>
+        </form>
     </body>
 </html>

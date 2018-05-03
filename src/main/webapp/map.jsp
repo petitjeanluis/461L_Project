@@ -22,7 +22,7 @@ Client client =  storage.loadClient(user);
 	<link rel="stylesheet" href="style/map.css">
   </head>
   <body>
-  	  <nav class="navbar navbar-inverse">
+  	  <nav class="navbar navbar-inverse" style="margin-bottom:0px">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.jsp">Basically Fit</a>
@@ -44,11 +44,9 @@ Client client =  storage.loadClient(user);
             </div>
           </div>
       </nav>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-	
+    <input id="pac-input" class="controls" type="text" placeholder="Search Address...">
     <div id="map">
     </div>
-    
     <script>
     	/*
 	    This example adds a search box to a map, using the Google Place Autocomplete

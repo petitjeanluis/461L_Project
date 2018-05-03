@@ -14,19 +14,44 @@ $(document).ready(function (){
 });
 
 function addFollower() {
-	$("#friend-list").append($('#'+selectedUser).removeClass("active"));
+	$('#'+selectedUser).remove();
 	var userEmail = $('#'+selectedUser).html();
-	console.log(userEmail);
-    $.post("/addfriendservlet",{
-    	email : userEmail
-    });
+	
+	if(userEmail == null) {
+		console.log("returing");
+		return;
+	}
+	
+	var form = document.getElementById('add-friend-form');
+
+    var input = document.createElement("input");
+    input.setAttribute("name","email");
+    input.setAttribute("value",userEmail);
+    form.appendChild(input);
+    
+    form.submit();
 }
 
 function addWorkout() {
 	var userEmail = $("#"+selectedWorkout +" td:first-child").html();
 	var userWorkout = $("#"+selectedWorkout +" td:last-child").html();
-	$.post("/addfriendsworkoutservlet",{
-    	email : userEmail,
-    	workout : userWorkout
-    });
+	
+	if(userEmail == null) {
+		console.log("returing");
+		return;
+	}
+	
+	var form = document.getElementById('add-friend-workout-form');
+
+    var input = document.createElement("input");
+    input.setAttribute("name","email");
+    input.setAttribute("value",userEmail);
+    form.appendChild(input);
+    
+    var input = document.createElement("input");
+    input.setAttribute("name","workout");
+    input.setAttribute("value",userWorkout);
+    form.appendChild(input);
+    
+    form.submit();
 }
