@@ -1,14 +1,49 @@
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="Database.*" %>
 <!DOCTYPE html>
 <html>
+<%
+UserService userService = UserServiceFactory.getUserService();
+User user = userService.getCurrentUser();                   		 
+
+if(user == null) {
+	response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	return;
+}
+
+Storage storage = Storage.getInstance();
+Client client =  storage.loadClient(user);
+
+%>
   <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Workout</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<jsp:include page="header.jsp"/>
 	<link rel="stylesheet" href="style/map.css">
   </head>
   <body>
+  	  <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.jsp">WorkoutMaker</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="index.jsp">Home</a></li>
+              <li class="active"><a href="#">Your Workouts</a></li>
+              <li><a href="workout_build.jsp">Build Workout</a></li>
+              <%if(client.getCurrentWorkout() != null) { %>
+              <li><a href="workout.jsp">Current Workout</a></li>
+              <%} %>
+              <li><a href="map.jsp">Find A Gym</a></li>
+              <li><a href="social.jsp">Get Your Friends' Workouts</a></li>
+            </ul>
+            <div class="nav navbar-nav navbar-right">  	
+                <a href= "/logoutservlet">
+                	<button class="btn navbar-btn">Logout</button>
+                </a>
+            </div>
+          </div>
+      </nav>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 	
     <div id="map">
@@ -29,6 +64,7 @@
 		*/
 		var infowindow;
     	var map;
+    	var flagArray = [];
 	    function initAutocomplete() {
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: {lat: 30.2672, lng: -97.7431},
@@ -67,6 +103,11 @@
 			  	  marker.setMap(null);
 			  });
 			  markers = [];
+			  
+			  flagArray.forEach(function(k) {
+				  k.setMap(null);
+			  });
+			  flagArray = [];
 			
 			  // For each place, get the icon, name and location.
 			  var bounds = new google.maps.LatLngBounds();
@@ -79,8 +120,8 @@
 			    
 			    var latitude = place.geometry.location.lat();
 			    var longitude = place.geometry.location.lng();
-			    var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude.toString() + "," + longitude.toString() + "&radius=1500&type=gym&key=AIzaSyC1mQG3JvL53Vtdxhz-MJLTd6H2odupgDc";
-			    console.log(url);
+			    //var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude.toString() + "," + longitude.toString() + "&radius=1500&type=gym&key=AIzaSyC1mQG3JvL53Vtdxhz-MJLTd6H2odupgDc";
+			    //console.log(url);
 			    
 			   var exactSpot = new google.maps.LatLng(latitude, longitude);
 			   map.center = exactSpot;
@@ -129,27 +170,28 @@
 		  for(var i = 0; i < results.length; i++) {
 			  var place = results[i];
 			  console.log(place.name);
-			  var marker = new google.maps.Marker({
+			  flag = new google.maps.Marker({
 				  position: place.geometry.location,
 				  map: map,
 				  title: place.name
 			  });
+			  flagArray.push(flag);
 			  //console.log(place);
 			  //var photo = place.reference;
-			  google.maps.event.addListener(marker, 'click', function() {
+			  google.maps.event.addListener(flag, 'click', function() {
 		             infowindow.setContent(this.title);
 		             infowindow.open(map,this);
 				  //window.open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photo+"&key=AIzaSyC1mQG3JvL53Vtdxhz-MJLTd6H2odupgDc");
 		         });
-			  bounds.extend(marker.getPosition());
-			  marker.setMap(map);
+			  bounds.extend(flag.getPosition());
+			  flag.setMap(map);
 		  }
 		  map.fitBounds(bounds);
 		 }
 		}
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLm9hpR1kCLdc5R9Z6Kgy2GXip2U3B0fs&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt0myRUcUeXSCl1hmFJI9avCxu4ZZDNWY&libraries=places&callback=initAutocomplete"
          async defer></script>
   </body>
 </html>
