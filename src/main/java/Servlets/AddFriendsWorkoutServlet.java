@@ -29,5 +29,7 @@ public class AddFriendsWorkoutServlet extends HttpServlet{
         client.addFriendsWorkout(email, workout);
         
         storage.saveClientSync(user, client);
+        
+        resp.sendRedirect("social.jsp");
 	}
 }

@@ -28,5 +28,7 @@ public class AddFriendServlet extends HttpServlet{
         client.addFriend(email);
         
         storage.saveClientSync(user, client);
+        
+        resp.sendRedirect("social.jsp");
 	}
 }
