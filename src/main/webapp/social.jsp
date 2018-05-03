@@ -18,7 +18,7 @@
 	Client c = storage.loadClient(user);
 	
 	ArrayList<String> friendEmailList = c.getFriendsEmails();
-	ArrayList<String> globalEmailList = storage.getAllClientsEmails();
+	ArrayList<String> globalEmailList = c.getAllPotentialFriends();
 %>
 <html lang="en">
     <header>
@@ -97,7 +97,7 @@
                    		id = 0;
                    		ArrayList<String> workoutNameList;
                     	for(String email : friendEmailList) {
-                    		workoutNameList = storage.getFriendsWorkoutNamesFromEmail(email);
+                    		workoutNameList = c.getAllPotentialFriendWorkouts(email);
                     		for(String workoutName : workoutNameList) {
                     			%>
                         		<tr id="row<%=id%>">
